@@ -13,8 +13,6 @@ Route::get('/room/{slug}', function ($slug) {
         'id' => $chat->show($slug),
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
     ]);
 })->name('rooms');
 

@@ -1,24 +1,24 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
 import moment from 'moment';
+
 defineProps({
     variations: Object,
     id: Object,
     canLogin: Boolean,
     canRegister: Boolean,
-    laravelVersion: String,
-    phpVersion: String,
 });
 </script>
 <template>
     <Head title="Welcome" />
     <div class="flex overflow-y-scroll">
         <div :key="variation.id" v-for="variation in variations">
-            <a :href="route('rooms', {slug: variation.slug})"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"> {{ variation.slug }}</button></a>
+            <a :href="route('rooms', {slug: variation.slug})">
+                <button class="py-2 px-4 text-sm text-stone-600	border border-gray-600"> 
+                    {{ variation.title }}</button>
+                </a>
         </div>
     </div>
-
-Laravel {{  laravelVersion }}  / PHP {{  phpVersion }}
     <a :href="`${route('subject.post')}`">POST SUBJECT</a>
     <a :href="`${route('message.post')}`">POST MESSAGE</a>
     <h1>ID: 2</h1>

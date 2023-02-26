@@ -8,9 +8,11 @@ use App\Models\Subject;
 class Chat extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'slug';
+    public $incrementing = false;
 
     protected $fillable = [
-       'title', 'slug', 'description'
+       'title', 'chat_slug', 'description'
     ];
 
     public function subjects() {

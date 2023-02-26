@@ -41,13 +41,13 @@ class ChatController extends Controller
     }
     public function redis($data, $slug) {
         if(!Redis::exists('user:chat:'.$slug)):
-            Redis::set('user:chat:'.$slug, json_encode($subjects), 'EX', 60);
+            Redis::set('user:chat:'.$slug, json_encode($data));
         endif;
         $subjects = json_decode(Redis::get('user:chat:'.$slug));
         return $subjects;
     }
     public function show($slug) {
-        $subjects = Chat::find(Chat::where('slug', $slug)->get()->first()->id)->subjects()->withCount('messages')->orderBy('messages_count', 'desc')->get()->toArray();
+        $subjects = Chat::find($slug)->subjects()->withCount('messages')->orderBy('messages_count', 'desc')->get()->toArray();
         $subjects = array_map(function ($subject) {
             $subject['user'] = $this->user($subject['user_id']);
             $subject['messages'] = $this->messages($subject['id']);
