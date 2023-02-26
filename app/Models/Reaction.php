@@ -12,6 +12,10 @@ class Reaction extends Model
     protected $fillable = ['type', 'user_id', 'subject_id', 'message_id'];
     use HasFactory;
 
+    public function scopeAlreadyLiked($query, $user_id, $message_id) {
+        return $query->where('user_id', '=', $user_id)->where('message_id', '=', $message_id);
+    }
+
     public function user() {
         return $this->hasOne(User::class, 'user_id', 'id');
     }

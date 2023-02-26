@@ -18,7 +18,8 @@ class ChatController extends Controller
         return User::where('id', '=', $id)->get()->first()->toArray();
     }
 
-    public function reactions($id) {
+    public function already_liked($id) {
+        dd(Reaction::alreadyLiked(2, 0)->get());
         $reaction = Reaction::where('user_id', '=', 2)->where('message_id', '=', $id)->get()->toArray();
         return !empty($reaction) ? true : false;
     }
@@ -27,7 +28,7 @@ class ChatController extends Controller
         $messages = Message::where('subject_id', $id)->orderBy('likes', 'DESC')->paginate(10)->toArray();
         $messages['data'] = array_map(function($message) {
             $message['user'] = $this->user($message['user_id']);
-            $message['already_liked'] = $this->reactions($message['id']);
+            $message['already_liked'] = $this->already_liked($message['id']);
             return $message;
         }, $messages['data']);
         return $messages;
@@ -39,6 +40,7 @@ class ChatController extends Controller
         $chat->save();
     } 
     public function show($slug) {
+        $this->already_liked(1);
         $subjects = Chat::find(Chat::where('slug', $slug)->get()->first()->id)->subjects()->withCount('messages')->orderBy('messages_count', 'desc')->get()->toArray();
         $subjects = array_map(function ($subject) {
             $subject['user'] = $this->user($subject['user_id']);
