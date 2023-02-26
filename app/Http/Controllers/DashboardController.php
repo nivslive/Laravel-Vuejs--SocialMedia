@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Dashboard;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+
+
+
 
 class DashboardController extends Controller
 {
@@ -13,8 +17,10 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        Dashboard::all();
+    {   //dd(Dashboard::all());
+        return Inertia::render('Principal', [
+            'data' => Dashboard::all(),
+        ]);
     }
 
     /**

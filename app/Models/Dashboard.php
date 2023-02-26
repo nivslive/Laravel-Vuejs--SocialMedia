@@ -19,7 +19,7 @@ class Dashboard
 
     public static function sunMessages($id) {
         $subject = Subject::withCount('messages');
-        $subject->where('chat_id', $id)->offset(0)->limit(2)->get()->sum('messages_count');
+       return $subject->where('chat_id', $id)->offset(0)->limit(2)->get()->sum('messages_count');
     }
 
     public static function all() {
@@ -27,6 +27,6 @@ class Dashboard
             $chat->subjectsMessages =  self::sunMessages($chat->id);
             $chat->messageWithMoreLikes = self::messageWithMoreLikes($chat->id);
         });
-        dd(self::collectAndsplice($chat));
+        return self::collectAndsplice($chat);
     }
 }
