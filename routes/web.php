@@ -14,7 +14,7 @@ use Inertia\Inertia;
 |
 */
 
-require_once 'Dashboard.php';
-require_once 'Posts.php';
-require_once 'Public.php';
+require_once 'Web/Dashboard.php';
+require_once 'Web/Posts.php';
+require_once 'Web/Public.php';
 

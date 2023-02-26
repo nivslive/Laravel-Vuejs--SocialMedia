@@ -118,9 +118,6 @@ class ChatTest extends TestCase
         $this->assertTrue($reaction->subject_id === $subject->id);
         $this->assertTrue($reaction->type === 'like');
     }
-
-
-
     
     /*
     public function test_should_be_save_10_messages_and_reactions_and_return_data_with_success() {
