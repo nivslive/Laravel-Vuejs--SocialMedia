@@ -41,7 +41,7 @@ class ChatController extends Controller
     }
     public function redis($data, $slug) {
         if(!Redis::exists('user:chat:'.$slug)):
-            Redis::set('user:chat:'.$slug, json_encode($subjects));
+            Redis::set('user:chat:'.$slug, json_encode($subjects), 'EX', 60);
         endif;
         $subjects = json_decode(Redis::get('user:chat:'.$slug));
         return $subjects;
