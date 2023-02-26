@@ -8,9 +8,11 @@ use App\Models\Message;
 use App\Models\Chat;
 class Subject extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'title',
         'description',
+        'chat_id',
         'user_id'
     ];
 
@@ -20,5 +22,4 @@ class Subject extends Model
     public function messages() {
        return $this->hasMany(Message::class);
     }
-    use HasFactory;
 }

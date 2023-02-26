@@ -4,6 +4,8 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use App\Models\User;
+use App\Models\Chat;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Subject>
  */
@@ -16,12 +18,14 @@ class SubjectFactory extends Factory
      */
     public function definition()
     {
+        $title = fake()->name();
         $id = 2;
         return [
-            'title' => fake()->name(),
+            'title' => $title,
+            'slug' =>  Str::of($title)->slug('-'),
             'description' => fake()->text(),
-            'chat_id' => $id,
-            'user_id' => $id,
+            'chat_id' =>  Chat::pluck('id')->random(),
+            'user_id' => User::pluck('id')->random(),
         ];
     }
 }

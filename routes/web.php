@@ -1,10 +1,8 @@
 <?php
 
-use App\Http\Controllers\ChatController;
-use App\Http\Controllers\MessageController;
-use App\Http\Controllers\SubjectController;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-
+use Inertia\Inertia;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,21 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::controller(MessageController::class)->prefix('message')->group(function () {
-    Route::get('/{id}', 'show');
-    Route::post('/', 'store');
-    Route::post('/{id}', 'post');
-});
-
-Route::controller(ChatController::class)->prefix('chat')->group(function () {
-    Route::get('/{id}', 'show');
-});
-Route::controller(SubjectController::class)->prefix('subject')->group(function () {
-    Route::get('/{id}', 'show');
-    Route::post('/', 'store');
-});
+require_once 'Posts.php';
+require_once 'Public.php';
 

@@ -2,8 +2,17 @@
 
 namespace App\Http\Controllers;
 use App\Models\Subject;
+use Illuminate\Support\Str;
 class SubjectController extends Controller
 {
+
+
+    public function post() {
+        $title = "oi amigos da rede globo";
+        $chat =  new Subject(['user_id' => 2, 'chat_id' => 2, 'title' => $title, 'slug' => Str::of($title)->slug('-'), 'description' => 'fodase']);
+        $chat->save();
+    } 
+
     public function show($id) {
         $subject = Subject::find($id)->first();
         $chat = Subject::find($id)->chat()->first();
