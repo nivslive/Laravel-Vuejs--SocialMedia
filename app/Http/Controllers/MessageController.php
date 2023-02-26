@@ -31,7 +31,6 @@ class MessageController extends Controller
         $request = array_merge($subject_id, $request);
         $message = new Message($request);
         $message->save();*/
-        return $message;
         //return Chat::find($id)->subjects()->save(new Subject($request->toArray()));
     }
 }

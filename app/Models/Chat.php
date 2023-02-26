@@ -10,7 +10,7 @@ class Chat extends Model
     use HasFactory;
 
     protected $fillable = [
-        'chat_id','title', 'slug', 'description'
+       'title', 'slug', 'description'
     ];
 
     public function subjects() {
