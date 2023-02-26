@@ -120,4 +120,22 @@ class ChatTest extends TestCase
     }
 
 
+
+    
+    /*
+    public function test_should_be_save_10_messages_and_reactions_and_return_data_with_success() {
+        $user = User::factory()->create();
+        $chat = Chat::factory()->create();
+        $subject = Subject::factory()->create([
+            'chat_id' => $chat->id, 'user_id' => $user->id
+        ]);
+        $message = Message::factory()->count(10)->make();
+        var_dump($message);
+        $this->assertDatabaseCount($message, 10);
+    }
+*/
+
+
+
+
 }
