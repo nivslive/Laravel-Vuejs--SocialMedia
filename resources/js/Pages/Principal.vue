@@ -6,7 +6,7 @@ defineProps({
 </script>
 <template>
     <div>
-        <div v-for="(chat, value)  in data">
+        <div :key="chat.id" v-for="(chat, value)  in data">
         <NavLink />
         <b> TEMAS QUE ESTÃO MAIS BOMBANDO: (TOP  {{value + 1}})</b>        {{  chat.title  }}
         <br>

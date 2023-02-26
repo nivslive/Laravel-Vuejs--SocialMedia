@@ -6,15 +6,17 @@ use App\Http\Controllers\ChatController;
 
 Route::get('/room/{slug}', function ($slug) {
     $chat = new ChatController;
+    $variations = $chat->onlyChatVariations();
     //dd(Auth()->user()->get()->first()->toArray());
     return Inertia::render('Welcome', [
+        'variations' => $variations,
         'id' => $chat->show($slug),
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('rooms');
 
 Route::middleware([
     'auth:sanctum',
