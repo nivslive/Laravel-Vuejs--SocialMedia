@@ -47,7 +47,7 @@ class ChatController extends Controller
         return $subjects;
     }
     public function show($slug) {
-        $subjects = Chat::find($slug)->subjects()->withCount('messages')->orderBy('messages_count', 'desc')->get()->toArray();
+        $subjects = Chat::where('slug', $slug)->first()->subjects()->withCount('messages')->orderBy('messages_count', 'desc')->get()->toArray();
         $subjects = array_map(function ($subject) {
             $subject['user'] = $this->user($subject['user_id']);
             $subject['messages'] = $this->messages($subject['id']);

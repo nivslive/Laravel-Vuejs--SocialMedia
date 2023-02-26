@@ -15,7 +15,7 @@ defineProps({
         <div :key="variation.id" v-for="variation in variations">
             <a :href="route('rooms', {slug: variation.slug})">
                 <button class="py-2 px-4 text-sm text-stone-600	border border-gray-600"> 
-                    {{ variation.title }}</button>
+                    {{ variation.title }}</button> 
                 </a>
         </div>
     </div>
