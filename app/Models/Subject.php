@@ -4,8 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Message;
-use App\Models\Chat;
+use App\Models\{Message, Chat, User};
 class Subject extends Model
 {
     use HasFactory;
@@ -16,10 +15,15 @@ class Subject extends Model
         'user_id'
     ];
 
+    public function user() {
+        return $this->hasOne(User::class, 'id');      
+    }
+
     public function chat() {
         return $this->hasOne(Chat::class, 'id');
      }
     public function messages() {
        return $this->hasMany(Message::class);
     }
+    
 }

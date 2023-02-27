@@ -11,7 +11,13 @@ defineProps({
 </script>
 <template>
     <Head title="Welcome" />
-    <div class="flex overflow-y-scroll">
+
+    <pre>
+
+        {{  id  }}
+    </pre>
+    <!--<div class="flex overflow-y-scroll">
+        
         <div :key="variation.id" v-for="variation in variations">
             <a :href="route('rooms', {slug: variation.slug})">
                 <button class="py-2 px-4 text-sm text-stone-600	border border-gray-600"> 
@@ -58,7 +64,7 @@ defineProps({
             </div>
     
     </div>
-    </div>
+    </div>-->
 </template>
 
 <style>

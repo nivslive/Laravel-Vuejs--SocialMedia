@@ -47,14 +47,19 @@ class ChatController extends Controller
         return $subjects;
     }
     public function show($slug) {
-        $subjects = Chat::where('slug', $slug)->first()->subjects()->withCount('messages')->orderBy('messages_count', 'desc')->get()->toArray();
-        $subjects = array_map(function ($subject) {
-            $subject['user'] = $this->user($subject['user_id']);
-            $subject['messages'] = $this->messages($subject['id']);
+        $redis = false;
+        $subjects = Chat::where('slug', $slug)->first()->subjects()->withCount('messages')->with('user')->orderBy('messages_count', 'desc')->get()->each(function ($subject) {
+           // dd($subject::all()->toArray());
+            //dd($subject::withCount('messages')->get()->toArray());
+          $subject['user'] =  $subject::with('user')->first();
+           // $subject = $subject::with('user')->withCount('messages')->orderBy('messages_count', 'desc')->get()->toArray();
+            //     $subject['user'] = $this->user($subject['user_id']);
+       //     $subject['messages'] = $this->messages($subject['id']);
+            //$subject->messages()->get();
+            // $subject->user()->get();
             return $subject;
-        }, $subjects);
-
-        return $this->redis($subjects, $slug);
+        });
+        return $redis ? $this->redis($subjects, $slug) : $subjects->toArray();
     }
 
 }
