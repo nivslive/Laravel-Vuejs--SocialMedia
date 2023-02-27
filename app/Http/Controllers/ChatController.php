@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Redis;
 
 class ChatController extends Controller
 {
+    private bool $redisCheck = false;
 
     public function user($id) {
         return User::where('id', '=', $id)->get()->first()->toArray();
@@ -37,10 +38,9 @@ class ChatController extends Controller
 
 
     public function onlyChatVariations() {
-        $redis = true;
         $data = Chat::select('title', 'slug')->orderBy('subjects_all_messages_count', 'desc')->skip(0)->take(10)->get()->toArray();
-        dd($data);
-        return $redis ? $this->redis($data, 'all', 'subject') : $data;
+        //dd($data);
+        return $this->redisCheck ? $this->redis($data, 'all', 'subject') : $data;
     }
     public function redis($data, $slug, $part = 'chat') {
         if(!Redis::exists('user:'.$part.':'.$slug)):
@@ -50,12 +50,14 @@ class ChatController extends Controller
         return $subjects;
     }
     public function show($slug) {
-        $redis = true;
-       /* $subjects = Chat::where('slug', $slug)->first()->subjects()->withCount('messages')->orderBy('messages_count', 'desc')->get()->each(function ($subject) {
+        \DB::enableQueryLog();
+        $subjects = Chat::where('slug', $slug)->first()->subjects()->withCount('messages')->orderBy('messages_count', 'desc')->get()->each(function ($subject) {
             $subject['user'] =  User::select('name')->where('id', $subject->user_id)->first();
             return $subject;
         });
-        return $redis ? $this->redis($subjects, $slug) : $subjects->toArray();*/
+        dd(\DB::getQueryLog());
+
+        return $this->redisCheck ? $this->redis($subjects, $slug) : $subjects->toArray();
     }
 
 }
