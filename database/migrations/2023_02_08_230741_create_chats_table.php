@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->string('title');
             $table->string('description');
+            $table->integer('subjects_all_messages_count');
             $table->timestamps();
         });
     }

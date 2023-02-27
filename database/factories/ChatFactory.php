@@ -14,15 +14,16 @@ class ChatFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    private static $order = 1;
     public function definition()
     {
-
         $title = fake()->name();
         return  [
             
             'title' => $title,
             'slug' =>  Str::of($title)->slug('-'),
             'description' => fake()->text(),
+            'subjects_all_messages_count' => self::$order++
         ];
     }
 }

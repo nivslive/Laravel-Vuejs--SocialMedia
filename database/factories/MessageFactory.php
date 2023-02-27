@@ -18,7 +18,7 @@ class MessageFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition()
-    {  $id = 2;
+    { 
         return [
             'likes' => fake()->numberBetween(0, 100),
             'message' => fake()->text(),

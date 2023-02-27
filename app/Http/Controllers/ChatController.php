@@ -37,29 +37,25 @@ class ChatController extends Controller
 
 
     public function onlyChatVariations() {
-        return Dashboard::all(10);
+        $redis = true;
+        $data = Chat::select('title', 'slug')->orderBy('subjects_all_messages_count', 'desc')->skip(0)->take(10)->get()->toArray();
+        dd($data);
+        return $redis ? $this->redis($data, 'all', 'subject') : $data;
     }
-    public function redis($data, $slug) {
-        if(!Redis::exists('user:chat:'.$slug)):
-            Redis::set('user:chat:'.$slug, json_encode($data));
+    public function redis($data, $slug, $part = 'chat') {
+        if(!Redis::exists('user:'.$part.':'.$slug)):
+            Redis::set('user:'.$part.':'.$slug, json_encode($data));
         endif;
-        $subjects = json_decode(Redis::get('user:chat:'.$slug));
+        $subjects = json_decode(Redis::get('user:'.$part.':'.$slug));
         return $subjects;
     }
     public function show($slug) {
-        $redis = false;
-        $subjects = Chat::where('slug', $slug)->first()->subjects()->withCount('messages')->with('user')->orderBy('messages_count', 'desc')->get()->each(function ($subject) {
-           // dd($subject::all()->toArray());
-            //dd($subject::withCount('messages')->get()->toArray());
-          $subject['user'] =  $subject::with('user')->first();
-           // $subject = $subject::with('user')->withCount('messages')->orderBy('messages_count', 'desc')->get()->toArray();
-            //     $subject['user'] = $this->user($subject['user_id']);
-       //     $subject['messages'] = $this->messages($subject['id']);
-            //$subject->messages()->get();
-            // $subject->user()->get();
+        $redis = true;
+       /* $subjects = Chat::where('slug', $slug)->first()->subjects()->withCount('messages')->orderBy('messages_count', 'desc')->get()->each(function ($subject) {
+            $subject['user'] =  User::select('name')->where('id', $subject->user_id)->first();
             return $subject;
         });
-        return $redis ? $this->redis($subjects, $slug) : $subjects->toArray();
+        return $redis ? $this->redis($subjects, $slug) : $subjects->toArray();*/
     }
 
 }
