@@ -41,8 +41,8 @@ class Dashboard
             $_['allsums'] = collect($_['subjects'])->sum('messages_count');
             return $_;
         })->sortByDesc('allsums');
-        return $chat;
 
+        return $chat;
         //dd(\DB::getQueryLog());
         //return self::collectAndsplice($chat, $limit);
     }

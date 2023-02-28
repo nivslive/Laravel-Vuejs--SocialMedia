@@ -10,18 +10,22 @@ defineProps({
 });
 </script>
 <template>
-    <Head title="Welcome" />
-    <div class="flex items-center justify-center overflow-y-scroll">
+    <section class="flex">
 
-        <div :key="variation.id" v-for="variation in variations">
+
+
+        <Head title="Welcome" />
+    <div class="width: 50px">
+
+        <div style="width:100px" :key="variation.allsums" v-for="variation, key in variations">
             <a :href="route('rooms', {slug: variation.slug})">
                 <button class="button-variation px-4 text-stone-600	border border-gray-600">
-                    {{ variation.title }}</button>
+                    {{ variation.title }} <b>[Msgs: {{  variation.allsums }}]</b></button>
                 </a>
         </div>
     </div>
-    <a :href="`${route('subject.post')}`">POST SUBJECT</a>
-    <a :href="`${route('message.post')}`">POST MESSAGE</a>
+    <!--<a :href="`${route('subject.post')}`">POST SUBJECT</a>
+    <a :href="`${route('message.post')}`">POST MESSAGE</a>-->
     <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
         <div v-if="canLogin" class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
             <Link v-if="$page.props.auth.user" :href="route('dashboard')" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</Link>
@@ -42,7 +46,7 @@ defineProps({
                 <div class="flex">
                     <a href="https://laravel.com/docs" class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
                         <div>
-                            <p>Usuário: {{    subject.user.name}} </p>
+                            <p v-if="subject.user">Usuário: {{    subject.user.name}} </p>
                             <p>Hora: {{  moment(subject.created_at ).format('HH:mm')}}</p>
                             <p>Mensagens: {{  subject.messages_count  }}</p>
                             <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white"> {{ subject.title }}  </h2>
@@ -60,15 +64,23 @@ defineProps({
 
     </div>
     </div>
+
+
+    </section>
+
 </template>
 
 <style>
+section {
+    background: rgb(47, 0, 53);
+}
 .button-variation {
     padding: 5px 10px;
     margin: 3px;
     font-size: 9px;
     border-radius: 2px;
     transition: 0.5s;
+    color: white;
 }
 .button-variation:hover {
     padding: 5px 14px;

@@ -8,9 +8,6 @@ Route::get('/room/{slug}', function ($slug) {
     //\DB::enableQueryLog();
     $chat = new ChatController;
     $variations = $chat->onlyChatVariations();
-    //dd($variations);
-    //$chat->show($slug);
-    //dd(\DB::getQueryLog());
     return Inertia::render('Welcome', [
         'variations' => $variations,
         'id' => $chat->show($slug),

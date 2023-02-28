@@ -54,10 +54,10 @@ class ChatController extends Controller
     }
     public function show($slug) {
         //\DB::enableQueryLog();
-        $subjects = Chat::where('slug', $slug)->first()->subjects()->withCount('messages')->orderBy('messages_count', 'desc')->get()->each(function ($subject) {
+        /*$subjects = Chat::where('slug', $slug)->first()->subjects()->withCount('messages')->orderBy('messages_count', 'desc')->get()->each(function ($subject) {
             $subject['user'] =  User::select('name')->where('id', $subject->user_id)->first();
             return $subject;
-        });
+        });*/
         $subjects = Chat::with(['subjects' => function($query){
             $query->withCount('messages')->orderBy('messages_count', 'desc');
         },'subjects.user'])->where('slug', '=', $slug)->get();
