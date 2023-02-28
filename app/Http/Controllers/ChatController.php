@@ -38,8 +38,11 @@ class ChatController extends Controller
 
 
     public function onlyChatVariations() {
-        $data = Chat::select('title', 'slug')->orderBy('subjects_all_messages_count', 'desc')->skip(0)->take(10)->get()->toArray();
+        $data = Dashboard::all(10);
         //dd($data);
+
+        //Dashboard::all(10);
+        //dd(\DB::getQueryLog());
         return $this->redisCheck ? $this->redis($data, 'all', 'subject') : $data;
     }
     public function redis($data, $slug, $part = 'chat') {
@@ -50,13 +53,16 @@ class ChatController extends Controller
         return $subjects;
     }
     public function show($slug) {
-        \DB::enableQueryLog();
+        //\DB::enableQueryLog();
         $subjects = Chat::where('slug', $slug)->first()->subjects()->withCount('messages')->orderBy('messages_count', 'desc')->get()->each(function ($subject) {
             $subject['user'] =  User::select('name')->where('id', $subject->user_id)->first();
             return $subject;
         });
-        dd(\DB::getQueryLog());
-
+        $subjects = Chat::with(['subjects' => function($query){
+            $query->withCount('messages')->orderBy('messages_count', 'desc');
+        },'subjects.user'])->where('slug', '=', $slug)->get();
+       // dd(\DB::getQueryLog());
+        //dd(Chat::where('slug', $slug)->first()->subjects()->get()->toArray());
         return $this->redisCheck ? $this->redis($subjects, $slug) : $subjects->toArray();
     }
 

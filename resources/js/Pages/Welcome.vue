@@ -12,11 +12,11 @@ defineProps({
 <template>
     <Head title="Welcome" />
     <div class="flex items-center justify-center overflow-y-scroll">
-        
+
         <div :key="variation.id" v-for="variation in variations">
             <a :href="route('rooms', {slug: variation.slug})">
-                <button class="button-variation px-4 text-stone-600	border border-gray-600"> 
-                    {{ variation.title }}</button> 
+                <button class="button-variation px-4 text-stone-600	border border-gray-600">
+                    {{ variation.title }}</button>
                 </a>
         </div>
     </div>
@@ -34,20 +34,20 @@ defineProps({
         </div>
 
 
-        
-    <div v-for="subject in id" :key="subject.id">
+
+    <div v-for="subject in id[0].subjects" :key="subject.id">
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
             <div class="flex justify-center">
             </div>
                 <div class="flex">
                     <a href="https://laravel.com/docs" class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
                         <div>
-                            <p>Usuário: {{  subject.user.name }}</p>
+                            <p>Usuário: {{    subject.user.name}} </p>
                             <p>Hora: {{  moment(subject.created_at ).format('HH:mm')}}</p>
                             <p>Mensagens: {{  subject.messages_count  }}</p>
                             <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white"> {{ subject.title }}  </h2>
                             <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                {{ subject.description }}   
+                                {{ subject.description }}
                             </p>
                         </div>
 
@@ -57,7 +57,7 @@ defineProps({
                     </a>
                 </div>
             </div>
-    
+
     </div>
     </div>
 </template>

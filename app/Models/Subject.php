@@ -16,7 +16,7 @@ class Subject extends Model
     ];
 
     public function user() {
-        return $this->hasOne(User::class, 'id');      
+        return $this->hasOne(User::class, 'id');
     }
 
     public function chat() {
@@ -25,5 +25,5 @@ class Subject extends Model
     public function messages() {
        return $this->hasMany(Message::class);
     }
-    
+
 }

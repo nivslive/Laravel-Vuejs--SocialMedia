@@ -5,9 +5,12 @@ use Inertia\Inertia;
 use App\Http\Controllers\ChatController;
 
 Route::get('/room/{slug}', function ($slug) {
+    //\DB::enableQueryLog();
     $chat = new ChatController;
     $variations = $chat->onlyChatVariations();
-    //dd(Auth()->user()->get()->first()->toArray());
+    //dd($variations);
+    //$chat->show($slug);
+    //dd(\DB::getQueryLog());
     return Inertia::render('Welcome', [
         'variations' => $variations,
         'id' => $chat->show($slug),

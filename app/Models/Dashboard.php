@@ -26,10 +26,24 @@ class Dashboard
         return self::all();
     }*/
     public static function all($limit = 5) {
-        $chat = Chat::all()->each( function ($chat) {
+        //\DB::enableQueryLog();
+      /*  $chat = Chat::all()->each( function ($chat) {
             $chat->subjectsMessages =  self::sunMessages($chat->id);
             $chat->messageWithMoreLikes = self::messageWithMoreLikes($chat->id);
-        });
-        return self::collectAndsplice($chat, $limit);
+        });*/
+
+        $chat = Chat::with(['subjects' => function($query) {
+            $query->withCount('messages')->orderBy('messages_count', 'asc');
+        }]);
+
+
+        $chat = collect($chat->get()->toArray())->map(function($_) {
+            $_['allsums'] = collect($_['subjects'])->sum('messages_count');
+            return $_;
+        })->sortByDesc('allsums');
+        return $chat;
+
+        //dd(\DB::getQueryLog());
+        //return self::collectAndsplice($chat, $limit);
     }
 }

@@ -17,9 +17,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([ChatSeeder::class]);
         \App\Models\User::factory(50)->create();
-        \App\Models\Chat::factory(200)->create();
-        \App\Models\Subject::factory(70)->create();
-        \App\Models\Message::factory(100)->create();
-        \App\Models\Reaction::factory(950)->create();       
+        \App\Models\Chat::factory(100)->create();
+        \App\Models\Subject::factory(20)->create();
+        \App\Models\Message::factory(2000)->create();
+        \App\Models\Reaction::factory(60)->create();
     }
 }
