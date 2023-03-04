@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+Artisan::command('brendda', function () {
+    $this->comment('Eu te amo, minha programadora mais gostosa da vida');
+})->purpose('renderer the love for my girlfriend');
