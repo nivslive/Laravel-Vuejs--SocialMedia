@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Services;
+namespace App\Http\Repositories;
 
 use Illuminate\Http\Request;
 use App\Models\{User, Reaction, Message, Chat, Subject, Dashboard};
@@ -37,29 +37,21 @@ class ChatRepository
     }
 
 
-    public function onlyChatVariations() {
-        $data = Dashboard::all(10);
-        return $this->redisCheck ? $this->redis($data, 'all', 'subject') : $data;
+    public function room($chat, $subject) {
+        /*$room = Chat::where('slug', '=', $chat)->first()->with(['subjects' => function($query) use($subject) {
+            $query->where('slug', '=', $subject)->first()->with('messages');
+        }])->get()->toArray();
+        */
+        $room = Subject::where('slug', '=', $subject)->first()->with('messages')->first();
+        //dd($room);
+        return $room;
     }
-    public function redis($data, $slug, $part = 'chat') {
-        if(!Redis::exists('user:'.$part.':'.$slug)):
-            Redis::set('user:'.$part.':'.$slug, json_encode($data));
-        endif;
-        $subjects = json_decode(Redis::get('user:'.$part.':'.$slug));
-        return $subjects;
-    }
-    public function show($slug) {
-        //\DB::enableQueryLog();
-        /*$subjects = Chat::where('slug', $slug)->first()->subjects()->withCount('messages')->orderBy('messages_count', 'desc')->get()->each(function ($subject) {
-            $subject['user'] =  User::select('name')->where('id', $subject->user_id)->first();
-            return $subject;
-        });*/
-        $subjects = Chat::with(['subjects' => function($query){
+
+    public function rooms($slug) {
+        $rooms = Chat::with(['subjects' => function($query){
             $query->withCount('messages')->orderBy('messages_count', 'desc');
         },'subjects.user'])->where('slug', '=', $slug)->get();
-       // dd(\DB::getQueryLog());
-        //dd(Chat::where('slug', $slug)->first()->subjects()->get()->toArray());
-        return $this->redisCheck ? $this->redis($subjects, $slug) : $subjects->toArray();
+        return $rooms;
     }
 
 }

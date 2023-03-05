@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ChatController;
 
-Route::get('/room/{slug}', [ChatController::class, 'room'])->name('room');
+Route::get('/room/{slug}', [ChatController::class, 'room'])->name('rooms');
 
 Route::middleware([
     'auth:sanctum',
