@@ -6,6 +6,10 @@ use Inertia\Inertia;
 
 require_once 'Web/Public/Dashboard.php';
 require_once 'Web/Public/Public.php';
-require_once 'Web/Features/Posts.php';
-require_once 'Web/Private/Private.php';
 
+
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])
+->group(function () {
+    require_once 'Web/Features/Posts.php';
+    require_once 'Web/Private/Private.php';
+});

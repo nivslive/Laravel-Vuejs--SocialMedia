@@ -17,13 +17,18 @@ class MessageController extends Controller
         return Message::where('id', '=', $id)->decrement('likes');
     }
     public function like($id) {
-        Reaction::create(['user_id' => 2, 'subject_id' => 2, 'message_id' => $id, 'type' => 'like']);
+        Reaction::create(['user_id' => Auth()->user()->id, 'subject_id' => 2, 'message_id' => $id, 'type' => 'like']);
         return Message::where('id', '=', $id)->increment('likes');
     }
-    public function post() {
+    public function post(Request $request, $subject) {
         $title = "oi amigos da rede globo";
-        $message =  new Message(['user_id' => 2, 'subject_id' => 2, 'message' => 'mensagem']);
+        $message =  new Message(
+            ['user_id' => Auth()->user()->id,
+            'subject_id' => 2,
+            'message' => 'mensagem'
+        ]);
         $message->save();
+
         // params: Request $request, $id
         /*  $idd = ['user_id' => 2];
         $subject_id = ['subject_id' => 2];

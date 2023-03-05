@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Redis;
 class ChatRepository
 {
     private bool $redisCheck = false;
-
     public function user($id) {
         return User::where('id', '=', $id)->get()->first()->toArray();
     }
@@ -36,12 +35,13 @@ class ChatRepository
         return $chat->save();
     }
 
-
+    #private route
     public function room($chat, $subject) {
         $room = Subject::where('slug', $subject)->with(['user', 'messages.user'])->first();
         return $room;
     }
 
+    #public route
     public function rooms($slug) {
         //dd(\App\Models\Message::where('subject_id', 1)->get()->toArray());
         /*$chat = Chat::with('subjects.messages')->where('slug', $slug)->first();
@@ -54,7 +54,6 @@ class ChatRepository
         $rooms = Chat::with(['subjects' => function($query){
             $query->with(['user', 'messages'])->withCount('messages')->orderBy('messages_count', 'desc');
         }])->where('slug', '=', $slug)->get();
-
         /*
         $rooms = Chat::with(['subjects' => function($query){
             $query->with(['user', 'messages']);

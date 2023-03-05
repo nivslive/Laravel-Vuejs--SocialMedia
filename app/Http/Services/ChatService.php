@@ -11,8 +11,10 @@ class ChatService extends Service
 {
 
     private ChatRepository $repository;
-
     public function __construct() {
+        #user
+        #$this->user = Auth()->user();
+
         #repository
         $this->repository = new ChatRepository;
 
