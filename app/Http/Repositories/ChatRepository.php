@@ -48,9 +48,25 @@ class ChatRepository
     }
 
     public function rooms($slug) {
+        //dd(\App\Models\Message::where('subject_id', 1)->get()->toArray());
+        /*$chat = Chat::with('subjects.messages')->where('slug', $slug)->first();
+        $subjects = Subject::where('chat_id', $chat->id)->get();
+        $subjects->load('messages');
+        dd($subjects->toArray());
+        $messages = Message::where('subject_id', $chat->id)->get();
+        $count = $messages->count();*/
+
         $rooms = Chat::with(['subjects' => function($query){
-            $query->withCount('messages')->orderBy('messages_count', 'desc');
-        },'subjects.user'])->where('slug', '=', $slug)->get();
+            $query->with(['user', 'messages'])->withCount('messages')->orderBy('messages_count', 'desc');
+        }])->where('slug', '=', $slug)->get();
+
+        /*
+        $rooms = Chat::with(['subjects' => function($query){
+            $query->with(['user', 'messages']);
+            //->withCount('messages')->orderBy('messages_count', 'desc');
+        }])->get();
+        //->where('slug', '=', $slug)
+        dd($rooms->toArray());*/
         return $rooms;
     }
 

@@ -16,10 +16,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([ChatSeeder::class]);
-        \App\Models\User::factory(2)->create();
-        \App\Models\Chat::factory(8)->create();
-        \App\Models\Subject::factory(20)->create();
-        \App\Models\Message::factory(500)->create();
+        \App\Models\User::factory(10)->create();
+        \App\Models\Chat::factory(10)->create();
+        \App\Models\Subject::factory(10)->create();
+        \App\Models\Message::factory(100)->create();
         \App\Models\Reaction::factory(1)->create();
     }
 }

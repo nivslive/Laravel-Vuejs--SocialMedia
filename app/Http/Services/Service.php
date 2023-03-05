@@ -7,7 +7,7 @@ abstract class Service {
     protected function setRedisCheck($att) {
         $this->redisCheck = $att;
     }
-    protected function redisRules($data, $slug, $part = 'chat') {
+    protected function redis($data, $slug, $part = 'chat') {
 
         if(!Redis::exists('user:'.$part.':'.$slug)):
             Redis::set('user:'.$part.':'.$slug, json_encode($data));
