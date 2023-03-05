@@ -9,7 +9,6 @@ defineProps({
 </script>
 
 <template>
-    {{  room }}
   <Menu />
   <div id="room" class="w-5/6 m-auto">
    <Timeline :data="room" />

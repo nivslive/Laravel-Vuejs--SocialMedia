@@ -29,7 +29,7 @@ function _objectWithoutProperties(obj, keys) {
 
 <template>
 <div>
-   <Subject :data=" _objectWithoutProperties(data, ['messages'])"/>
+   <Subject :data="_objectWithoutProperties(data, ['messages'])"/>
    <Messages :data="data.messages"/>
    <Sender @messageSended="(n) => attTimeline(n)" />
 </div>

@@ -61,18 +61,16 @@ defineProps({
 </script>
 <template>
 <!-- Card body-->
-{{ data }}
-<div class="py-3 px-5 w-100">  attD </div>
 <h3 class="text-xs font-semibold uppercase text-gray-400 mb-1">MENSAGENS</h3>
 <!-- Chat list-->
 <div class="divide-y divide-gray-200"></div>
 <!-- User-->
 <ul>
   <li class="flex w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50" v-for="message in data" :key="message.id">
-    <div class="flex items-center"></div><img class="w-9 h-9 rounded-full items-start flex-shrink-0 mr-3" src="https://res.cloudinary.com/dc6deairt/image/upload/v1638102932/user-32-01_pfck4u.jpg" width="32" height="32" alt="Marie Zulfikar"/>
+    <div class="flex items-center"></div><img class="w-9 h-9 rounded-full items-start flex-shrink-0 mr-3" :src="message.user.profile_photo_url" width="32" height="32" alt="Marie Zulfikar"/>
     <div>
       <div class="flex">
-        <h4 class="text-sm font-semibold text-gray-900 flex items-center"> message.user.name       message.id </h4>
+        <h4 class="text-sm font-semibold text-gray-900 flex items-center"> {{message.user.name}} </h4>
         <h4 class="text-sm font-semibold text-pink-400 pl-2 flex items-center">@mariezulfika</h4>
         <!-- <Favorite :quantify="message.likes" :id="message.id" :favorite="message.already_liked"></Favorite>-->
       </div>
