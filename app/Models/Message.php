@@ -12,7 +12,7 @@ class Message extends Model
     use HasFactory;
 
     public function user() {
-        return $this->hasOne(User::class, 'user_id', 'id');
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
     public function subject() {
         return $this->belongsToMany(Subject::class, 'subject_id', 'id');

@@ -38,12 +38,7 @@ class ChatRepository
 
 
     public function room($chat, $subject) {
-        /*$room = Chat::where('slug', '=', $chat)->first()->with(['subjects' => function($query) use($subject) {
-            $query->where('slug', '=', $subject)->first()->with('messages');
-        }])->get()->toArray();
-        */
-        $room = Subject::where('slug', '=', $subject)->first()->with('messages')->first();
-        //dd($room);
+        $room = Subject::where('slug', '=', $subject)->first()->with('messages.user')->get();
         return $room;
     }
 
