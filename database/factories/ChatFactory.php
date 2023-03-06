@@ -17,9 +17,9 @@ class ChatFactory extends Factory
     private static $order = 1;
     public function definition()
     {
-        $title = fake()->name();
+        $title = fake()->domainWord();
         return  [
-            
+
             'title' => $title,
             'slug' =>  Str::of($title)->slug('-'),
             'description' => fake()->text(),

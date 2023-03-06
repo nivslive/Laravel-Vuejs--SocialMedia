@@ -23,9 +23,12 @@ class UserFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-    {
+    {   $types = ['admin', 'guest', 'user', 'vip'];
+        $name = $this->faker->name();
         return [
-            'name' => $this->faker->name(),
+            'name' => $name,
+            'slug' => Str::of($name)->slug(''),
+            'type' => $this->faker->randomElement($types),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

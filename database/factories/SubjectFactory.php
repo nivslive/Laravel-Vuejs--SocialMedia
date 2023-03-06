@@ -18,12 +18,12 @@ class SubjectFactory extends Factory
      */
     public function definition()
     {
-        $title = fake()->name();
+        $title = fake()->realText(100);
         $id = 2;
         return [
             'title' => $title,
             'slug' =>  Str::of($title)->slug('-'),
-            'description' => fake()->text(),
+            'description' => fake()->realText(200),
             'chat_id' =>  Chat::pluck('id')->random(),
             'user_id' => User::pluck('id')->random(),
         ];

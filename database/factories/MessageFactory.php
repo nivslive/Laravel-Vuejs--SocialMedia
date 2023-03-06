@@ -21,7 +21,7 @@ class MessageFactory extends Factory
     {
         return [
             'likes' => fake()->numberBetween(0, 100),
-            'message' => fake()->text(),
+            'message' => fake()->realText(200),
             'subject_id' => Subject::pluck('id')->random(),
             'user_id' => User::pluck('id')->random(),
         ];

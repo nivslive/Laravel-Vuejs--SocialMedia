@@ -83,11 +83,32 @@ function moreMessages(url) {
 <!-- User-->
 <ul>
   <li class="flex w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50" v-for="message in props.data" :key="message.id">
-    <div class="flex items-center"></div><img class="w-9 h-9 rounded-full items-start flex-shrink-0 mr-3" :src="message.user.profile_photo_url" width="32" height="32" alt="Marie Zulfikar"/>
+    <div class="flex items-center"  v-if="message.user.profile_photo_url" ><img class="w-9 h-9 rounded-full items-start flex-shrink-0 mr-3" :src="message.user.profile_photo_url" width="32" height="32" alt="Marie Zulfikar"/></div>
     <div>
       <div class="flex">
         <h4 class="text-sm font-semibold text-gray-900 flex items-center"> {{message.user.name}} </h4>
-        <h4 class="text-sm font-semibold text-pink-400 pl-2 flex items-center">@mariezulfika</h4>
+        <h4 class="text-sm font-semibold text-pink-400 pl-2 flex items-center">@{{ message.user.slug }}</h4>
+
+
+        <span
+        class="bg-cyan-400 text-[7px] text-[#ffff] rounded-full px-8  mx-2  flex items-center justify-center"
+        v-if="message.user.type === 'admin'">
+        Administrador
+        </span>
+
+
+        <span
+        class="bg-purple-400 text-[7px] text-[#ffff] rounded-full px-8 mx-2 flex items-center justify-center"
+        v-if="message.user.type === 'vip'">
+        VIP
+        </span>
+
+        <span
+        class="bg-gray-400 text-[7px] text-[#ffff] rounded-full px-8 mx-2 flex items-center justify-center"
+        v-if="message.user.type === 'guest'">
+        Convidado
+        </span>
+
         <!-- <Favorite :quantify="message.likes" :id="message.id" :favorite="message.already_liked"></Favorite>-->
       </div>
       <div class="text-[13px]">Há alguns minutos atrás &middot; {{ moment(message.created_at).format("HH:mm DD/MM") }}</div>
