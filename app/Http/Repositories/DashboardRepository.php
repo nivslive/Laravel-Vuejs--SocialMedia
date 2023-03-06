@@ -28,14 +28,14 @@ class DashboardRepository
 
         $chat = Chat::with(['subjects' => function($query) {
             $query->withCount('messages')
-            ->orderBy('messages_count', 'asc');
+            ->orderBy('messages_count', 'desc');
         }]);
 
-        $chat = collect($chat->get()->toArray())->map(function($_) {
+      $chat = array_values(collect($chat->get()->toArray())->map(function($_, $k) {
             $_['allsums'] = collect($_['subjects'])->sum('messages_count');
             return $_;
-        })->sortByDesc('allsums');
-
+        })->sortByDesc('allsums')->toArray());
+        //$chat = $chat->sort();
         return $chat;
     }
 }

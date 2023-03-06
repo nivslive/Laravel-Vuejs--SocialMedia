@@ -3,6 +3,23 @@ import moment from "moment";
 import Favorite from "./Messages/Favorite.vue";
 import { defineProps, reactive, watch  } from "vue";
 
+const props = defineProps({
+    att: Boolean,
+    data: Object,
+});
+
+
+const state = reactive({
+    reactiveAtt: props.att
+});
+watch(props.att, (newVal, oldVal) => {
+      // watch it
+      state.reactiveAtt = newVal;
+      console.log("Prop changed: ", newVal, " | was: ", oldVal);
+      if (state.reactiveAtt) {
+        att();
+      }
+});
 
 
 /*
@@ -55,18 +72,17 @@ function moreMessages(url) {
     });
 }*/
 
-defineProps({
-    data: Object,
-});
+
 </script>
 <template>
+    {{  props.att }}
 <!-- Card body-->
 <h3 class="text-xs font-semibold uppercase text-gray-400 mb-1">MENSAGENS</h3>
 <!-- Chat list-->
 <div class="divide-y divide-gray-200"></div>
 <!-- User-->
 <ul>
-  <li class="flex w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50" v-for="message in data" :key="message.id">
+  <li class="flex w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50" v-for="message in props.data" :key="message.id">
     <div class="flex items-center"></div><img class="w-9 h-9 rounded-full items-start flex-shrink-0 mr-3" :src="message.user.profile_photo_url" width="32" height="32" alt="Marie Zulfikar"/>
     <div>
       <div class="flex">

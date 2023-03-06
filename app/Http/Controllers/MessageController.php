@@ -20,22 +20,13 @@ class MessageController extends Controller
         Reaction::create(['user_id' => Auth()->user()->id, 'subject_id' => 2, 'message_id' => $id, 'type' => 'like']);
         return Message::where('id', '=', $id)->increment('likes');
     }
-    public function post(Request $request, $subject) {
-        $title = "oi amigos da rede globo";
+    public function post(Request $request) {
         $message =  new Message(
             ['user_id' => Auth()->user()->id,
-            'subject_id' => 2,
-            'message' => 'mensagem'
+            'subject_id' => $request->subject,
+            'message' => $request->message
         ]);
         $message->save();
-
-        // params: Request $request, $id
-        /*  $idd = ['user_id' => 2];
-        $subject_id = ['subject_id' => 2];
-        $request = array_merge($idd, $request->all());
-        $request = array_merge($subject_id, $request);
-        $message = new Message($request);
-        $message->save();*/
-        //return Chat::find($id)->subjects()->save(new Subject($request->toArray()));
+        return $message;
     }
 }

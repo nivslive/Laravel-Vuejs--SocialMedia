@@ -1,19 +1,23 @@
 <script setup>
-import { defineProps } from "vue";
+import { defineProps, reactive } from "vue";
 import Messages from "@/Components/Room/Timeline/Messages.vue";
 import Subject from "@/Components/Room/Timeline/Subject.vue";
 import Sender from "@/Components/Room/Timeline/Sender.vue";
-let att = false;
-function attTimeline(message) {
-    console.log(message);
-    att = true;
-    setTimeout(() => {
-        att = false;
-    }, 10);
-}
-defineProps({
+
+const state = reactive({
+    att: false,
+});
+const props = defineProps({
     data: Object,
 });
+
+function attTimeline(message) {
+    console.log(message, 'messages');
+    state.att = true;
+    setTimeout(() => {
+        state.att = false;
+    }, 10);
+}
 function _objectWithoutProperties(obj, keys) {
   var target = {};
   for (var i in obj) {
@@ -29,8 +33,8 @@ function _objectWithoutProperties(obj, keys) {
 
 <template>
 <div>
-   <Subject :data="_objectWithoutProperties(data, ['messages'])"/>
-   <Messages :data="data.messages"/>
-   <Sender @messageSended="(n) => attTimeline(n)" />
+   <Subject :data="_objectWithoutProperties(props.data, ['messages'])"/>
+   <Messages :att="att" :data="props.data.messages"/>
+   <Sender :subject="props.data.id" @messageSended="(n) => attTimeline(n)" />
 </div>
 </template>
