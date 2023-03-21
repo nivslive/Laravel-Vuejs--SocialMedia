@@ -4,4 +4,4 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
 
 
-Route::get('/room/{chat}/{subject}', [ChatController::class, 'room'])->name('room');
+//Route::get('/room/{chat}/{subject}', [ChatController::class, 'room'])->name('room');

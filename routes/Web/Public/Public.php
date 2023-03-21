@@ -5,6 +5,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\ChatController;
 
 Route::get('/room/{slug}', [ChatController::class, 'rooms'])->name('rooms');
+Route::get('/room/{chat}/{subject}', [ChatController::class, 'room'])->name('room');
 
 Route::middleware([
     'auth:sanctum',

@@ -1,6 +1,30 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
 import moment from 'moment';
+import Menu from "@/Components/Menu.vue";
+
+    setTimeout(() => {
+        const tests = document.querySelector('.popular-lasts');
+        const END = 1000;
+    let variationTimer = 0;
+    setInterval(() => {
+        variationTimer += 10;
+        if(variationTimer >= END) {
+            tests.style.transition = ''
+            variationTimer = 0;
+        }
+        console.log(`translateX(${variationTimer}%)`)
+        tests.style.transition = '10s'
+        tests.style.transform = `translateX(-${variationTimer}%)`
+        setTimeout(() => {
+            tests.style.transition = 'none'
+            tests.style.transform = `translateX(-200rem)`
+            console.log(`translateX(${variationTimer}%)`)
+        tests.style.transition = '10s'
+        tests.style.transform = `translateX(-${variationTimer}%)`
+        }, 2000)
+    }, 1000)
+    }, 100)
 
 defineProps({
     variations: Object,
@@ -10,16 +34,17 @@ defineProps({
 });
 </script>
 <template>
-    <section class="flex">
+    <Menu />
+    <section>
 
 
 
     <Head title="Welcome" />
-    <div class="width: 50px">
-        <div style="width:100px" :key="key" v-for="(variation, key) in variations">
+    <div class="popular-lasts flex justify-center">
+        <div :key="key" v-for="(variation, key) in variations">
             <a :href="route('rooms', {slug: variation.slug})">
-                <button class="button-variation px-4 text-stone-600	border border-gray-600">
-                    {{ variation.title }} <b>[Msgs: {{  variation.allsums }}]</b></button>
+                <button class="button-variation px-4 text-stone-600 flex items-center">
+                    <h1 class="text-xl">{{ variation.title }}</h1> <b class="pl-1">Msgs: {{  variation.allsums }}</b></button>
             </a>
         </div>
     </div>
@@ -67,7 +92,7 @@ defineProps({
 
 <style>
 section {
-    background: rgb(47, 0, 53);
+    background: rgb(1, 0, 22);
 }
 .button-variation {
     padding: 5px 10px;
