@@ -50,7 +50,8 @@ class ChatRepository
         dd($subjects->toArray());
         $messages = Message::where('subject_id', $chat->id)->get();
         $count = $messages->count();*/
-
+//        $chat = Chat::where('slug', '=', $slug)->first();
+       // dd($chat);
         $rooms = Chat::with(['subjects' => function($query){
             $query->with(['user', 'messages'])->withCount('messages')->orderBy('messages_count', 'desc');
         }])->where('slug', '=', $slug)->get();

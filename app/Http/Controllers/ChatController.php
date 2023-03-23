@@ -36,6 +36,7 @@ class ChatController extends Controller
         return Inertia::render('Welcome',
             $this->isLogged([
                 'variations' => $this->service->onlyChatVariations(),
+                'chat' => Chat::where('slug', '=', $slug)->first(),
                 'id' => $this->service->rooms($slug),
         ]));
     }
