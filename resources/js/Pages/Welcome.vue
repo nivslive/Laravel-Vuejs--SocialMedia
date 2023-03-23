@@ -2,30 +2,41 @@
 import { Head, Link } from '@inertiajs/vue3';
 import moment from 'moment';
 import Menu from "@/Components/Menu.vue";
+import { onMounted } from 'vue';
 
-    setTimeout(() => {
-        const tests = document.querySelector('.popular-lasts');
-        const END = 1000;
-    let variationTimer = 0;
+
+
+onMounted(() => {
+    const lasts = document.querySelector('.popular-lasts');
+    lasts.style.width = "100%"
+    const initWidth = Number(lasts.style.width.replace('%', ''));
+    let partsByItem = initWidth / lasts.children.length;
+    //let partsByItemMovel = partsByItem;
+    let init = 0;
+    //console.log(partsByItem)
+    let parts = initWidth / lasts.children.length;
     setInterval(() => {
-        variationTimer += 10;
-        if(variationTimer >= END) {
-            tests.style.transition = ''
-            variationTimer = 0;
+        const items = document.querySelectorAll('.popular-lasts-items')
+        lasts.style.transition = '100s'
+        //lasts.style.transform = `translateX(-${parts}%)`
+        parts++;
+        init++;
+        //console.log(init, partsByItem)
+        if(init === partsByItem) {
+            const firstItem = items[0];
+            //const lastItem = items[items.length - 1]
+            lasts.removeChild(firstItem);
+            lasts.append(firstItem)
+            if(partsByItem >= initWidth) {
+                partsByItem = initWidth / lasts.children.length;
+                init = 0;
+                parts = initWidth / lasts.children.length;
+            } else {
+                partsByItem += partsByItem
+            }
         }
-        console.log(`translateX(${variationTimer}%)`)
-        tests.style.transition = '10s'
-        tests.style.transform = `translateX(-${variationTimer}%)`
-        setTimeout(() => {
-            tests.style.transition = 'none'
-            tests.style.transform = `translateX(-200rem)`
-            console.log(`translateX(${variationTimer}%)`)
-        tests.style.transition = '10s'
-        tests.style.transform = `translateX(-${variationTimer}%)`
-        }, 2000)
-    }, 1000)
     }, 100)
-
+})
 defineProps({
     variations: Object,
     id: Object,
@@ -41,7 +52,7 @@ defineProps({
 
     <Head title="Welcome" />
     <div class="popular-lasts flex justify-center">
-        <div :key="key" v-for="(variation, key) in variations">
+        <div class="popular-lasts-items" :key="key" v-for="(variation, key) in variations">
             <a :href="route('rooms', {slug: variation.slug})">
                 <button class="button-variation px-4 text-stone-600 flex items-center">
                     <h1 class="text-xl">{{ variation.title }}</h1> <b class="pl-1">Msgs: {{  variation.allsums }}</b></button>
