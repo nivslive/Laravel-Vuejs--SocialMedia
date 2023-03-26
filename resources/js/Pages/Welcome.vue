@@ -58,7 +58,7 @@ defineProps({
       </div>
     </div>
 
-    <div class="bests">
+    <div class="bests w-4/5 mx-auto">
       <h2
         class="text-2xl font-bold leading-7 text-stone-50 sm:truncate sm:text-7xl sm:tracking-tight"
       >

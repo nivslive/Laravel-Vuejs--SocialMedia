@@ -15,28 +15,49 @@ class ChatController extends Controller
         $this->service = new ChatService;
     }
 
-    public function user($id) {
-        return $this->service->user($id);
+    public function delete(Request $request, Chat $chat) {
+        $chat->delete();
+        return redirect()->back();
+    }
+
+    public function put(Request $request, Chat $chat) {
+        $chat->update($request->all());
+        return redirect()->back();
+    }
+
+    public function onlyBySlug($slug) {
+        $chat = Chat::where('slug', $slug)->firstOrFail();
+        return response()->json([
+            'chat' => $chat
+        ]);
+    }
+
+    public function onlyById($id) {
+        $chat = Chat::findOrFail($id);
+        return response()->json([
+            'chat' => $chat
+        ]);
+    }
+
+    public function all() {
+        $chats = Chat::all();
+        return response()->json([
+            'chats' => $chats
+        ]);
+    }
+    public function allWithSubjects() {
+        $chats = Chat::with('subjects')->get();
+        return response()->json([
+            'chats' => $chats
+        ]);
     }
 
     public function post(Request $request) {
-        return $this->service->post($request);
-    }
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
 
-    public function room($chat, $subject) {
-        return Inertia::render('Room',
-            $this->isLogged([
-            'room' => $this->service->room($chat, $subject)
-        ]));
+        $chat = Chat::create($request->all());
+        return redirect()->back();
     }
-
-    public function rooms($slug) {
-        return Inertia::render('Welcome',
-            $this->isLogged([
-                'variations' => $this->service->onlyChatVariations(),
-                'chat' => Chat::where('slug', '=', $slug)->first(),
-                'id' => $this->service->rooms($slug),
-        ]));
-    }
-
 }
