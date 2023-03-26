@@ -3,9 +3,7 @@
 use Modules\Social\Chat\Controller\ChatController as Chat;
 use Modules\Social\Chat\Controller\WithSubjectController as Subject;
 use Modules\Social\Chat\Controller\PageController as Page;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 Route::prefix('chat/api')->group(function() {
 
