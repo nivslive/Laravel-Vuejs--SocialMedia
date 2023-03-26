@@ -5,12 +5,16 @@
     } from '@inertiajs/vue3';
     import moment from 'moment';
     import Menu from "@/Components/Menu.vue";
+    import Chat from "@/Pages/Create/Chat.vue";
     import {
         onMounted
     } from 'vue';
 
 
-
+    setInterval(() => {
+        //document.querySelector('.watermark').style.display = 'none'
+        console.log(document.querySelector('.watermark'), 'oi')
+    }, 1000)
     onMounted(() => {
         const lasts = document.querySelector('.popular-lasts');
         lasts.style.width = "100%"
@@ -53,11 +57,9 @@
 </script>
 <template>
 
-
+    <Chat />
     <Menu />
     <section>
-
-
         <Head title="Welcome" />
         <div class="popular-lasts flex justify-center">
             <div class="popular-lasts-items" :key="key" v-for="(variation, key) in variations">
