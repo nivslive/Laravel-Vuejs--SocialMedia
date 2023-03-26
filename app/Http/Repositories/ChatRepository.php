@@ -5,6 +5,7 @@ namespace App\Http\Repositories;
 use Illuminate\Http\Request;
 use App\Models\{User, Reaction, Message, Chat, Subject, Dashboard};
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Redis;
 
 class ChatRepository
@@ -52,9 +53,18 @@ class ChatRepository
         $count = $messages->count();*/
 //        $chat = Chat::where('slug', '=', $slug)->first();
        // dd($chat);
-        $rooms = Chat::with(['subjects' => function($query){
-            $query->with(['user', 'messages'])->withCount('messages')->orderBy('messages_count', 'desc');
+
+
+       $now = Carbon::now();
+       $startOfWeek = $now->startOfWeek();
+       $endOfWeek = $now->endOfWeek();
+       $rooms = Chat::with(['subjects' => function($query)  use ($startOfWeek, $endOfWeek){
+            $query->with(['user', 'messages'])
+            ->withCount('messages')
+            //->whereBetween('created_at', [$startOfWeek, $endOfWeek])
+            ->orderBy('messages_count', 'desc');
         }])->where('slug', '=', $slug)->get();
+        //dd($rooms->toArray());
         /*
         $rooms = Chat::with(['subjects' => function($query){
             $query->with(['user', 'messages']);

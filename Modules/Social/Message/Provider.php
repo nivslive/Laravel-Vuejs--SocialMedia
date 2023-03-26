@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Social\Chat;
+namespace Modules\Social\Message;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -27,8 +27,8 @@ class Provider extends ServiceProvider
         #$this->loadFactories(__DIR__.'/database/factories');
         $this->loadRoutesFrom(__DIR__.'/routes.php');
         #$this->loadViewsFrom(__DIR__.'/views', 'service');
-        $this->publishes([
-            __DIR__.'/views' => resource_path('views/vendor/service'),
-        ]);
+        #$this->publishes([
+        #    __DIR__.'/views' => resource_path('views/vendor/service'),
+        #]);
     }
 }

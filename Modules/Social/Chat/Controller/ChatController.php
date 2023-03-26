@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Modules\Social\Chat\Controller;
+namespace Modules\Social\Chat\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\{User, Reaction, Message, Chat, Subject, Dashboard};
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Redis;
 use App\Http\Services\ChatService;
 use Inertia\Inertia;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 class ChatController extends Controller
 {
