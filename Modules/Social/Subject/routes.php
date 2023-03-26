@@ -6,7 +6,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::controller(MessageController::class)->prefix('message/api')->group(function() {
+Route::controller(MessageController::class)->prefix('subject/api')->group(function() {
 
     Route::get('/', 'all');
     Route::post('/', 'post');
@@ -15,6 +15,6 @@ Route::controller(MessageController::class)->prefix('message/api')->group(functi
 
 });
 
-Route::controller(PageController::class)->prefix('message/')->group(function() {
+Route::controller(PageController::class)->prefix('subject/')->group(function() {
 
 });

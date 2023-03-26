@@ -32,6 +32,13 @@ class ChatController extends Controller
         ]);
     }
 
+    public function onlyByLastWeek() {
+        $chat = Chat::all();
+        return response()->json([
+            'chat' => $chat
+        ]);
+
+    }
     public function onlyById($id) {
         $chat = Chat::findOrFail($id);
         return response()->json([
