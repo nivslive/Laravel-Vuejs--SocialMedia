@@ -1,5 +1,5 @@
 <script setup>
-import NavLink from '@/components/NavLink.vue';
+import NavLink from '@/Components/NavLink.vue';
 defineProps({
     data: Object,
 });
@@ -11,12 +11,12 @@ defineProps({
         <b> TEMAS QUE ESTÃO MAIS BOMBANDO: (TOP  {{value + 1}})</b>        {{  chat.title  }}
         <br>
         Quantidade de Mensagens em todas as salas: {{  chat.subjectsMessages }} <br><br>
-        Mensagem mais curtida: 
+        Mensagem mais curtida:
         {{ chat.messageWithMoreLikes.message }}
         Curtidas: {{ chat.messageWithMoreLikes.likes }}
         <br><br><br><br><hr><hr><hr><br><br><br><br>
         </div>
-        
+
     </div>
 </template>
 

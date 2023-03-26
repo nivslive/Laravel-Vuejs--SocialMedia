@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('image_url')->nullable();
-            $table->integer('subjects_all_messages_count');
+            $table->integer('subjects_all_messages_count')->nullable();
             $table->timestamps();
         });
     }
