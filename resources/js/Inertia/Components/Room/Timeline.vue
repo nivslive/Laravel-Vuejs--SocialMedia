@@ -1,8 +1,8 @@
 <script setup>
 import { defineProps, reactive } from "vue";
-import Messages from "@/Components/Room/Timeline/Messages.vue";
-import Subject from "@/Components/Room/Timeline/Subject.vue";
-import Sender from "@/Components/Room/Timeline/Sender.vue";
+import Messages from "@/Inertia/Components/Room/Timeline/Messages.vue";
+import Subject from "@/Inertia/Components/Room/Timeline/Subject.vue";
+import Sender from "@/Inertia/Components/Room/Timeline/Sender.vue";
 
 const state = reactive({
     att: false,

@@ -1,7 +1,7 @@
 <script setup>
 import {defineProps} from 'vue';
-import Timeline from "@/Components/Room/Timeline.vue";
-import Menu from "@/Components/Menu.vue";
+import Timeline from "@/Inertia/Components/Room/Timeline.vue";
+import Menu from "@/Inertia/Components/Menu.vue";
 defineProps({
     room: Object,
     canLogin: String,
