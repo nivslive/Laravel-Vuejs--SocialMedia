@@ -9,7 +9,7 @@ use App\Models\Message;
 use App\Models\User;
 class Reaction extends Model
 {
-    protected $fillable = ['type', 'user_id', 'subject_id', 'message_id'];
+    protected $fillable = [];
     use HasFactory;
 
     public function scopeAlreadyLiked($query, $user_id, $message_id) {

@@ -197,6 +197,11 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
 
+
+
+
+        // modules
+        App\Modules\Social\Chat\Provider::class,
     ],
 
     /*
