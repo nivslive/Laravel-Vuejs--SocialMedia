@@ -19,6 +19,6 @@ class DatabaseSeeder extends Seeder
         \App\Models\Chat::factory(10)->create();
         \App\Models\Subject::factory(500)->create();
         \App\Models\Message::factory(1000)->create();
-        \App\Models\Reaction::factory(1)->create();
+        //\App\Models\Reaction::factory(1)->create();
     }
 }

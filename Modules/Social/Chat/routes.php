@@ -5,7 +5,7 @@ use Modules\Social\Chat\Controller\WithSubjectController as Subject;
 use Modules\Social\Chat\Controller\PageController as Page;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('chat/api')->group(function() {
+Route::prefix('api/chat')->group(function() {
 
     Route::controller(Chat::class)->group(function() {
         Route::get('/', 'all');
