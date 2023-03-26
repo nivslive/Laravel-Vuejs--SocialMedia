@@ -201,7 +201,7 @@ return [
 
 
         // modules
-        Modules\Social\Chat\Provider::class,
+        Modules\Provider::class,
     ],
 
     /*
