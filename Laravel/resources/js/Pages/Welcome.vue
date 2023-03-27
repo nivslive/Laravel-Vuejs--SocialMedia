@@ -43,15 +43,57 @@ defineProps({
   canLogin: Boolean,
   canRegister: Boolean,
 });
-const showSender = ref(false);
-function openSender() {
-    showSender.value = true;
-    console.log(showSender);
+const showSenderRef = ref(false);
+function showSender() {
+    showSenderRef.value = showSenderRef.value === true ? false : true;
+    console.log(showSenderRef.value)
+    const sender = document.querySelector('.sender-container')
+    sender.style.opacity = showSenderRef.value ? '1' : '0'
+    sender.style.height = showSenderRef.value ? '87px' : '0'
 }
+
 </script>
+
+
+
+<style>
+section {
+  background: rgb(1, 0, 22);
+}
+.sender-container {
+    opacity: 0;
+    height: 0;
+    transition: .4s;
+}
+.button-variation {
+  padding: 5px 10px;
+  margin: 3px;
+  font-size: 9px;
+  border-radius: 2px;
+  transition: 0.5s;
+  color: white;
+}
+
+.button-variation:hover {
+  padding: 5px 14px;
+}
+
+.bg-dots-darker {
+  background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(0,0,0,0.07)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  .dark\:bg-dots-lighter {
+    background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E");
+  }
+}
+</style>
+
+
+
 <template>
-    <Menu @openSender="openSender()" />
-    <Sender :visible="showSender" />
+    <Menu @showSender="showSender()" />
+    <Sender class="sender-container" :user="$page.props.auth.user ? $page.props.auth.user : {}" :chat="chat.id" :visible="showSenderRef.value" />
   <section>
     <Head title="Welcome" />
     <div class="popular-lasts flex justify-center">
@@ -309,31 +351,3 @@ function openSender() {
   </section>
 </template>
 
-<style>
-section {
-  background: rgb(1, 0, 22);
-}
-
-.button-variation {
-  padding: 5px 10px;
-  margin: 3px;
-  font-size: 9px;
-  border-radius: 2px;
-  transition: 0.5s;
-  color: white;
-}
-
-.button-variation:hover {
-  padding: 5px 14px;
-}
-
-.bg-dots-darker {
-  background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(0,0,0,0.07)'/%3E%3C/svg%3E");
-}
-
-@media (prefers-color-scheme: dark) {
-  .dark\:bg-dots-lighter {
-    background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E");
-  }
-}
-</style>

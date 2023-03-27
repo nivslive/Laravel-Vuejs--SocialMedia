@@ -18,8 +18,7 @@ const props = defineProps({
 console.log(props.subject);
 const emit = defineEmits(['messageSended']);
 function send() {
-    console.log(props.subject);
-    fetch("http://127.0.0.1:8000/message/post/", {
+    fetch(window.location.origin + "/message/post/", {
         method: "POST",
         body: new URLSearchParams({
           'subject': props.subject,

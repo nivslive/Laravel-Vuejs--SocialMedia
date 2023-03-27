@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->nullable();
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
 
             #foreign chat

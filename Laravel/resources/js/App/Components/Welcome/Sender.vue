@@ -10,22 +10,34 @@
 
 </template>
 <script setup>
-    import { reactive, defineEmits, defineProps } from 'vue';
+    import { reactive, defineEmits, defineProps, watch } from 'vue';
     const state = reactive({
         subject: "",
     });
 
     const props = defineProps({
         subject: String,
+        user: Object,
+        chat: Number,
+        visible: Boolean,
     });
-    console.log(props.subject);
+
+        watch(() => props.visible, (newValue, oldValue) => {
+        if (newValue !== oldValue) {
+            console.log('A prop "visible" foi alterada!');
+            // aqui você pode adicionar ação que deseja executar quando a prop "visible" mudar de valor
+        }
+    });
+
+    console.log(props.visible, 'visible');
     const emit = defineEmits(['messageSended']);
     function send() {
-        fetch("http://127.0.0.1:8000/api/subject/", {
+        fetch(window.location.origin + "/api/subject/", {
             method: "POST",
             body: new URLSearchParams({
-              'subject': state.subject,
-              'user': ''
+              'title': state.subject,
+              'user_id': props.user.id,
+              'chat_id': props.chat,
             }),
           }).then((e) => {
             state.message = "";

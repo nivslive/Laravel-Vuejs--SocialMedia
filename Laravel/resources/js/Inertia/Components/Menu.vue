@@ -71,8 +71,6 @@
   const navigation = [
     { name: 'Criar Assunto', href: '#', current: false, class: 'create_subject' },
     { name: 'Home', href: '#', current: true },
-    { name: 'Projects', href: '#', current: false },
-    { name: 'Calendar', href: '#', current: false },
   ]
     const state = reactive({
         subject: "",
@@ -82,11 +80,11 @@
         subject: String,
     });
     console.log(props.subject);
-    const emit = defineEmits(['messageSended']);
+    const emit = defineEmits(['showSender']);
     onMounted(() => {
         document.querySelector('.create_subject').onclick = () => {
         console.log('oi')
-        emit("createSubject");
+        emit("showSender");
     }
     })
   </script>
