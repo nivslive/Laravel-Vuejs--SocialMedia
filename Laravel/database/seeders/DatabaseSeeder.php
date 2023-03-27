@@ -34,14 +34,14 @@ class DatabaseSeeder extends Seeder
 
             foreach($optionals as $optional) {
                 // Verifica se existe uma factory no módulo e a chama
-                $optionalClass = "\\Modules\\". $module ."\\".$moduleName."\\Database\\Factories\\$optional" . 'Factory';
+                $optionalClass = "\\Modules\\". $module ."\\".$moduleName."\\Database\\Factories\\".$optional[0]. 'Factory';
                 if (class_exists($optionalClass)) {
                     var_dump($factoryClass);
                     $model = '\\Modules\\'. $module .'\\'.$moduleName.'\\Models\\'.$moduleName;
                     //$model::factory($optionalClass)->create();
                     $factory = $optionalClass::new();
                     //$factory = $factory->of($model::class);
-                    $factory->create();
+                    $factory->count($optional[1])->create();
                 }
             }
         }
@@ -57,7 +57,9 @@ class DatabaseSeeder extends Seeder
         //ReactionType::factory(ReactionTypeFactory::class)->create();
         //\App\Models\Reaction::factory(1)->create();
 
-        $this->modulesFactories('Social', ['ReactionType']);
+        $this->modulesFactories('Social', [
+            ['ReactionType', 20]
+        ]);
 
     }
 }
