@@ -16,7 +16,10 @@
             </div>
             <div class="hidden sm:ml-6 sm:block">
               <div class="flex space-x-4">
-                <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
+                <a v-for="item in navigation" :key="item.name" :href="item.href" :class="
+                    [item.current ? 'bg-gray-900 text-white' : item.class + ' text-gray-300 hover:bg-gray-700 hover:text-white',
+                    item.class + ' rounded-md px-3 py-2 text-sm font-medium'] " :aria-current="item.current ? 'page' : undefined">{{ item.name }}
+                </a>
               </div>
             </div>
           </div>
@@ -64,10 +67,37 @@
   <script setup>
   import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
   import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
+  import { reactive, defineEmits, defineProps, onMounted } from 'vue';
   const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
-    { name: 'O quarto', href: '#', current: false },
+    { name: 'Criar Assunto', href: '#', current: false, class: 'create_subject' },
+    { name: 'Home', href: '#', current: true },
     { name: 'Projects', href: '#', current: false },
     { name: 'Calendar', href: '#', current: false },
   ]
+    const state = reactive({
+        subject: "",
+    });
+
+    const props = defineProps({
+        subject: String,
+    });
+    console.log(props.subject);
+    const emit = defineEmits(['messageSended']);
+    onMounted(() => {
+        document.querySelector('.create_subject').onclick = () => {
+        console.log('oi')
+        emit("createSubject");
+    }
+    })
   </script>
+
+
+<style>
+.create_subject {
+    background: rgb(0, 0, 0);
+    color:white;
+    border-width: 1px 2px 1px 2px;
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+}
+</style>

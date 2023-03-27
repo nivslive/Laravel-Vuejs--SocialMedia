@@ -4,6 +4,7 @@ namespace Modules\Social\Message\Controller;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Message;
 
 class MessageController extends Controller
 {
@@ -22,11 +23,14 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create(Request $request) {
+        /*$this->validate($request, [
+            'name' => 'required'
+        ]);*/
+        dd($request->all());
+        $chat = Message::create($request->all());
+        return redirect()->back();
     }
-
     /**
      * Store a newly created resource in storage.
      *

@@ -2,7 +2,8 @@
 import { Head, Link } from "@inertiajs/vue3";
 import moment from "moment";
 import Menu from "@/Inertia/Components/Menu.vue";
-import { onMounted } from "vue";
+import Sender from "@/App/Components/Welcome/Sender.vue"
+import { onMounted, ref } from "vue";
 
 onMounted(() => {
   const lasts = document.querySelector(".popular-lasts");
@@ -42,9 +43,15 @@ defineProps({
   canLogin: Boolean,
   canRegister: Boolean,
 });
+const showSender = ref(false);
+function openSender() {
+    showSender.value = true;
+    console.log(showSender);
+}
 </script>
 <template>
-  <Menu />
+    <Menu @openSender="openSender()" />
+    <Sender :visible="showSender" />
   <section>
     <Head title="Welcome" />
     <div class="popular-lasts flex justify-center">

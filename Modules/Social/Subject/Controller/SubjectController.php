@@ -54,6 +54,8 @@ class SubjectController extends Controller
     }
 
     public function post(Request $request) {
+        
+        dd($request);
         $this->validate($request, [
             'name' => 'required'
         ]);

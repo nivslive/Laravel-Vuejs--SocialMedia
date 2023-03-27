@@ -63,7 +63,6 @@ class ChatController extends Controller
         $this->validate($request, [
             'name' => 'required'
         ]);
-
         $chat = Chat::create($request->all());
         return redirect()->back();
     }

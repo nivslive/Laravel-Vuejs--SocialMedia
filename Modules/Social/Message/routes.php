@@ -6,10 +6,10 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::controller(MessageController::class)->prefix('message/api')->group(function() {
+Route::controller(MessageController::class)->prefix('api/message')->group(function() {
 
     Route::get('/', 'all');
-    Route::post('/', 'post');
+    Route::post('/', 'create');
     Route::put('/', 'update');
     Route::delete('/', 'delete');
 
