@@ -322,7 +322,7 @@ section {
                   <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
                     {{ subject.title }}
                   </h2>
-                  <p
+                  <p v-if="subject.description"
                     class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed"
                   >
                     {{ subject.description }}

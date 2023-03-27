@@ -11,6 +11,7 @@ class Subject extends Model
     use CrudTrait, HasFactory;
     protected $fillable = [
         'title',
+        'slug',
         'description',
         'chat_id',
         'user_id'

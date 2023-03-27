@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\{User, Reaction, Message, Subject, Dashboard};
 use App\Http\Services\SubjectService;
 use Inertia\Inertia;
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 class SubjectController extends Controller
 {
@@ -54,13 +55,14 @@ class SubjectController extends Controller
     }
 
     public function post(Request $request) {
-        
-        dd($request);
-        $this->validate($request, [
-            'name' => 'required'
+        $request->merge(['slug' =>Str::slug($request->title)]);
+        $request = $request->validate([
+            'title' => 'required|string|max:255',
+            'slug' => 'required|string|max:300',
+            'user_id' => 'required|numeric',
+            'chat_id' => 'required|numeric',
         ]);
-
-        $subject = Subject::create($request->all());
+        Subject::create($request);
         return redirect()->back();
     }
 }
