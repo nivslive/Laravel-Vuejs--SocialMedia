@@ -15,21 +15,18 @@ return new class extends Migration
     {
         Schema::create('reactions', function (Blueprint $table) {
             $table->id();
-            $table->string('img');
-            $table->string('title');
-            $table->string('slug');
             $table->timestamps();
             #foreign subject
-            #$table->biginteger('message_id')->unsigned();
-            #$table->foreign('message_id')->references('id')->on('messages');
+            $table->biginteger('message_id')->unsigned();
+            $table->foreign('message_id')->references('id')->on('messages');
 
             #foreign subject
-            #$table->biginteger('subject_id')->unsigned();
-            #$table->foreign('subject_id')->references('id')->on('subjects');
+            $table->biginteger('reaction_types_id')->unsigned();
+            $table->foreign('reaction_types_id')->references('id')->on('reaction_types');
 
             #foreign user
-            #$table->biginteger('user_id')->unsigned();
-            #$table->foreign('user_id')->references('id')->on('users');
+            $table->biginteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

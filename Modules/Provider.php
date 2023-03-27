@@ -2,9 +2,11 @@
 
 namespace Modules;
 
+use Database\Factories\ReactionTypeFactory;
 use Illuminate\Support\ServiceProvider;
 use Modules\Social\Chat\Provider as Chat;
 use Modules\Social\Message\Provider as Message;
+use Modules\Social\Reaction\Models\ReactionType;
 use Modules\Social\Subject\Provider as Subject;
 use Modules\Social\Reaction\Provider as Reaction;
 class Provider extends ServiceProvider
@@ -19,6 +21,6 @@ class Provider extends ServiceProvider
 
     public function boot()
     {
-        // código de inicialização do módulo
+        //
     }
 }
