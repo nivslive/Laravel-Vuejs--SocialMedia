@@ -30,6 +30,6 @@ Route::prefix('api/chat')->group(function() {
 
 
 
-Route::controller(Page::class)->prefix('chat/')->group(function() {
+Route::middleware(['web'])->controller(Page::class)->prefix('chat/')->group(function() {
     Route::get('/{slug}', 'rooms');
 });
