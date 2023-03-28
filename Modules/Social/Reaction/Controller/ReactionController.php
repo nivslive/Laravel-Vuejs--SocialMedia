@@ -11,7 +11,7 @@ class ReactionController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Illuminate\Database\Eloquent\Collection
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function index()
     {
@@ -21,15 +21,15 @@ class ReactionController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function create(Request $request) {
         /*$this->validate($request, [
             'name' => 'required'
         ]);*/
         dd($request->all());
-        $chat = Reaction::create($request->all());
-        return redirect()->back();
+        Reaction::create($request->all());
+        return response()->json(['message' => 'Curtido com sucesso.'], 200);
     }
     /**
      * Store a newly created resource in storage.
