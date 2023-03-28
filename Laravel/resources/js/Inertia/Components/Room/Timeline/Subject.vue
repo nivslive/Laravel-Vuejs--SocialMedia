@@ -9,7 +9,7 @@
      <a class="inline-flex text-gray-800 hover:text-gray-900" href="#0">
       <h2 class="text-xl leading-snug font-bold">{{ data.user.name }} </h2></a>
 
-      <a class="block text-sm font-medium hover:text-cyan-500" href="#0">@lauren.mars</a>
+      <a class="block text-sm font-medium hover:text-cyan-500" href="#0">@{{  data.user.slug  }}</a>
 
   </div>
     <div class="flex flex-col items-unset">

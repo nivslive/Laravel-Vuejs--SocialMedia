@@ -108,7 +108,7 @@ function moreMessages(url) {
         v-if="message.user.type === 'guest'">
         Convidado
         </span>
-
+        <Favorite :id="message.id"/>
         <!-- <Favorite :quantify="message.likes" :id="message.id" :favorite="message.already_liked"></Favorite>-->
       </div>
       <div class="text-[13px]">Há alguns minutos atrás &middot; {{ moment(message.created_at).format("HH:mm DD/MM") }}</div>

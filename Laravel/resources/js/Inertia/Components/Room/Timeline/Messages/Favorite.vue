@@ -9,8 +9,8 @@ const props = defineProps({
 });
 const state = reactive({
       favorited: false,
-      idData: id,
-      quantifyData: quantify,
+      idData: null,
+      quantifyData: null,
 });
 state.favorited = props.favorite;
 
