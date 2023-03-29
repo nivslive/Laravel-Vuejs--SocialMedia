@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Subject;
 use App\Models\Message;
 use App\Models\User;
+
 class UserNotification extends Model
 {
     protected $fillable = [];

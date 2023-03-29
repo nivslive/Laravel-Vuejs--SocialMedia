@@ -35,3 +35,8 @@ Route::controller(UserTrendsController::class)
         Route::get('/by-user/{id}', 'byUser');
         Route::get('/by-user/{id}/friend/{friend_id}', 'byUserHasFriend');
 });
+
+Route::controller(UserChatController::class)->apiResource('api/user-chat');
+Route::controller(UserFriendController::class)->apiResource('api/user-friend');
+Route::controller(UserChatMessageController::class)->apiResource('api/user-chat-message');
+Route::controller(UserChatFriendController::class)->apiResource('api/user-chat-friend');
