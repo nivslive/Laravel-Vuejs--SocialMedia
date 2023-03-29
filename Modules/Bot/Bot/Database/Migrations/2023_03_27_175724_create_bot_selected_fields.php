@@ -17,6 +17,14 @@ return new class extends Migration
             $table->id();
             # A pergunta, questionamento, exemplo: O que precisa hoje? Qual o dia você estará disponível
             $table->string('content');
+
+
+            $table->integer('has_parent');
+            $table->integer('is_parent');
+            
+            $table->integer('parent_id');
+            $table->foreign('parent_id')->references('id')->on('bot_selected_fields');
+
             $table->timestamps();
 
             #o robô escolhido
