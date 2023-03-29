@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bot_fields', function (Blueprint $table) {
+        Schema::create('bots', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->integer('type');
+            $table->string('name');
+            $table->integer('status');
             $table->timestamps();
         });
     }
