@@ -26,3 +26,12 @@ Route::controller(UserTrendsController::class)
         Route::get('/my-favorited-subjects', 'myFavoritesSubjects');
         Route::get('/my-favorited-chats', 'myFavoritesSubjects');
 });
+
+
+Route::controller(UserTrendsController::class)
+    ->prefix('api/user-friends')
+    ->group(function() {
+        Route::apiResource('/');
+        Route::get('/by-user/{id}', 'byUser');
+        Route::get('/by-user/{id}/friend/{friend_id}', 'byUserHasFriend');
+});

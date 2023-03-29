@@ -30,8 +30,7 @@ return new class extends Migration
             #SE HOUVER VARIAÇÕES DISSO.
             $table->string('variation')->default(0);
             
-
-                  
+            
             #foreign user
             $table->biginteger('chat_id')->unsigned()->nullable();
             $table->foreign('chat_id')->references('id')->on('chats');

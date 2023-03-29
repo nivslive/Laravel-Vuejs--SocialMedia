@@ -15,7 +15,7 @@ class UserTrendsController extends Controller
      */
     public function index()
     {
-        return UserTrends::all();
+        return UserNotification::all();
     }
 
     /**
