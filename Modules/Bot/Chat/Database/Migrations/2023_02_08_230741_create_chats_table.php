@@ -13,19 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bot_selected_fields', function (Blueprint $table) {
+        Schema::create('chats', function (Blueprint $table) {
             $table->id();
-            # A pergunta, questionamento, exemplo: O que precisa hoje? Qual o dia você estará disponível
-            $table->string('content');
-            $table->timestamps();
+            $table->string('slug')->nullable();
+            $table->string('background')->nullable();
 
-            #o robô escolhido
             $table->biginteger('bot_id')->unsigned();
             $table->foreign('bot_id')->references('id')->on('bots');
-            
-            #aqui será escolhido se será text, select, agenda...
-            $table->biginteger('bot_field_id')->unsigned();
-            $table->foreign('bot_field_id')->references('id')->on('bot_fields');
+
+            $table->biginteger('bot_selected_fields_id')->unsigned();
+            $table->foreign('bot_selected_fields_id')->references('id')->on('bot_selected_fields');
         });
     }
 
@@ -36,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reactions');
+        Schema::dropIfExists('chats');
     }
 };
