@@ -44,17 +44,6 @@ class ChatRepository
 
     #public route
     public function rooms($slug) {
-        //dd(\App\Models\Message::where('subject_id', 1)->get()->toArray());
-        /*$chat = Chat::with('subjects.messages')->where('slug', $slug)->first();
-        $subjects = Subject::where('chat_id', $chat->id)->get();
-        $subjects->load('messages');
-        dd($subjects->toArray());
-        $messages = Message::where('subject_id', $chat->id)->get();
-        $count = $messages->count();*/
-//        $chat = Chat::where('slug', '=', $slug)->first();
-       // dd($chat);
-
-
        $now = Carbon::now();
        $startOfWeek = $now->startOfWeek();
        $endOfWeek = $now->endOfWeek();
@@ -64,14 +53,16 @@ class ChatRepository
             //->whereBetween('created_at', [$startOfWeek, $endOfWeek])
             ->orderBy('messages_count', 'desc');
         }])->where('slug', '=', $slug)->get();
-        //dd($rooms->toArray());
-        /*
-        $rooms = Chat::with(['subjects' => function($query){
-            $query->with(['user', 'messages']);
-            //->withCount('messages')->orderBy('messages_count', 'desc');
-        }])->get();
-        //->where('slug', '=', $slug)
-        dd($rooms->toArray());*/
+
+        # EXAMPLE FOR TESTING LATE
+       /* $rooms = Chat::with(['subjects' => function($query) use ($startOfWeek, $endOfWeek) {
+            $query->with(['user', 'messages' => function($query) {
+                $query->orderByDesc('likes_count')->take(3);
+            }])
+            ->withCount('messages')
+            ->orderBy('messages_count', 'desc');
+        }])->where('slug', '=', $slug)->get();*/
+
         return $rooms;
     }
 
