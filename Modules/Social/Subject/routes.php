@@ -8,10 +8,12 @@ use Inertia\Inertia;
 
 Route::controller(Subject::class)->prefix('api/subject')->group(function() {
 
-    Route::get('/', 'all');
-    Route::post('/', 'post');
-    Route::put('/', 'update');
-    Route::delete('/', 'delete');
+    #Route::get('/', 'all');
+    #Route::post('/', 'post');
+    #Route::put('/', 'update');
+    #Route::delete('/', 'delete');
+
+    Route::apiResource('api/resource');
 
 });
 

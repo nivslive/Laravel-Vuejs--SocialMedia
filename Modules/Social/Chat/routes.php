@@ -7,16 +7,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('api/chat')->group(function() {
 
-    Route::controller(Chat::class)->group(function() {
-        Route::get('/', 'all');
-        Route::post('/', 'post');
-        Route::put('/', 'update');
-        Route::delete('/', 'delete');
-    });
+    Route::controller(Chat::class)->apiResource('/');
 
     Route::prefix('/with-subjects')->controller(Subject::class)->group(function(){
-        Route::get('/', 'all');
-        Route::post('/', 'post');
+        Route::get('/', 'index');
     });
 
     Route::prefix('only')->controller(Chat::class)->group(function() {

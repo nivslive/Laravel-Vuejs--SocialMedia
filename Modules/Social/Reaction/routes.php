@@ -7,10 +7,5 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::controller(ReactionController::class)->prefix('api/reaction')->group(function() {
-
-    Route::get('/', 'index');
-    Route::post('/', 'create');
-    Route::put('/', 'update');
-    Route::delete('/', 'delete');
-
+    Route::apiResource('/');
 });

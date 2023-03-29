@@ -8,11 +8,11 @@ use Inertia\Inertia;
 
 Route::controller(MessageController::class)->prefix('api/message')->group(function() {
 
-    Route::get('/', 'all');
-    Route::post('/', 'create');
-    Route::put('/', 'update');
-    Route::delete('/', 'delete');
-
+    #Route::get('/', 'all');
+    #Route::post('/', 'create');
+    #Route::put('/', 'update');
+    #Route::delete('/', 'delete');
+    Route::apiResource('api/resource');
 });
 
 Route::controller(PageController::class)->prefix('message/')->group(function() {
