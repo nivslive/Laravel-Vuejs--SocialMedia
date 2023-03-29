@@ -27,7 +27,7 @@ class MakeModules extends Command
      */
     public function handle()
     {
-        $namespace = $this->ask('Qual é o nome do namespace geral?');
+        $namespace = $this->ask('Qual é o nome do grupo de modulos?');
 
         $modules = $this->ask('Quais módulos você gostaria de criar? (separe os nomes por espaço)');
 
@@ -38,7 +38,11 @@ class MakeModules extends Command
             if (!file_exists($moduleDir)) {
                 mkdir($moduleDir, 0777, true);
                 mkdir("{$moduleDir}/Controllers");
+                $controllerModuleWord = ucword($module);
+                touch("{$moduleDir}/Controllers/{$controllerModuleWord}Controller");
                 mkdir("{$moduleDir}/Models");
+                $modelModuleWord = ucword($module);
+                touch("{$moduleDir}/Controllers/{$modelModuleWord}");
                 mkdir("{$moduleDir}/Migrations");
                 touch("{$moduleDir}/{$module}");
             }
