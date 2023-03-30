@@ -34,17 +34,22 @@ class MakeModules extends Command
         $modules = explode(' ', $modules);
 
         foreach ($modules as $module) {
-            $moduleDir = base_path("modules/{$namespace}/{$module}");
+            $moduleDir = base_path("../Modules/{$namespace}/{$module}");
             if (!file_exists($moduleDir)) {
                 mkdir($moduleDir, 0777, true);
                 mkdir("{$moduleDir}/Controllers");
-                $controllerModuleWord = ucword($module);
-                touch("{$moduleDir}/Controllers/{$controllerModuleWord}Controller");
+                $controllerModuleWord = ucwords($module);
+                touch("{$moduleDir}/Controllers/{$controllerModuleWord}Controller.php");
                 mkdir("{$moduleDir}/Models");
-                $modelModuleWord = ucword($module);
-                touch("{$moduleDir}/Controllers/{$modelModuleWord}");
+                touch("{$moduleDir}/Models/Provider.php");
+                $modelModuleWord = ucwords($module);
+                touch("{$moduleDir}/Controllers/{$modelModuleWord}.php");
                 mkdir("{$moduleDir}/Migrations");
-                touch("{$moduleDir}/{$module}");
+                touch("{$moduleDir}/Provider.php");
+                $fileContents = file_get_contents(__DIR__."/Templates/Provider.txt");
+                $fileContents = str_replace('{MODULEGROUP}', $namespace, $fileContents);
+                $fileContents = str_replace('{MODULE}', $modelModuleWord, $fileContents);
+                file_put_contents("{$moduleDir}/Provider.php", $fileContents);
             }
         }
     }

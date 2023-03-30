@@ -6,6 +6,4 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::controller(ReactionController::class)->prefix('api/reaction')->group(function() {
-    Route::apiResource('/');
-});
+Route::apiResource('api/reaction', ReactionController::class);

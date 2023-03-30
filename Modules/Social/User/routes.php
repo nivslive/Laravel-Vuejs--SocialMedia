@@ -6,13 +6,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::controller(UserNotificationController::class)
-    ->prefix('api/user-notification')
-    ->group(function() {
-
-        Route::apiResource('/');
-
-    });
+Route::apiResource('api/user-notification', UserNotificationController::class);
 
 Route::controller(UserTrendsController::class)
     ->prefix('api/user-trends')
@@ -27,16 +21,16 @@ Route::controller(UserTrendsController::class)
         Route::get('/my-favorited-chats', 'myFavoritesSubjects');
 });
 
-
+Route::apiResource('api/user-friends', UserTrendsController::class);
 Route::controller(UserTrendsController::class)
     ->prefix('api/user-friends')
     ->group(function() {
-        Route::apiResource('/');
+
         Route::get('/by-user/{id}', 'byUser');
         Route::get('/by-user/{id}/friend/{friend_id}', 'byUserHasFriend');
 });
 
-Route::controller(UserChatController::class)->apiResource('api/user-chat');
-Route::controller(UserFriendController::class)->apiResource('api/user-friend');
-Route::controller(UserChatMessageController::class)->apiResource('api/user-chat-message');
-Route::controller(UserChatFriendController::class)->apiResource('api/user-chat-friend');
+Route::apiResource('api/user-chat', UserChatController::class);
+Route::apiResource('api/user-friend', UserFriendController::class);
+Route::apiResource('api/user-chat-message', UserChatMessageController::class);
+Route::apiResource('api/user-chat-friend', UserChatFriendController::class);
