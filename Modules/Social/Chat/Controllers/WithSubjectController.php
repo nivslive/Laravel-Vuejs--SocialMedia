@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Social\Chat\Controller;
+namespace Modules\Social\Chat\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\{User, Reaction, Message, Chat, Subject, Dashboard};

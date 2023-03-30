@@ -1,6 +1,6 @@
 <?php
 
-use Modules\Social\Message\Controller\MessageController;
+use Modules\Social\Message\Controllers\MessageController;
 use Modules\Social\Chat\Controller\PageController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;

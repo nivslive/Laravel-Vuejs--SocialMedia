@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\{MODULEGROUP}\{MODULE}\Controllers;
+namespace Modules\Social\User\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Modules\{MODULEGROUP}\{MODULE}\Models\{ENTITY};
+use Modules\Social\User\Models\AmigosForever;
 
-class {ENTITY}Controller extends Controller
+class AmigosForeverController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class {ENTITY}Controller extends Controller
      */
     public function index()
     {
-        return {ENTITY}::all();
+        return AmigosForever::all();
     }
 
     /**
@@ -30,7 +30,7 @@ class {ENTITY}Controller extends Controller
             //'body' => 'required|string',
         ]);
 
-        {ENTITY}::create($request->all());
+        AmigosForever::create($request->all());
         return response()->json(['message' => 'Criado com sucesso'], 200);
     }
     /**
@@ -48,7 +48,7 @@ class {ENTITY}Controller extends Controller
             //'body' => 'required|string',
         ]);
 
-        $entity = {ENTITY}::create($request->all());
+        $entity = AmigosForever::create($request->all());
 
         return response()->json(['message' => 'Criado com sucesso', 'data' => $entity], 200);
     }
@@ -61,7 +61,7 @@ class {ENTITY}Controller extends Controller
     */
     public function show($id)
     {
-        $entity = {ENTITY}::find($id);
+        $entity = AmigosForever::find($id);
 
         if (!$entity) {
             return response()->json(['message' => 'Recurso não encontrado'], 404);
@@ -79,7 +79,7 @@ class {ENTITY}Controller extends Controller
     */
     public function update(Request $request, $id)
     {
-        $entity = {ENTITY}::find($id);
+        $entity = AmigosForever::find($id);
 
         if (!$entity) {
             return response()->json(['message' => 'Recurso não encontrado'], 404);
@@ -105,7 +105,7 @@ class {ENTITY}Controller extends Controller
     */
     public function destroy($id)
     {
-        $entity = {ENTITY}::find($id);
+        $entity = AmigosForever::find($id);
 
         if (!$entity) {
             return response()->json(['message' => 'Recurso não encontrado'], 404);

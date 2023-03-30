@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Social\Subject\Controller;
+namespace Modules\Social\Subject\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\{User, Reaction, Message, Subject, Dashboard};

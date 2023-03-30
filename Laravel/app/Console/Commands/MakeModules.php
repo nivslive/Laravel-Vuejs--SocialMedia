@@ -11,7 +11,7 @@ class MakeModules extends Command
      *
      * @var string
      */
-    protected $signature = 'make:module {--group=} {--controller} {--model} {--factory}';
+    protected $signature = 'make:module {--group=} {--module=} {--controller} {--model} {--factory}';
 
     /**
      * The console command description.
@@ -44,13 +44,20 @@ class MakeModules extends Command
         if(!$this->option('controller')) {
             $modules = $this->ask('Quais módulos você gostaria de criar? (separe os nomes por espaço)');
         } else {
-            $part = $this->ask('Qual parte do módulo você gostaria de utilizar para criar o controller');
+            if($this->option('module')) {
+                $part = $this->option('module');
+            } else {
+                $part = $this->ask('Qual parte do módulo você gostaria de utilizar para criar o controller');
+            }
             $controller = $this->ask('Qual o nome do controller?');
             $moduleDir = base_path("../Modules/{$namespace}/{$part}");
             $controllerModuleWord = ucwords($controller);
             $controllerPath = "{$moduleDir}/Controllers/{$controllerModuleWord}Controller.php";
-            $fileContents = file_get_contents(__DIR__."/Templates/Controller.txt");
             touch($controllerPath);
+            $fileContents = file_get_contents(__DIR__."/Templates/Controller.txt");
+            $fileContents = str_replace('{MODULEGROUP}', ucwords($namespace), $fileContents);
+            $fileContents = str_replace('{MODULE}', ucwords($part), $fileContents);
+            $fileContents = str_replace('{ENTITY}', ucwords($controller), $fileContents);
             file_put_contents($controllerPath, $fileContents);
             return;
         }

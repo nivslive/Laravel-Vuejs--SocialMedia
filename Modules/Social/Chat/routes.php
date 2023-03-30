@@ -1,8 +1,8 @@
 <?php
 
-use Modules\Social\Chat\Controller\ChatController as Chat;
-use Modules\Social\Chat\Controller\WithSubjectController as Subject;
-use Modules\Social\Chat\Controller\PageController as Page;
+use Modules\Social\Chat\Controllers\ChatController as Chat;
+use Modules\Social\Chat\Controllers\WithSubjectController as Subject;
+use Modules\Social\Chat\Controllers\PageController as Page;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('api/chat')->group(function() {

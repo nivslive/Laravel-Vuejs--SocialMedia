@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Social\Reaction\Controller;
+namespace Modules\Social\Reaction\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

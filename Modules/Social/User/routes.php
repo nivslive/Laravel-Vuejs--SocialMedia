@@ -1,6 +1,6 @@
 <?php
-
-use Modules\Social\User\Controller\UserNotificationController;
+use Modules\Social\User\Controllers\UserTrendsController;
+use Modules\Social\User\Controllers\UserNotificationController;
 #use Modules\Social\User\Controller\PageController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -30,7 +30,7 @@ Route::controller(UserTrendsController::class)
         Route::get('/by-user/{id}/friend/{friend_id}', 'byUserHasFriend');
 });
 
-Route::apiResource('api/user-chat', UserChatController::class);
-Route::apiResource('api/user-friend', UserFriendController::class);
-Route::apiResource('api/user-chat-message', UserChatMessageController::class);
-Route::apiResource('api/user-chat-friend', UserChatFriendController::class);
+#Route::apiResource('api/user-chat', UserChatController::class);
+#Route::apiResource('api/user-friend', UserFriendController::class);
+#Route::apiResource('api/user-chat-message', UserChatMessageController::class);
+#Route::apiResource('api/user-chat-friend', UserChatFriendController::class);

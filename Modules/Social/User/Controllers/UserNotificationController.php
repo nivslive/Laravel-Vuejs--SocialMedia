@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Social\User\Controller;
+namespace Modules\Social\User\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
