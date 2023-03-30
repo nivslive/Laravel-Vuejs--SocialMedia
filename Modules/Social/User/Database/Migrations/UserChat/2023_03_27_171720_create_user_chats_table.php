@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_chat_friends', function (Blueprint $table) {
+        Schema::create('user_chat', function (Blueprint $table) {
             $table->id();
             $table->biginteger('status');
-            $table->biginteger('user_friends_id')->unsigned()->nullable();
-            $table->foreign('user_friends_id')->references('id')->on('user_friends');
-            #foreign user
+            
             $table->biginteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
+
+            $table->biginteger('user_friends_id')->nullable();
+            #$table->foreign('user_friends_id')->references('id')->on('user_friends');
             $table->timestamps();
         });
     }
