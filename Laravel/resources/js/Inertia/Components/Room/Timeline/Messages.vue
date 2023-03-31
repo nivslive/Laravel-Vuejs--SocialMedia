@@ -1,7 +1,7 @@
 <script setup>
 import moment from "moment";
 import Favorite from "./Messages/Favorite.vue";
-import { defineProps, reactive, watch  } from "vue";
+import { defineProps, reactive, watch, ref  } from "vue";
 
 const props = defineProps({
     att: Boolean,
@@ -71,8 +71,19 @@ function moreMessages(url) {
         state.previous_page = json[1].messages.prev_page_url;
     });
 }*/
-
-
+const add = 'adicionar amigo'
+const postAdd = 'pedido enviado'
+let addFriendDataButton = ref(add)
+function addFriend(el) {
+    console.log(el)
+    addFriendDataButton.value = addFriendDataButton.value === add ? postAdd : add
+    if(addFriendDataButton.value === postAdd) {
+        fetch("http://127.0.0.1:8000/api/user-friends/", {
+            method: "POST",
+            body: JSON.stringify({'fodase': 'oi'}),
+        })
+    }
+}
 </script>
 <template>
     {{  props.att }}
@@ -83,7 +94,13 @@ function moreMessages(url) {
 <!-- User-->
 <ul>
   <li class="flex w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50" v-for="message in props.data" :key="message.id">
-    <div class="flex items-center"  v-if="message.user.profile_photo_url" ><img class="w-9 h-9 rounded-full items-start flex-shrink-0 mr-3" :src="message.user.profile_photo_url" width="32" height="32" alt="Marie Zulfikar"/></div>
+    <div class="flex items-center"  v-if="message.user.profile_photo_url" ><img class="w-9 h-9 rounded-full items-start flex-shrink-0 mr-3" :src="message.user.profile_photo_url" width="32" height="32" alt="Marie Zulfikar"/>
+    <button @click="addFriend(message.user.id)" class="btn click-add-friend">
+        {{ addFriendDataButton }}
+    </button>
+
+    </div>
+
     <div>
       <div class="flex">
         <h4 class="text-sm font-semibold text-gray-900 flex items-center"> {{message.user.name}} </h4>
