@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('api/chat')->group(function() {
 
-    Route::apiResource('chat', Chat::class)->except(['index'])->parameter('chat', 'id');
+    Route::apiResource('/', Chat::class)->parameter('chat', 'id');
 
     #Route::prefix('/with-subjects')->controller(Subject::class)->group(function(){
     #    Route::get('/', 'index');

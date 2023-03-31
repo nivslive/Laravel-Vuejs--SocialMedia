@@ -46,7 +46,7 @@ class ChatController extends Controller
         ]);
     }
 
-    public function all() {
+    public function index() {
         $chats = Chat::all();
         return response()->json([
             'chats' => $chats
