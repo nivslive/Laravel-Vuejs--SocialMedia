@@ -38,7 +38,10 @@ class ChatRepository
 
     #private route
     public function room($chat, $subject) {
-        $room = Subject::where('slug', $subject)->with(['user', 'messages.user'])->first();
+        $room = Subject::where('slug', $subject)->with(['user', 'messages' => function($query) {
+            $query->withCount('reactions');
+            $query->orderBy('reactions_count', 'desc');
+        }, 'messages.user'])->first();
         return $room;
     }
 
@@ -74,8 +77,8 @@ class ChatRepository
             ->withCount('messages')
             ->orderBy('messages_count', 'desc');
         }])->withCount('subjects')->where('slug', '=', $slug)->get();
-        dd($this->countAllReactions($rooms));
-        dd($rooms->toArray());
+        //dd($this->countAllReactions($rooms));
+        #dd($rooms->toArray());
         # EXAMPLE FOR TESTING LATE
        /* $rooms = Chat::with(['subjects' => function($query) use ($startOfWeek, $endOfWeek) {
             $query->with(['user', 'messages' => function($query) {

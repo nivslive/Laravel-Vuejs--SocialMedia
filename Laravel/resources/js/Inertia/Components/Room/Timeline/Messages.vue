@@ -2,7 +2,7 @@
 import moment from "moment";
 import Favorite from "./Messages/Favorite.vue";
 import { defineProps, reactive, watch, ref } from "vue";
-
+const route = window.location.origin
 const props = defineProps({
   att: Boolean,
   data: Object,
@@ -50,7 +50,7 @@ watch(state.attD, (newVal, oldVal) => {
 });
 
 function att() {
-    fetch("http://127.0.0.1:8000/chat/2")
+    fetch( route  + "/chat/2")
     .then((message) => message.json())
     .then((json) => {
         state.more = true;
@@ -76,7 +76,7 @@ function addFriend(el) {
   console.log(el);
   addFriendDataButton.value = addFriendDataButton.value === add ? postAdd : add;
   if (addFriendDataButton.value === postAdd) {
-    fetch("http://127.0.0.1:8000/api/user-friends/", {
+    fetch( route + "/api/user-friends/", {
       method: "POST",
       body: JSON.stringify({ fodase: "oi" }),
     });
@@ -91,10 +91,11 @@ function followUser(el) {
   followUserDataButton.value =
     followUserDataButton.value === follow ? postFollow : follow;
   if (followUserDataButton.value === postFollow) {
-    fetch("http://127.0.0.1:8000/api/user-followers/", {
+    fetch( route  + "/api/user-followers/", {
       method: "POST",
       body: JSON.stringify({ fodase: "oi" }),
-    });
+    }).then((e) => {
+    console.log(e)});
   }
 }
 </script>
