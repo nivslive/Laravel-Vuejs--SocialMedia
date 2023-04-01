@@ -17,8 +17,12 @@ return new class extends Migration
 
             $table->id();
             $table->string('message');
-            $table->integer('likes')->default(0);
-            $table->timestamps();
+
+            #foreign reactions
+            $table->biginteger('reply_id')->nullable();
+            #foreign reactions
+            $table->biginteger('reactions_id')->nullable();
+
 
             #foreign subject
             $table->biginteger('subject_id')->unsigned();
@@ -27,6 +31,9 @@ return new class extends Migration
             #foreign user
             $table->biginteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
+
+            $table->timestamps();
+
         });
     }
 

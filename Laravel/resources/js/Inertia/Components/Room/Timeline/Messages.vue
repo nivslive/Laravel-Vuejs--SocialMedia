@@ -83,8 +83,8 @@ function addFriend(el) {
   }
 }
 
-const follow = "se";
-const postFollow = "seg";
+const follow = "0";
+const postFollow = "1";
 let followUserDataButton = ref(follow);
 function followUser(el) {
   console.log(el);

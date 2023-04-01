@@ -2,6 +2,8 @@
 use Modules\Social\User\Controllers\UserFriendsController;
 use Modules\Social\User\Controllers\UserTrendsController;
 use Modules\Social\User\Controllers\UserNotificationController;
+use Modules\Social\User\Controllers\UserCategoryController;
+use Modules\Social\User\Controllers\UserReplyController;
 #use Modules\Social\User\Controller\PageController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +26,8 @@ Route::controller(UserTrendsController::class)
 
 Route::apiResource('api/user-friends', UserTrendsController::class);
 Route::apiResource('api/user-followers', UserFriendsController::class);
+Route::apiResource('api/user-categories', UserCategoryController::class);
+
 Route::controller(UserTrendsController::class)
     ->prefix('api/user-friends')
     ->group(function() {
