@@ -77,7 +77,7 @@ class MakeModules extends Command
         $modules = explode(' ', $modules);
 
         foreach ($modules as $module) {
-            $moduleDir = base_path("../Modules/{$namespace}/{$module}");
+            $moduleDir = base_path("Modules/{$namespace}/{$module}");
             if (!file_exists($moduleDir)) {
                 mkdir($moduleDir, 0777, true);
 
