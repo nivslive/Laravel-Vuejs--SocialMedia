@@ -42,18 +42,40 @@ class ChatRepository
         return $room;
     }
 
+
+    public function countAllReactions($rooms) {
+        $count = 0;
+        foreach($rooms->toArray() as $room) {
+            foreach($room['subjects'] as $subject) {
+                foreach($subject['messages'] as $message) {
+                    $count += $message['reactions_count'];
+                }
+            }
+        }
+        return $count;
+    }
+
     #public route
     public function rooms($slug) {
        $now = Carbon::now();
        $startOfWeek = $now->startOfWeek();
        $endOfWeek = $now->endOfWeek();
-       $rooms = Chat::with(['subjects' => function($query)  use ($startOfWeek, $endOfWeek){
-            $query->with(['user', 'messages'])
+       #$rooms = Chat::with(['subjects' => function($query)  use ($startOfWeek, $endOfWeek){
+        #    $query->with(['user', 'messages'])
+        #    ->withCount('messages')
+        #    //->whereBetween('created_at', [$startOfWeek, $endOfWeek])
+        #    ->orderBy('messages_count', 'desc');
+        #}])->where('slug', '=', $slug)->get();
+        $rooms = Chat::with(['subjects' => function($query) use ($startOfWeek, $endOfWeek) {
+            $query->with(['user', 'messages' => function($query) {
+                $query->withCount('reactions');
+                $query->orderBy('reactions_count', 'desc');
+            }])
             ->withCount('messages')
-            //->whereBetween('created_at', [$startOfWeek, $endOfWeek])
             ->orderBy('messages_count', 'desc');
-        }])->where('slug', '=', $slug)->get();
-
+        }])->withCount('subjects')->where('slug', '=', $slug)->get();
+        dd($this->countAllReactions($rooms));
+        dd($rooms->toArray());
         # EXAMPLE FOR TESTING LATE
        /* $rooms = Chat::with(['subjects' => function($query) use ($startOfWeek, $endOfWeek) {
             $query->with(['user', 'messages' => function($query) {
