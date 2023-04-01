@@ -1,6 +1,6 @@
 <template>
 <!-- Card header-->
-<header class="flex w-100 flex-col justify-center items-unset pt-6 pb-4 px-5 border-b border-gray-200 m-auto">
+<header class="flex w-100 flex-col justify-center items-unset pt-10 pb-10 px-5 p-12 border-b border-blue-600 mb-10 shadow-lg m-auto">
   <!-- Image + name-->
   <div class="flex items-center" v-if="data.user">
     <a class="inline-flex items-start mr-3" href="#0">

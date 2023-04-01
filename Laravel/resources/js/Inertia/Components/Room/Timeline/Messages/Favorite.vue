@@ -31,9 +31,9 @@ function like() {
 
 <template>
 <span class="flex">
-  <h4 class="text-rose-600 pl-3 text-lg font-bold cursor-pointer" v-if="state.favorited" @click="like()">♥</h4>
-  <h4 class="text-gray-600 pl-3 text-lg font-bold cursor-pointer" v-if="!state.favorited" @click="like()">♥</h4>
-  <h4 class="pl-1 text-sm font-bold flex items-center">  {{ state.quantifyData }}</h4></span>
+  <h4 class="text-rose-600 text-lg font-bold cursor-pointer" v-if="state.favorited" @click="like()">♥</h4>
+  <h4 class="text-gray-600 text-lg font-bold cursor-pointer" v-if="!state.favorited" @click="like()">♥</h4>
+  <h4 class="pl-1 pb-1 text-sm font-bold flex items-center">  {{ state.quantifyData }}</h4></span>
 </template>
 
 
