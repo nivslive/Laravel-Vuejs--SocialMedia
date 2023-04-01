@@ -6,8 +6,8 @@
     <a class="inline-flex items-start mr-3" href="#0">
         <img class="rounded-full" :src="data.user.profile_photo_url" width="48" height="48" alt="Lauren Marsano"/>
     </a>
-     <a class="inline-flex text-gray-800 hover:text-gray-900" href="#0">
-      <h2 class="text-xl leading-snug font-bold">{{ data.user.name }} </h2></a>
+     <a class="inline-flex text-gray-800 hover:text-indigo-900 pr-3" href="#0">
+      <h2 class="text-xl leading-snug font-bold text-white">{{ data.user.name }} </h2></a>
 
       <a class="block text-sm font-medium hover:text-cyan-500" href="#0">@{{  data.user.slug  }}</a>
 
@@ -15,12 +15,13 @@
     <div class="flex flex-col items-unset">
         <span class="text-lg whitespace-nowrap ml-2">  {{  data.title }}  </span>
         <span class="text-sm whitespace-wrap ml-2 break-words">  {{  data.description }} </span>
-        <p class="text-sm whitespace-nowrap ml-2">  {{  data.created_at }}  </p>
+        <p class="text-sm whitespace-nowrap ml-2">            {{ moment(data.created_at).format("HH:mm DD/MM") }}  </p>
     </div>
 </header>
 
 </template>
 <script setup>
+import moment from 'moment'
 //let subject = {};
 /*
 fetch("http://127.0.0.1:8000/chat/2", {
