@@ -1,0 +1,16 @@
+GET http://localhost:8000/chat/1
+Content-Type: application/json
+
+###
+GET http://localhost:3333/chat
+
+
+####
+POST http://localhost:8000/message/1
+Content-Type: application/json
+
+{
+    "title": "message",
+    "description": 234,
+    "user_id": 2
+}

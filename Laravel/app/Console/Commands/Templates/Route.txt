@@ -1,0 +1,6 @@
+<?php
+use Modules\{MODULEGROUP}\{MODULE}\Controllers\{CONTROLLER} as {ENTITY};
+use Illuminate\Support\Facades\Route;
+
+
+Route::apiResource('{PATH1}', {ENTITY}::class);
