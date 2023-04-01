@@ -84,6 +84,21 @@ function addFriend(el) {
         })
     }
 }
+
+const follow = 'adicionar amigo'
+const postFollow = 'pedido enviado'
+let followUserDataButton = ref(add)
+function addFriend(el) {
+    console.log(el)
+    addFriendDataButton.value = addFriendDataButton.value === follow ? postFollow : follow
+    if(addFriendDataButton.value === postFollow) {
+        fetch("http://127.0.0.1:8000/api/user-friends/", {
+            method: "POST",
+            body: JSON.stringify({'fodase': 'oi'}),
+        })
+    }
+}
+
 </script>
 <template>
     {{  props.att }}
@@ -97,6 +112,9 @@ function addFriend(el) {
     <div class="flex items-center"  v-if="message.user.profile_photo_url" ><img class="w-9 h-9 rounded-full items-start flex-shrink-0 mr-3" :src="message.user.profile_photo_url" width="32" height="32" alt="Marie Zulfikar"/>
     <button @click="addFriend(message.user.id)" class="btn click-add-friend">
         {{ addFriendDataButton }}
+    </button>
+    <button @click="followUser(message.user.id)" class="btn click-add-friend">
+        {{ followUserDataButton }}
     </button>
 
     </div>

@@ -58,6 +58,18 @@ class MakeModules extends Command
             $fileContents = str_replace('{MODULEGROUP}', ucwords($namespace), $fileContents);
             $fileContents = str_replace('{MODULE}', ucwords($part), $fileContents);
             $fileContents = str_replace('{ENTITY}', ucwords($controller), $fileContents);
+
+            $model = $this->ask('Gostaria de vincular o controller à um model?');
+            if($model !== 'sim') {
+                return;
+            }
+            $model = $this->ask('O model já existe?');
+            if($model === 'sim') {
+                return;
+            }
+
+            $model = $this->ask('Qual é o nome do model?');
+            $fileContents = str_replace('{ENTITY}', ucwords($model), $fileContents);
             file_put_contents($controllerPath, $fileContents);
             return;
         }
