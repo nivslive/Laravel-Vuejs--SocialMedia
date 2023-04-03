@@ -54,7 +54,13 @@ class SubjectController extends Controller
         ]);
     }
 
-    public function post(Request $request) {
+    public function index() {
+        dd('oi');
+        return Subject::all();
+    }
+
+    public function store(Request $request) {
+        dd($request);
         $request->merge(['slug' =>Str::slug($request->title)]);
         $request = $request->validate([
             'title' => 'required|string|max:255',

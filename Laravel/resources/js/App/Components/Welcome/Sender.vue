@@ -32,6 +32,9 @@
     console.log(props.visible, 'visible');
     const emit = defineEmits(['messageSended']);
     function send() {
+        fetch(window.location.origin + "/api/subject", {
+            method: "POST"});
+        /*
         fetch(window.location.origin + "/api/subject/", {
             method: "POST",
             body: new URLSearchParams({
@@ -46,6 +49,6 @@
               window.scrollTo(0, heightPage);
             }, 1000);
            emit("messageSended", e.json());
-          });
+          });*/
     }
 </script>

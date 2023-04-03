@@ -175,6 +175,8 @@ function followUser(el) {
         </div>
 
       </div>
+
+      
     </li>
   </ul>
   <div class="flex items-center justify-center py-3">

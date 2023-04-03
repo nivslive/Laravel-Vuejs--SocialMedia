@@ -127,7 +127,7 @@ section {
     </div>
 
     <div class="bests">
-      <a :href="route('room', { chat: id[0].slug, subject: id[0].subjects[0].slug })">
+      <a v-if="id[0].subjects[0]" :href="route('room', { chat: id[0].slug, subject: id[0].subjects[0].slug })">
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
           <div class="flex">
             <div
@@ -157,23 +157,23 @@ section {
     </div>
 
     <div class="bg-white flex">
-      <a :href="route('room', { chat: id[0].slug, subject: id[0].subjects[0].slug })">
+      <a  v-if="id[0].subjects[1]"  :href="route('room', { chat: id[0].slug, subject: id[0].subjects[1].slug })">
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
           <div class="flex">
             <div
               class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500"
             >
               <div>
-                <p v-if="id[0].subjects[0].user">
-                  Usuário: {{ id[0].subjects[0].user.name }}
+                <p v-if="id[0].subjects[1].user">
+                  Usuário: {{ id[0].subjects[1].user.name }}
                 </p>
-                <p>Hora: {{ moment(id[0].subjects[0].created_at).format("HH:mm") }}</p>
-                <p>Mensagens: {{ id[0].subjects[0].messages_count }}</p>
+                <p>Hora: {{ moment(id[0].subjects[1].created_at).format("HH:mm") }}</p>
+                <p>Mensagens: {{ id[0].subjects[1].messages_count }}</p>
                 <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                  {{ id[0].subjects[0].title }}
+                  {{ id[0].subjects[1].title }}
                 </h2>
                 <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                  {{ id[0].subjects[0].description }}
+                  {{ id[0].subjects[1].description }}
                 </p>
               </div>
 
@@ -185,23 +185,23 @@ section {
         </div>
       </a>
 
-      <a :href="route('room', { chat: id[0].slug, subject: id[0].subjects[0].slug })">
+      <a v-if="id[0].subjects[2]" :href="route('room', { chat: id[0].slug, subject: id[0].subjects[2].slug })">
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
           <div class="flex">
             <div
               class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500"
             >
               <div>
-                <p v-if="id[0].subjects[0].user">
-                  Usuário: {{ id[0].subjects[0].user.name }}
+                <p v-if="id[0].subjects[2].user">
+                  Usuário: {{ id[0].subjects[2].user.name }}
                 </p>
-                <p>Hora: {{ moment(id[0].subjects[0].created_at).format("HH:mm") }}</p>
-                <p>Mensagens: {{ id[0].subjects[0].messages_count }}</p>
+                <p>Hora: {{ moment(id[0].subjects[2].created_at).format("HH:mm") }}</p>
+                <p>Mensagens: {{ id[0].subjects[2].messages_count }}</p>
                 <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                  {{ id[0].subjects[0].title }}
+                  {{ id[0].subjects[2].title }}
                 </h2>
                 <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                  {{ id[0].subjects[0].description }}
+                  {{ id[0].subjects[2].description }}
                 </p>
               </div>
 
@@ -213,23 +213,23 @@ section {
         </div>
       </a>
 
-      <a :href="route('room', { chat: id[0].slug, subject: id[0].subjects[0].slug })">
+      <a v-if="id[0].subjects[3]" :href="route('room', { chat: id[0].slug, subject: id[0].subjects[3].slug })">
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
           <div class="flex">
             <div
               class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500"
             >
               <div>
-                <p v-if="id[0].subjects[0].user">
-                  Usuário: {{ id[0].subjects[0].user.name }}
+                <p v-if="id[0].subjects[3].user">
+                  Usuário: {{ id[0].subjects[3].user.name }}
                 </p>
-                <p>Hora: {{ moment(id[0].subjects[0].created_at).format("HH:mm") }}</p>
-                <p>Mensagens: {{ id[0].subjects[0].messages_count }}</p>
+                <p>Hora: {{ moment(id[0].subjects[3].created_at).format("HH:mm") }}</p>
+                <p>Mensagens: {{ id[0].subjects[3].messages_count }}</p>
                 <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                  {{ id[0].subjects[0].title }}
+                  {{ id[0].subjects[3].title }}
                 </h2>
                 <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                  {{ id[0].subjects[0].description }}
+                  {{ id[0].subjects[3].description }}
                 </p>
               </div>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-black w-6 h-6 mx-6">
@@ -246,32 +246,6 @@ section {
     <div
       class="relative overflow-x-auto sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white"
     >
-    <div v-if="canLogin" class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
-        <Link
-          v-if="$page.props.auth.user"
-          :href="route('dashboard')"
-          class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-        >
-          Dashboard</Link
-        >
-
-        <template v-else>
-          <Link
-            :href="route('login')"
-            class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-          >
-            Log in</Link
-          >
-
-          <Link
-            v-if="canRegister"
-            :href="route('register')"
-            class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-          >
-            Register</Link
-          >
-        </template>
-      </div>
 
       <div v-for="subject in id[0].subjects" :key="subject.id">
         <a :href="route('room', { chat: id[0].slug, subject: subject.slug })">

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 
+
 Route::apiResource('api/subject', Subject::class);
 Route::controller(PageController::class)->prefix('subject/')->group(function() {
 
