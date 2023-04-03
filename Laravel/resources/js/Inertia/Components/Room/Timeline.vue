@@ -1,21 +1,20 @@
 <script setup>
-import { defineProps, reactive } from "vue";
+import { defineProps, reactive, ref } from "vue";
 import Messages from "@/Inertia/Components/Room/Timeline/Messages.vue";
 import Subject from "@/Inertia/Components/Room/Timeline/Subject.vue";
 import Sender from "@/Inertia/Components/Room/Timeline/Sender.vue";
 
-const state = reactive({
-    att: false,
-});
+const att = ref(false);
 const props = defineProps({
     data: Object,
 });
 
+console.log(app, 'oi??')
 function attTimeline(message) {
     console.log(message, 'messages');
-    state.att = true;
+    att.value = true;
     setTimeout(() => {
-        state.att = false;
+        att.value = false;
     }, 10);
 }
 function _objectWithoutProperties(obj, keys) {

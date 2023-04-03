@@ -8,15 +8,17 @@ const props = defineProps({
   data: Object,
 });
 
-const state = reactive({
-  reactiveAtt: props.att,
-});
-watch(props.att, (newVal, oldVal) => {
+
+
+const reactiveAtt = ref(props.att);
+
+
+watch(() => props.att, (newVal, oldVal) => {
   // watch it
-  state.reactiveAtt = newVal;
+  reactiveAtt.value = newVal;
   console.log("Prop changed: ", newVal, " | was: ", oldVal);
-  if (state.reactiveAtt) {
-    att();
+  if (reactiveAtt.value) {
+    //att();
   }
 });
 
@@ -179,7 +181,7 @@ function followUser(el) {
       
     </li>
   </ul>
-  <div class="flex items-center justify-center py-3">
+  <!--<div class="flex items-center justify-center py-3">
     <button
       class="btn btn-blue text-sm"
       v-if="previous_page"
@@ -194,7 +196,7 @@ function followUser(el) {
     >
       Próxima página
     </button>
-  </div>
+  </div>-->
 </template>
 
 <!--
