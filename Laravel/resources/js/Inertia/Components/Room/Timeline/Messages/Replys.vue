@@ -126,7 +126,7 @@ function followUser(el) {
 
 
           <!-- REPLY PARENT -->
-          <div class="flex border-t border-r border-b-0 border-l-0 border-blue-600 pt-2 mt-3 rounded-2xl">
+          <div class="flex border-t border-r border-b border-l-0 border-blue-600  border-opacity-20 pt-2 mt-8 rounded-2xl">
 
 
 

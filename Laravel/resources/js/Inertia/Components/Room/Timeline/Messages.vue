@@ -132,12 +132,12 @@ function followUser(el) {
   <!-- User-->
   <ul class="">
     <li
-      class="flex w-full text-left my-2 py-10 bg-blue-500 bg-opacity-10 rounded-md border border-transparent"
+      class="flex w-full text-left my-2 py-10 rounded-md border border-transparent"
       v-for="message in props.data"
       :key="message.id"
     >
       <div
-        class="flex items-center flex-col bg-blue-400 bg-opacity-10 shadow-md rounded-lg p-4 m-4 bg-gradient-to-b from-indigo-900 via-indigo-800 to-blue-900 shadow-lg"
+        class="flex items-center flex-col shadow-md rounded-lg p-4 m-4 shadow-lg flex border-t border-r border-t-0 border-b-0 border-l-0 border-blue-600 pt-2 mt-3  border-opacity-30 rounded-2xl"
         v-if="message.user.profile_photo_url"
       >
         <img
@@ -188,18 +188,24 @@ function followUser(el) {
 
       </div>
 
-      <div class="my-auto mr-auto px-3">
+      <div class="my-auto mr-auto px-3 w-full bg-blue-500 bg-opacity-5 py-10 rounded-2xl">
         <div class="text-[13px]">
           Há alguns minutos atrás &middot;
           {{ moment(message.created_at).format("HH:mm DD/MM") }}
         </div>
+
+
+        
         <div class="text-[16px]">{{ message.message }}
-          <Replys :message="message" />
-          
+
+          <div class="ml-auto flex my-auto justify-between">
+            <Favorite class="pt-3" :id="message.id" /> 
+            <button class="btn"><i @click="() => openReply()" class="fas fa-reply" aria-hidden="true"></i> Responder</button>
         </div>
-        <div class="ml-auto">
-            <Favorite class="pt-3" :id="message.id" /> <i @click="() => openReply()" class="fas fa-reply" aria-hidden="true"></i>
+          <!--<Replys :message="message" />
+          -->
         </div>
+
 
       </div>
 

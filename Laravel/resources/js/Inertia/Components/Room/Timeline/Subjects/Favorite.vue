@@ -33,13 +33,16 @@ function like() {
 <span class="flex">
   <h4 class="favorite-icon text-rose-600  font-bold cursor-pointer" v-if="state.favorited" @click="like()">♥</h4>
   <h4 class="favorite-icon text-gray-600  font-bold cursor-pointer" v-if="!state.favorited" @click="like()">♥</h4>
-  <h4 class="pl-1 pb-1 text-sm font-bold flex items-center">  {{ state.quantifyData }}</h4></span>
+  <h4 class="pl-1 pb-1 favorite-icon-text font-bold flex items-center">  {{ state.quantifyData }}</h4></span>
 </template>
 
 
 
 <style>
 .favorite-icon {
-    font-size: 2rem;
+    font-size: 3rem;
+}
+.favorite-icon-text {
+    font-size: 1.5rem;
 }
 </style>

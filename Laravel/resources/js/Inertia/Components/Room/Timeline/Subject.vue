@@ -1,6 +1,6 @@
 <template>
 <!-- Card header-->
-<header class="flex w-100 flex-col justify-center items-unset pt-10 pb-10 px-5 p-12 border-b border-blue-600 mb-10 shadow-lg m-auto">
+<header class="flex w-100 flex-col justify-center items-unset pt-10 pb-10 px-5 p-12 border-b border-blue-600  border-opacity-20 mb-10 shadow-lg m-auto">
   <!-- Image + name-->
   <div class="flex items-center" v-if="data.user">
     <a class="inline-flex items-start mr-3" href="#0">
@@ -13,15 +13,20 @@
 
   </div>
     <div class="flex flex-col items-unset">
-        <span class="text-lg whitespace-nowrap ml-2">  {{  data.title }}  </span>
+        <span class="text-lg whitespace-wrap break-words ml-2">  {{  data.title }}  </span>
         <span class="text-sm whitespace-wrap ml-2 break-words">  {{  data.description }} </span>
         <p class="text-sm whitespace-nowrap ml-2">            {{ moment(data.created_at).format("HH:mm DD/MM") }}  </p>
+    </div>
+    <div class="flex items-unset justify-between">
+      <Favorite class="pt-3" :id="'0'" /> 
+      <button class="btn"><i @click="() => openReply()" class="fas fa-reply" aria-hidden="true"></i> Responder</button>
     </div>
 </header>
 
 </template>
 <script setup>
 import moment from 'moment'
+import Favorite from './Subjects/Favorite.vue';
 //let subject = {};
 /*
 fetch("http://127.0.0.1:8000/chat/2", {

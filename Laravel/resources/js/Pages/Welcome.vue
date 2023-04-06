@@ -100,183 +100,189 @@ section {
 <template>
     <Menu @showSender="showSender()" />
     <Sender class="sender-container" :user="$page.props.auth.user ? $page.props.auth.user : {}" :chat="chat.id" :visible="showSenderRef.value" />
-  <section>
-    <Head title="Welcome" />
-    <div class="popular-lasts flex justify-center">
-      <div class="popular-lasts-items" :key="key" v-for="(variation, key) in variations">
-        <a :href="route('rooms', { slug: variation.slug })">
-          <button class="button-variation px-4 text-stone-600 flex items-center">
-            <h1 class="text-xl">{{ variation.title }}</h1>
-            <b class="pl-1">Msgs: {{ variation.allsums }}</b>
-          </button>
-        </a>
+  <div>
+    <section>
+      memories
+    </section>
+      <section>
+      <Head title="Welcome" />
+      <div class="popular-lasts flex justify-center">
+        <div class="popular-lasts-items" :key="key" v-for="(variation, key) in variations">
+          <a :href="route('rooms', { slug: variation.slug })">
+            <button class="button-variation px-4 text-stone-600 flex items-center">
+              <h1 class="text-xl">{{ variation.title }}</h1>
+              <b class="pl-1">Msgs: {{ variation.allsums }}</b>
+            </button>
+          </a>
+        </div>
       </div>
-    </div>
-
-    <div class="bests w-4/5 mx-auto">
-      <h2
-        class="text-2xl font-bold leading-7 text-stone-50 sm:truncate sm:text-7xl sm:tracking-tight"
-      >
-        {{ chat.title }}
-      </h2>
-      <h2
-        class="text-2xl font-bold leading-7 text-stone-50 sm:truncate sm:text-2xl sm:tracking-tight"
-      >
-        {{ chat.description }}
-      </h2>
-    </div>
-
-    <div class="bests">
-      <a v-if="id[0].subjects[0]" :href="route('room', { chat: id[0].slug, subject: id[0].subjects[0].slug })">
-        <div class="max-w-7xl mx-auto p-6 lg:p-8">
-          <div class="flex">
-            <div
-              class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500"
-            >
-              <div>
-                <p v-if="id[0].subjects[0].user">
-                  Usuário: {{ id[0].subjects[0].user.name }}
-                </p>
-                <p>Hora: {{ moment(id[0].subjects[0].created_at).format("HH:mm") }}</p>
-                <p>Mensagens: {{ id[0].subjects[0].messages_count }}</p>
-                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                  {{ id[0].subjects[0].title }}
-                </h2>
-                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                  {{ id[0].subjects[0].description }}
-                </p>
-              </div>
-
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-black w-6 h-6 mx-6">
-                    <path class="stroke-2" stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path>
-                </svg>
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <div class="bg-white flex">
-      <a  v-if="id[0].subjects[1]"  :href="route('room', { chat: id[0].slug, subject: id[0].subjects[1].slug })">
-        <div class="max-w-7xl mx-auto p-6 lg:p-8">
-          <div class="flex">
-            <div
-              class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500"
-            >
-              <div>
-                <p v-if="id[0].subjects[1].user">
-                  Usuário: {{ id[0].subjects[1].user.name }}
-                </p>
-                <p>Hora: {{ moment(id[0].subjects[1].created_at).format("HH:mm") }}</p>
-                <p>Mensagens: {{ id[0].subjects[1].messages_count }}</p>
-                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                  {{ id[0].subjects[1].title }}
-                </h2>
-                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                  {{ id[0].subjects[1].description }}
-                </p>
-              </div>
-
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-black w-6 h-6 mx-6">
-                    <path class="stroke-2" stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path>
-                </svg>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <a v-if="id[0].subjects[2]" :href="route('room', { chat: id[0].slug, subject: id[0].subjects[2].slug })">
-        <div class="max-w-7xl mx-auto p-6 lg:p-8">
-          <div class="flex">
-            <div
-              class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500"
-            >
-              <div>
-                <p v-if="id[0].subjects[2].user">
-                  Usuário: {{ id[0].subjects[2].user.name }}
-                </p>
-                <p>Hora: {{ moment(id[0].subjects[2].created_at).format("HH:mm") }}</p>
-                <p>Mensagens: {{ id[0].subjects[2].messages_count }}</p>
-                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                  {{ id[0].subjects[2].title }}
-                </h2>
-                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                  {{ id[0].subjects[2].description }}
-                </p>
-              </div>
-
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-black w-6 h-6 mx-6">
-                    <path class="stroke-2" stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path>
-                </svg>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <a v-if="id[0].subjects[3]" :href="route('room', { chat: id[0].slug, subject: id[0].subjects[3].slug })">
-        <div class="max-w-7xl mx-auto p-6 lg:p-8">
-          <div class="flex">
-            <div
-              class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500"
-            >
-              <div>
-                <p v-if="id[0].subjects[3].user">
-                  Usuário: {{ id[0].subjects[3].user.name }}
-                </p>
-                <p>Hora: {{ moment(id[0].subjects[3].created_at).format("HH:mm") }}</p>
-                <p>Mensagens: {{ id[0].subjects[3].messages_count }}</p>
-                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                  {{ id[0].subjects[3].title }}
-                </h2>
-                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                  {{ id[0].subjects[3].description }}
-                </p>
-              </div>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-black w-6 h-6 mx-6">
-                    <path class="stroke-2" stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path>
-                </svg>
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!--<a :href="`${route('subject.post')}`">POST SUBJECT</a>
-    <a :href="`${route('message.post')}`">POST MESSAGE</a>-->
-    <div
-      class="relative overflow-x-auto sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white"
-    >
-
-      <div v-for="subject in id[0].subjects" :key="subject.id">
-        <a :href="route('room', { chat: id[0].slug, subject: subject.slug })">
+  
+      <div class="bests w-4/5 mx-auto">
+        <h2
+          class="text-2xl font-bold leading-7 text-stone-50 sm:truncate sm:text-7xl sm:tracking-tight"
+        >
+          {{ chat.title }}
+        </h2>
+        <h2
+          class="text-2xl font-bold leading-7 text-stone-50 sm:truncate sm:text-2xl sm:tracking-tight"
+        >
+          {{ chat.description }}
+        </h2>
+      </div>
+  
+      <div class="bests">
+        <a v-if="id[0].subjects[0]" :href="route('room', { chat: id[0].slug, subject: id[0].subjects[0].slug })">
           <div class="max-w-7xl mx-auto p-6 lg:p-8">
             <div class="flex">
               <div
                 class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500"
               >
                 <div>
-                  <p v-if="subject.user">Usuário: {{ subject.user.name }}</p>
-                  <p>Hora: {{ moment(subject.created_at).format("HH:mm") }}</p>
-                  <p>Mensagens: {{ subject.messages_count }}</p>
+                  <p v-if="id[0].subjects[0].user">
+                    Usuário: {{ id[0].subjects[0].user.name }}
+                  </p>
+                  <p>Hora: {{ moment(id[0].subjects[0].created_at).format("HH:mm") }}</p>
+                  <p>Mensagens: {{ id[0].subjects[0].messages_count }}</p>
                   <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                    {{ subject.title }}
+                    {{ id[0].subjects[0].title }}
                   </h2>
-                  <p v-if="subject.description"
-                    class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed"
-                  >
-                    {{ subject.description }}
+                  <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                    {{ id[0].subjects[0].description }}
                   </p>
                 </div>
+  
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-black w-6 h-6 mx-6">
-                    <path class="stroke-2" stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path>
-                </svg>
-
+                      <path class="stroke-2" stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path>
+                  </svg>
               </div>
             </div>
           </div>
         </a>
       </div>
-    </div>
-  </section>
+  
+      <div class="bg-white flex">
+        <a  v-if="id[0].subjects[1]"  :href="route('room', { chat: id[0].slug, subject: id[0].subjects[1].slug })">
+          <div class="max-w-7xl mx-auto p-6 lg:p-8">
+            <div class="flex">
+              <div
+                class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500"
+              >
+                <div>
+                  <p v-if="id[0].subjects[1].user">
+                    Usuário: {{ id[0].subjects[1].user.name }}
+                  </p>
+                  <p>Hora: {{ moment(id[0].subjects[1].created_at).format("HH:mm") }}</p>
+                  <p>Mensagens: {{ id[0].subjects[1].messages_count }}</p>
+                  <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
+                    {{ id[0].subjects[1].title }}
+                  </h2>
+                  <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                    {{ id[0].subjects[1].description }}
+                  </p>
+                </div>
+  
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-black w-6 h-6 mx-6">
+                      <path class="stroke-2" stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path>
+                  </svg>
+              </div>
+            </div>
+          </div>
+        </a>
+  
+        <a v-if="id[0].subjects[2]" :href="route('room', { chat: id[0].slug, subject: id[0].subjects[2].slug })">
+          <div class="max-w-7xl mx-auto p-6 lg:p-8">
+            <div class="flex">
+              <div
+                class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500"
+              >
+                <div>
+                  <p v-if="id[0].subjects[2].user">
+                    Usuário: {{ id[0].subjects[2].user.name }}
+                  </p>
+                  <p>Hora: {{ moment(id[0].subjects[2].created_at).format("HH:mm") }}</p>
+                  <p>Mensagens: {{ id[0].subjects[2].messages_count }}</p>
+                  <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
+                    {{ id[0].subjects[2].title }}
+                  </h2>
+                  <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                    {{ id[0].subjects[2].description }}
+                  </p>
+                </div>
+  
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-black w-6 h-6 mx-6">
+                      <path class="stroke-2" stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path>
+                  </svg>
+              </div>
+            </div>
+          </div>
+        </a>
+  
+        <a v-if="id[0].subjects[3]" :href="route('room', { chat: id[0].slug, subject: id[0].subjects[3].slug })">
+          <div class="max-w-7xl mx-auto p-6 lg:p-8">
+            <div class="flex">
+              <div
+                class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500"
+              >
+                <div>
+                  <p v-if="id[0].subjects[3].user">
+                    Usuário: {{ id[0].subjects[3].user.name }}
+                  </p>
+                  <p>Hora: {{ moment(id[0].subjects[3].created_at).format("HH:mm") }}</p>
+                  <p>Mensagens: {{ id[0].subjects[3].messages_count }}</p>
+                  <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
+                    {{ id[0].subjects[3].title }}
+                  </h2>
+                  <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                    {{ id[0].subjects[3].description }}
+                  </p>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-black w-6 h-6 mx-6">
+                      <path class="stroke-2" stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path>
+                  </svg>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+  
+      <!--<a :href="`${route('subject.post')}`">POST SUBJECT</a>
+      <a :href="`${route('message.post')}`">POST MESSAGE</a>-->
+      <div
+        class="relative overflow-x-auto sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white"
+      >
+  
+        <div v-for="subject in id[0].subjects" :key="subject.id">
+          <a :href="route('room', { chat: id[0].slug, subject: subject.slug })">
+            <div class="max-w-7xl mx-auto p-6 lg:p-8">
+              <div class="flex">
+                <div
+                  class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500"
+                >
+                  <div>
+                    <p v-if="subject.user">Usuário: {{ subject.user.name }}</p>
+                    <p>Hora: {{ moment(subject.created_at).format("HH:mm") }}</p>
+                    <p>Mensagens: {{ subject.messages_count }}</p>
+                    <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
+                      {{ subject.title }}
+                    </h2>
+                    <p v-if="subject.description"
+                      class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed"
+                    >
+                      {{ subject.description }}
+                    </p>
+                  </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-black w-6 h-6 mx-6">
+                      <path class="stroke-2" stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path>
+                  </svg>
+  
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
 </template>
 
