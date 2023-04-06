@@ -6,7 +6,7 @@ use App\Http\Controllers\ChatController;
 
 Route::get('/room/{slug}', [ChatController::class, 'rooms'])->name('rooms');
 Route::get('/room/{chat}/{subject}', [ChatController::class, 'room'])->name('room');
-
+Route::get('/subject/by-id/{subject}', [ChatController::class, 'subject'])->name('subject');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

@@ -1,14 +1,16 @@
 <script setup>
 import moment from "moment";
 import Favorite from "./Messages/Favorite.vue";
+import Replys from "./Messages/Replys.vue";
 import { defineProps, reactive, watch, ref } from "vue";
 const route = window.location.origin
 const props = defineProps({
+  id: Number,
   att: Boolean,
   data: Object,
 });
 
-
+console.log(props.id, 'oi')
 
 const reactiveAtt = ref(props.att);
 
@@ -18,9 +20,29 @@ watch(() => props.att, (newVal, oldVal) => {
   reactiveAtt.value = newVal;
   console.log("Prop changed: ", newVal, " | was: ", oldVal);
   if (reactiveAtt.value) {
-    //att();
+    att();
   }
 });
+
+const state = reactive({
+      more: false,
+      messages: [],
+      next_page: "",
+      previous_page: "",
+});
+
+function att() {
+    fetch( route  + "/subject/by-id/" + props.id)
+    .then((message) => message)
+    .then((json) => {
+      console.log(json.text)
+        state.more = true;
+        state.messages = json.messages.data;
+        state.next_page = json.messages.next_page_url;
+        state.previous_page = json.messages.prev_page_url;
+        console.log(json);
+    });
+}
 
 /*
 const props = defineProps({
@@ -110,12 +132,12 @@ function followUser(el) {
   <!-- User-->
   <ul class="">
     <li
-      class="flex w-full text-left my-2 py-2 bg-blue-500 bg-opacity-10 rounded-md border border-transparent"
+      class="flex w-full text-left my-2 py-10 bg-blue-500 bg-opacity-10 rounded-md border border-transparent"
       v-for="message in props.data"
       :key="message.id"
     >
       <div
-        class="flex items-center flex-col bg-blue-400 bg-opacity-10 shadow-md rounded-lg p-4 m-4"
+        class="flex items-center flex-col bg-blue-400 bg-opacity-10 shadow-md rounded-lg p-4 m-4 bg-gradient-to-b from-indigo-900 via-indigo-800 to-blue-900 shadow-lg"
         v-if="message.user.profile_photo_url"
       >
         <img
@@ -171,9 +193,12 @@ function followUser(el) {
           Há alguns minutos atrás &middot;
           {{ moment(message.created_at).format("HH:mm DD/MM") }}
         </div>
-        <div class="text-[16px]">{{ message.message }}</div>
+        <div class="text-[16px]">{{ message.message }}
+          <Replys :message="message" />
+          
+        </div>
         <div class="ml-auto">
-            <Favorite class="pt-3" :id="message.id" /> <i class="fas fa-reply" aria-hidden="true"></i>
+            <Favorite class="pt-3" :id="message.id" /> <i @click="() => openReply()" class="fas fa-reply" aria-hidden="true"></i>
         </div>
 
       </div>

@@ -25,6 +25,11 @@ class ChatController extends Controller
         return $this->service->post($request);
     }
 
+
+    public function subject($id) {
+        return Subject::with('messages')->where('id', $id)->paginate();
+    }
+
     public function room($chat, $subject) {
         return Inertia::render('Room',
             $this->isLogged([
