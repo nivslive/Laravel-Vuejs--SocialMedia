@@ -14,7 +14,11 @@
   </div>
     <div class="flex flex-col items-unset">
         <span class="text-lg whitespace-wrap break-words ml-2">  {{  data.title }}  </span>
-        <span class="text-sm whitespace-wrap ml-2 break-words">  {{  data.description }} </span>
+        <span class="text-sm whitespace-wrap ml-2 break-words">  {{  data.description }} 
+
+
+          
+        </span>
         <p class="text-sm whitespace-nowrap ml-2">            {{ moment(data.created_at).format("HH:mm DD/MM") }}  </p>
     </div>
     <div class="flex items-unset justify-between">

@@ -2,6 +2,7 @@
 import moment from "moment";
 import Favorite from "./Messages/Favorite.vue";
 import Replys from "./Messages/Replys.vue";
+import Sender from "./Messages/Sender.vue";
 import { defineProps, reactive, watch, ref } from "vue";
 const route = window.location.origin
 const props = defineProps({
@@ -124,7 +125,7 @@ function followUser(el) {
 }
 </script>
 <template>
-  {{ props.att }}
+
   <!-- Card body-->
   <h3 class="text-xs font-semibold uppercase text-gray-400 mb-1">MENSAGENS</h3>
   <!-- Chat list-->
@@ -132,12 +133,14 @@ function followUser(el) {
   <!-- User-->
   <ul class="">
     <li
-      class="flex w-full text-left my-2 py-10 rounded-md border border-transparent"
+      class="flex flex-col"
       v-for="message in props.data"
       :key="message.id"
     >
+
+    <article class="flex w-full text-left my-2 rounded-md border border-transparent">
       <div
-        class="flex items-center flex-col shadow-md rounded-lg p-4 m-4 shadow-lg flex border-t border-r border-t-0 border-b-0 border-l-0 border-blue-600 pt-2 mt-3  border-opacity-30 rounded-2xl"
+        class="flex flex-col items-center shadow-md rounded-lg p-4 m-4 shadow-lg flex border-t border-r border-t-0 border-b-0 border-l-0 border-blue-600 pt-2 mt-3  border-opacity-30 rounded-2xl"
         v-if="message.user.profile_photo_url"
       >
         <img
@@ -188,7 +191,7 @@ function followUser(el) {
 
       </div>
 
-      <div class="my-auto mr-auto px-3 w-full bg-blue-500 bg-opacity-5 py-10 rounded-2xl">
+      <div class="my-auto mr-auto px-10 w-full bg-blue-500 bg-opacity-5 py-10 rounded-2xl">
         <div class="text-[13px]">
           Há alguns minutos atrás &middot;
           {{ moment(message.created_at).format("HH:mm DD/MM") }}
@@ -200,16 +203,21 @@ function followUser(el) {
 
           <div class="ml-auto flex my-auto justify-between">
             <Favorite class="pt-3" :id="message.id" /> 
-            <button class="btn"><i @click="() => openReply()" class="fas fa-reply" aria-hidden="true"></i> Responder</button>
+
+
+    <Sender class="sender-container"/>
+            <button class="btn"><i @click="() => showSender()" class="fas fa-reply" aria-hidden="true"></i> Responder</button>
         </div>
-          <!--<Replys :message="message" />
-          -->
+         
+          
         </div>
 
 
       </div>
 
-      
+    </article>
+    
+    <Replys class="ml-[15%]" :message="message" />
     </li>
   </ul>
   <!--<div class="flex items-center justify-center py-3">
@@ -230,14 +238,10 @@ function followUser(el) {
   </div>-->
 </template>
 
-<!--
-<style lang="sass" scoped>
-.btn
-  @apply font-bold py-2 px-4 rounded
-.btn-blue
-  @apply border-stone-400	 text-stone-600
 
-.btn-blue:hover
-  @apply bg-indigo-700
+<style  scoped>
+.sender-container {
+  display: none;
+}
 </style>
--->
+

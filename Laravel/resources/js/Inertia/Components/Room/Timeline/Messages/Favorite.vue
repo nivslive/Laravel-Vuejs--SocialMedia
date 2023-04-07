@@ -19,7 +19,6 @@ function like() {
     state.quantifyData = !state.favorited
     ? state.quantifyData - 1
     : state.quantifyData + 1;
-
     fetch(
     `http://127.0.0.1:8000/message/${props.id}/${
         state.favorited ? "like" : "deslike"

@@ -60,14 +60,28 @@ class SubjectController extends Controller
     }
 
     public function store(Request $request) {
-        dd($request);
+
         $request->merge(['slug' =>Str::slug($request->title)]);
         $request = $request->validate([
             'title' => 'required|string|max:255',
             'slug' => 'required|string|max:300',
             'user_id' => 'required|numeric',
             'chat_id' => 'required|numeric',
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+        dd($request);
+         // Obtenha o arquivo enviado via post
+         $avatar = $request->file('avatar');
+
+         // Defina um nome para o arquivo
+         $filename = time() . '.' . $avatar->getClientOriginalExtension();
+        dd($filename);
+         // Salve o arquivo no diretório desejado
+         $avatar->move(public_path('avatars'), $filename);
+ 
+         // Salve o nome do arquivo no banco de dados para referência futura
+         // $filename
+        dd($avatar);
         Subject::create($request);
         return redirect()->back();
     }

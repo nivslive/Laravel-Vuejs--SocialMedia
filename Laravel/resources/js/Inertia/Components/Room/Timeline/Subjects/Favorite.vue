@@ -21,7 +21,7 @@ function like() {
     : state.quantifyData + 1;
 
     fetch(
-    `http://127.0.0.1:8000/message/${props.id}/${
+    window.location.origin + `/api/message/${props.id}/${
         state.favorited ? "like" : "deslike"
     }`, { method: "POST", cors: "no-cors",});
 }
