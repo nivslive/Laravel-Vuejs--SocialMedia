@@ -16,5 +16,5 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
 
 Route::get('/testando', function() {
-    return  view('users.index');
+    return  view('social.dashboard');
 });
