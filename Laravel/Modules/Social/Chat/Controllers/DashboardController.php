@@ -151,15 +151,28 @@ class DashboardController extends Controller
 
     
     
-    public function topOf($date = 'day', $model = 'subject') {
+    public function topOf($date = 'all', $model = 'subject') {
+
+        $this->setModelTopOf($date);
+        
+
+        if($date === 'all') {
+            
+            $arr = ['day' => null, 'month' => null, 'year' => null];
+            $this->setModelTopOf('day');
+            $arr['day'] = $this->topOfSubject();
+            $this->setModelTopOf('month');
+            $arr['month'] = $this->topOfSubject();
+            $this->setModelTopOf('year');
+            $arr['year'] = $this->topOfSubject();
+            dd($arr);
+        }
 
         if($model === 'chat') {
-            $this->setModelTopOf('month');
             dd($this->topOfChat());
         }
 
         if($model === 'subject') {
-            $this->setModelTopOf('month');
             dd($this->topOfSubject());
         }
 /*

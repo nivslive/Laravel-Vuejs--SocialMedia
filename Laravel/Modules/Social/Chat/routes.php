@@ -27,7 +27,7 @@ Route::prefix('api/chat')->group(function() {
 });
 
 Route::controller(Dashboard::class)->prefix('test/')->group(function()  {
-    Route::get('/topofday', 'topOfDay');
+    Route::get('/topof/{date}', 'topOf');
 });
 
 Route::middleware(['web'])->controller(Page::class)->prefix('chat/')->group(function() {
