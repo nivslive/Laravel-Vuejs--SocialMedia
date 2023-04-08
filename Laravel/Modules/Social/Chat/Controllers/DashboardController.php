@@ -175,64 +175,9 @@ class DashboardController extends Controller
         if($model === 'subject') {
             dd($this->topOfSubject());
         }
-/*
-
-        $result = Chat::with(['subjects' => function($query) use ($date) {
-            $query->withCount('messages');
-            $query->where('created_at', '>=', $date);
-            $query->limit(10);
-            $query->with(['messages' => function($query) {
-                $query->withCount('reactions');
-                $query->orderBy('reactions_count', 'desc');
-                $query->limit(10);
-            }, 'messages.user']);
-        }, 'subjects.messages', 'subjects.user'])->withCount('subjects')->get();
-        
-        $count = $result->reduce(function($carry, $chat) {
-            $carry['subjects_count'] += $chat->subjects_count;
-            $carry['messages_count'] += $chat->subjects->sum('messages_count');
-            $carry['reactions_count'] += $chat->subjects->flatMap(function($subject) {
-                return $subject->messages->pluck('reactions_count');
-            })->sum();
-        
-            // Adicione as informações de contagem em cada chat e assunto
-            $chat['messages_count'] = $chat->subjects->sum('messages_count');
-            $chat['reactions_count'] = $chat->subjects->flatMap(function($subject) {
-                return $subject->messages->pluck('reactions_count');
-            })->sum();
-        
-            $chat['subjects']->map(function($subject) {
-                $subject['messages_count'] = $subject->messages_count;
-                $subject['messages'] = $subject['messages']->map(function($message) {
-                    $message['liked'] = isset($message['user']) && Auth()->user() !== null && Auth()->user()->id === $message['user']['id'] ? 1 : 0;
-                });
-                $subject['messages']->sortByDesc('reactions_count');
-                $subject['reactions_count'] = $subject->messages->sum('reactions_count');
-                $subject['reactions_and_messages_count'] = $subject['messages_count'] + $subject['reactions_count'];
-                return $subject;
-            });
-            $chat['subjects']->sortByDesc('reactions_and_messages_count');
-            $carry['data'][] = $chat->toArray();
-            return $carry;
-        }, ['subjects_count' => 0, 'messages_count' => 0, 'reactions_count' => 0, 'data' => []]);
-        
-        dd($count);
-*/
-    }
-
-
-    public function topOfDay() {
-        return $this->topOf('year');
-    }
-    public function topOfWeek() {
-        return $this->topOf('week');
-    }
-    public function topOfMonth() {
-        return $this->topOf('week');
     }
 
     
-
     public function categories() {
         return Chat::all();
     }
