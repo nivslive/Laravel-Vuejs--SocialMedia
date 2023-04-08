@@ -37,9 +37,24 @@ class DashboardController extends Controller
         return $this->query(__FUNCTION__);
     }
 
-    public function topOfDay() {
-        $result = Chat::with(['subjects' => function($query){
+    public function topOf($date = 'day') {
+        switch($date) {
+            case('day'):
+                $date = Carbon::now()->subDays(1);
+                break;
+            case('week'):
+                $date = Carbon::now()->subDays(7);
+                break;
+            case('month'):
+                $date = Carbon::now()->subDays(30);
+                break;
+            case('year'):
+                $date = Carbon::now()->subDays(340);
+                break;
+        }
+        $result = Chat::with(['subjects' => function($query) use ($date) {
             $query->withCount('messages');
+            $query->where('created_at', '>=', $date);
             $query->with(['messages' => function($query) {
                 $query->withCount('reactions');
             }, 'messages.user']);
@@ -60,11 +75,12 @@ class DashboardController extends Controller
         
             $chat['subjects']->map(function($subject) {
                 $subject['messages_count'] = $subject->messages_count;
+                $subject['messages']->sortByDesc('reactions_count');
                 $subject['reactions_count'] = $subject->messages->sum('reactions_count');
                 $subject['reactions_and_messages_count'] = $subject['messages_count'] + $subject['reactions_count'];
                 return $subject;
             });
-        
+            $chat['subjects']->sortByDesc('reactions_and_messages_count');
             $carry['data'][] = $chat->toArray();
             return $carry;
         }, ['subjects_count' => 0, 'messages_count' => 0, 'reactions_count' => 0, 'data' => []]);
@@ -73,9 +89,12 @@ class DashboardController extends Controller
 
     }
 
+
+    public function topOfDay() {
+        return $this->topOf('day');
+    }
     public function topOfWeek() {
-        $results = $this->query(__FUNCTION__);
-        return $this->json($results, 200);
+        return $this->topOf('week');
     }
 
     
