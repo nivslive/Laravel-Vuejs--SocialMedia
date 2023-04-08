@@ -22,7 +22,7 @@ class Subject extends Model
     }
 
     public function chat() {
-        return $this->hasOne(Chat::class, 'id');
+        return $this->belongsTo(Chat::class, 'chat_id');
      }
     public function messages() {
        return $this->hasMany(Message::class);
