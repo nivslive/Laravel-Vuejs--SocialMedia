@@ -60,7 +60,7 @@ class SubjectController extends Controller
     }
 
     public function store(Request $request) {
-
+        dd($request->all());
         $request->merge(['slug' =>Str::slug($request->title)]);
         $request = $request->validate([
             'title' => 'required|string|max:255',
@@ -69,7 +69,7 @@ class SubjectController extends Controller
             'chat_id' => 'required|numeric',
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        dd($request);
+
          // Obtenha o arquivo enviado via post
          $avatar = $request->file('avatar');
 
@@ -81,7 +81,7 @@ class SubjectController extends Controller
  
          // Salve o nome do arquivo no banco de dados para referência futura
          // $filename
-        dd($avatar);
+
         Subject::create($request);
         return redirect()->back();
     }

@@ -3,6 +3,7 @@
 use Modules\Social\Chat\Controllers\ChatController as Chat;
 use Modules\Social\Chat\Controllers\WithSubjectController as Subject;
 use Modules\Social\Chat\Controllers\PageController as Page;
+use Modules\Social\Chat\Controllers\DashboardController as Dashboard;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('api/chat')->group(function() {
@@ -25,7 +26,9 @@ Route::prefix('api/chat')->group(function() {
 
 });
 
-
+Route::controller(Dashboard::class)->prefix('test/')->group(function()  {
+    Route::get('/topofday', 'topOfDay');
+});
 
 Route::middleware(['web'])->controller(Page::class)->prefix('chat/')->group(function() {
     Route::get('/{slug}', 'rooms');
