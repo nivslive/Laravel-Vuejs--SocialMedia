@@ -98,7 +98,8 @@ class DashboardController extends Controller
                 return $subject;
             });
             $chat['subjects']->sortByDesc('reactions_and_messages_count');
-            $carry['data'][] = $chat->toArray();
+            $carry['top3'][] = $chat->toArray()->splice(0, 2)->flatten();
+            $carry['toplefts'][] = $chat->toArray()->splice(2, 18)->flatten();
             return $carry;
         }, ['subjects_count' => 0, 'messages_count' => 0, 'reactions_count' => 0, 'data' => []]);
 
@@ -128,12 +129,14 @@ class DashboardController extends Controller
             $subject['messages']->sortByDesc('reactions_count');
             return $subject;
         });
-        
+        $result = $result->sortByDesc('reactions_and_messages_count');
         $count = [
             'subjects_count' => $result->count(),
             'messages_count' => $result->sum('messages_count'),
             'reactions_count' => $result->sum('reactions_count'),
-            'data' => $result->sortByDesc('reactions_and_messages_count')->toArray(),
+            'top3' => collect($result)->splice(0, 3)->flatten()->toArray(),
+            'toplefts' => collect($result)->splice(3, 23)->flatten()->toArray(),
+            'randoms' => collect($result)->splice(0, 23)->flatten()->toArray(),
         ];
         
         return $count;
@@ -165,7 +168,7 @@ class DashboardController extends Controller
             $arr['month'] = $this->topOfSubject();
             $this->setModelTopOf('year');
             $arr['year'] = $this->topOfSubject();
-            dd($arr);
+            return view('social.dashboard', ['data' => $arr]);            
         }
 
         if($model === 'chat') {

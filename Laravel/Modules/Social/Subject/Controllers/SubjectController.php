@@ -55,7 +55,6 @@ class SubjectController extends Controller
     }
 
     public function index() {
-        dd('oi');
         return Subject::all();
     }
 

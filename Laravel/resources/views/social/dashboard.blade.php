@@ -1,6 +1,6 @@
 <html lang="en"><head>
     <meta charset="utf-8">
-    <title>NEWSROOM - Free Bootstrap Magazine Template</title>
+    <title>YORUS - Dashboard</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -23,19 +23,39 @@
 
 <body>
  <!-- Topbar Start -->
- <div class="container-fluid">
+@php $data = $data['month']; 
+@endphp
+
+
+<style>
+#content {
+    transition: 1s;
+    opacity: 0;
+}
+#loading {
+    transition 1s;
+    opacity: 1;
+}
+</style>
+
+<section id="content" style="opacity: 0">
+
+ <div class="container-fluid" >
+
         <div class="row align-items-center bg-dark px-lg-5">
             <div class="col-12 col-md-8">
                 <div class="d-flex justify-content-between">
-                    <div class="bg-primary text-white text-center py-2" style="width: 100px;">Tranding</div>
-                    <div class="owl-carousel owl-carousel-1 tranding-carousel position-relative d-inline-flex align-items-center ml-3" style="width: calc(100% - 100px); padding-left: 90px;">
-                        <div class="text-truncate"><a class="text-secondary" href="">Labore sit justo amet eos sed, et sanctus dolor diam eos</a></div>
-                        <div class="text-truncate"><a class="text-secondary" href="">Gubergren elitr amet eirmod et lorem diam elitr, ut est erat Gubergren elitr amet eirmod et lorem diam elitr, ut est erat</a></div>
+                    <div class="text-white text-center py-2" style="width: 200px; font-size: 12px"><b>AGORA</b></div>
+                    <div class="owl-carousel owl-carousel-1 tranding-carousel position-relative d-inline-flex align-items-center ml-3" style="width: calc(100% - 140px); padding-left: 100px;">
+                    @foreach($data['top3'] as $data_trends)
+                        <div class="text-truncate"><a class="text-secondary" href="/room/{{$data_trends['chat']['slug']}}/{{$data_trends['slug']}}"><b> {{strtoupper($data_trends['chat']['title'])}}  </b>{{ $data_trends['title'] }}</a></div>
+                    @endforeach
+                       
                     </div>
                 </div>
             </div>
             <div class="col-md-4 text-right d-none d-md-block">
-                Monday, January 01, 2045
+            {{ 'Data/horário: ' . \Carbon\Carbon::now()->format('d/m/Y, H:i')}}
             </div>
         </div>
         <div class="row align-items-center py-2 px-lg-5">
@@ -93,31 +113,17 @@
     <div class="container-fluid py-3">
         <div class="container">
             <div class="owl-carousel owl-carousel-2 carousel-item-3 position-relative">
+                
+            
+                @foreach($data['toplefts'] as $data_carousel)
                 <div class="d-flex">
-                    <img src="img/news-100x100-1.jpg" style="width: 80px; height: 80px; object-fit: cover;">
+                    <!--<img src="img/news-100x100-1.jpg" style="width: 80px; height: 80px; object-fit: cover;">-->
                     <div class="d-flex align-items-center bg-light px-3" style="height: 80px;">
-                        <a class="text-secondary font-weight-semi-bold" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+                        <a class="text-secondary font-weight-semi-bold" href="">{{$data_carousel['title']}}</a>
                     </div>
                 </div>
-                <div class="d-flex">
-                    <img src="img/news-100x100-2.jpg" style="width: 80px; height: 80px; object-fit: cover;">
-                    <div class="d-flex align-items-center bg-light px-3" style="height: 80px;">
-                        <a class="text-secondary font-weight-semi-bold" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                    </div>
-                </div>
-                <div class="d-flex">
-                    <img src="img/news-100x100-3.jpg" style="width: 80px; height: 80px; object-fit: cover;">
-                    <div class="d-flex align-items-center bg-light px-3" style="height: 80px;">
-                        <a class="text-secondary font-weight-semi-bold" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                    </div>
-                </div>
-                <div class="d-flex">
-                    <img src="img/news-100x100-4.jpg" style="width: 80px; height: 80px; object-fit: cover;">
-                    <div class="d-flex align-items-center bg-light px-3" style="height: 80px;">
-                        <a class="text-secondary font-weight-semi-bold" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                    </div>
-                </div>
-            </div>
+                @endforeach
+           </div>
         </div>
     </div>
     <!-- Top News Slider End -->
@@ -129,28 +135,20 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="owl-carousel owl-carousel-2 carousel-item-1 position-relative mb-3 mb-lg-0">
-                        <div class="position-relative overflow-hidden b-radius m-3" style="height: 435px;">
-                            <img class="img-fluid h-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">
+                    @foreach($data['toplefts'] as $data_toplefts)
+                    <div class="position-relative overflow-hidden b-radius m-3" style="height: 435px;">
+                            <!--<img class="img-fluid h-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">-->
                             <div class="overlay b-radius">
                                 <div class="mb-1">
-                                    <a class="text-white" href="">Technology</a>
+                                    <a class="text-white" href="/rooms/{{$data_toplefts['chat']['slug']}}/{{$data_toplefts['slug']}}">{{$data_toplefts['chat']['title']}}</a>
                                     <span class="px-2 text-white">/</span>
-                                    <a class="text-white" href="">January 01, 2045</a>
+                                    <a class="text-white" href="">{{$data_toplefts['created_at']}}</a>
                                 </div>
-                                <a class="h2 m-0 text-white font-weight-bold" href="">Sanctus amet sed amet ipsum lorem. Dolores et erat et elitr sea sed</a>
+                                <a class="h2 m-0 text-white font-weight-bold" href="">{{$data_toplefts['title']}}</a>
+                                <a class="mt-3 h3 text-white" href="">{{$data_toplefts['description']}}</a>
                             </div>
                         </div>
-                        <div class="position-relative overflow-hidden b-radius m-3" style="height: 435px;">
-                            <img class="img-fluid h-100" src="img/news-700x435-2.jpg" style="object-fit: cover;">
-                            <div class="overlay">
-                                <div class="mb-1">
-                                    <a class="text-white" href="">Technology</a>
-                                    <span class="px-2 text-white">/</span>
-                                    <a class="text-white" href="">January 01, 2045</a>
-                                </div>
-                                <a class="h2 m-0 text-white font-weight-bold" href="">Sanctus amet sed amet ipsum lorem. Dolores et erat et elitr sea sed</a>
-                            </div>
-                        </div>
+                    @endforeach
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -177,7 +175,7 @@
                         </a>
                     </div>
                     <div class="position-relative overflow-hidden b-radius" style="height: 80px;">
-                        <img class="img-fluid w-100 h-100" src="img/cat-500x80-4.jpg" style="object-fit: cover;">
+                        <!--<img class="img-fluid w-100 h-100" src="img/cat-500x80-4.jpg" style="object-fit: cover;">-->
                         <a href="" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
                             Sports
                         </a>
@@ -197,61 +195,20 @@
                 <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
             </div>
             <div class="owl-carousel owl-carousel-2 carousel-item-4 position-relative">
-                <div class="position-relative overflow-hidden" style="height: 300px;">
+
+            @foreach($data['randoms'] as $data_random)
+            <div class="position-relative overflow-hidden" style="height: 300px;">
                     <img class="img-fluid w-100 h-100" src="img/news-300x300-1.jpg" style="object-fit: cover;">
                     <div class="overlay">
                         <div class="mb-1" style="font-size: 13px;">
-                            <a class="text-white" href="">Technology</a>
+                            <a class="text-white" href="">{{$data_random['chat']['title']}}</a>
                             <span class="px-1 text-white">/</span>
-                            <a class="text-white" href="">January 01, 2045</a>
+                            <a class="text-white" href="">{{$data_random['created_at']}}</a>
                         </div>
-                        <a class="h4 m-0 text-white" href="">Sanctus amet sed ipsum lorem</a>
+                        <a class="h4 m-0 text-white" href="">{{$data_random['title']}}</a>
                     </div>
-                </div>
-                <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <img class="img-fluid w-100 h-100" src="img/news-300x300-2.jpg" style="object-fit: cover;">
-                    <div class="overlay">
-                        <div class="mb-1" style="font-size: 13px;">
-                            <a class="text-white" href="">Technology</a>
-                            <span class="px-1 text-white">/</span>
-                            <a class="text-white" href="">January 01, 2045</a>
-                        </div>
-                        <a class="h4 m-0 text-white" href="">Sanctus amet sed ipsum lorem</a>
-                    </div>
-                </div>
-                <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <img class="img-fluid w-100 h-100" src="img/news-300x300-3.jpg" style="object-fit: cover;">
-                    <div class="overlay">
-                        <div class="mb-1" style="font-size: 13px;">
-                            <a class="text-white" href="">Technology</a>
-                            <span class="px-1 text-white">/</span>
-                            <a class="text-white" href="">January 01, 2045</a>
-                        </div>
-                        <a class="h4 m-0 text-white" href="">Sanctus amet sed ipsum lorem</a>
-                    </div>
-                </div>
-                <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <img class="img-fluid w-100 h-100" src="img/news-300x300-4.jpg" style="object-fit: cover;">
-                    <div class="overlay">
-                        <div class="mb-1" style="font-size: 13px;">
-                            <a class="text-white" href="">Technology</a>
-                            <span class="px-1 text-white">/</span>
-                            <a class="text-white" href="">January 01, 2045</a>
-                        </div>
-                        <a class="h4 m-0 text-white" href="">Sanctus amet sed ipsum lorem</a>
-                    </div>
-                </div>
-                <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <img class="img-fluid w-100 h-100" src="img/news-300x300-5.jpg" style="object-fit: cover;">
-                    <div class="overlay">
-                        <div class="mb-1" style="font-size: 13px;">
-                            <a class="text-white" href="">Technology</a>
-                            <span class="px-1 text-white">/</span>
-                            <a class="text-white" href="">January 01, 2045</a>
-                        </div>
-                        <a class="h4 m-0 text-white" href="">Sanctus amet sed ipsum lorem</a>
-                    </div>
-                </div>
+            </div>
+            @endforeach
             </div>
         </div>
     </div>
@@ -394,6 +351,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-6 py-3">
                     <div class="bg-light py-2 px-4 mb-3">
                         <h3 class="m-0">Sports</h3>
@@ -838,8 +796,31 @@
     <!-- Back to Top -->
     <a href="#" class="btn btn-dark back-to-top"><i class="fa fa-angle-up"></i></a>
 
+</section>
+
+<style>
+#loading {
+
+  border: 8px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 8px solid #3498db;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+  margin: 0 auto;
 
 
+
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+<div id="loading" style="opacity: 1">
+   
+</div>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -849,5 +830,13 @@
     <!-- Template Javascript -->
 
     @vite(['resources/js/social/main.js'])
+
+    <script>
+
+$(document).ready(function () {
+    $('#loading').css("opacity", "0");
+    $('#content').css("opacity", "1");
+  }) 
+</script>
 
 </body></html>
