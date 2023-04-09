@@ -160,7 +160,6 @@ class DashboardController extends Controller
         
 
         if($date === 'all') {
-            
             $arr = ['day' => null, 'month' => null, 'year' => null];
             $this->setModelTopOf('day');
             $arr['day'] = $this->topOfSubject();
@@ -168,16 +167,19 @@ class DashboardController extends Controller
             $arr['month'] = $this->topOfSubject();
             $this->setModelTopOf('year');
             $arr['year'] = $this->topOfSubject();
-            return view('social.dashboard', ['data' => $arr]);            
+
+            $data = $arr;
         }
 
-        if($model === 'chat') {
-            dd($this->topOfChat());
+        /*if($model === 'chat') {
+            $data = $this->topOfChat();
         }
 
         if($model === 'subject') {
-            dd($this->topOfSubject());
-        }
+           $data = $this->topOfSubject();
+        }*/
+
+        return view('social.dashboard', ['data' => $data]);
     }
 
     

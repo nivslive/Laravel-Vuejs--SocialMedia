@@ -140,11 +140,11 @@
                             <!--<img class="img-fluid h-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">-->
                             <div class="overlay b-radius">
                                 <div class="mb-1">
-                                    <a class="text-white" href="/rooms/{{$data_toplefts['chat']['slug']}}/{{$data_toplefts['slug']}}">{{$data_toplefts['chat']['title']}}</a>
+                                    <a class="text-white" href="/room/{{$data_toplefts['chat']['slug']}}">{{$data_toplefts['chat']['title']}}</a>
                                     <span class="px-2 text-white">/</span>
                                     <a class="text-white" href="">{{$data_toplefts['created_at']}}</a>
                                 </div>
-                                <a class="h2 m-0 text-white font-weight-bold" href="">{{$data_toplefts['title']}}</a>
+                                <a class="h2 m-0 text-white font-weight-bold"  href="/room/{{$data_toplefts['chat']['slug']}}/{{$data_toplefts['slug']}}">{{$data_toplefts['title']}}</a>
                                 <a class="mt-3 h3 text-white" href="">{{$data_toplefts['description']}}</a>
                             </div>
                         </div>
