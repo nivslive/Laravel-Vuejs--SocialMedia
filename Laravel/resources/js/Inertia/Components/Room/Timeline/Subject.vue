@@ -13,11 +13,12 @@
       <a class="block text-sm font-medium hover:text-cyan-500" href="#0">@{{  data.user.slug  }}</a>
 
   </div>
+  <Draggable />
     <div class="flex flex-col items-unset">
         <span class="text-lg whitespace-wrap break-words ml-2 flex justify-center">  {{  data.title }}  </span>
         <span class="text-sm whitespace-wrap ml-2 break-words flex flex-col items-center justify-center">  {{  data.description }} 
           <img id="file-input" class="rounded-full" v-if="data.photo" :src="data.photo.full_image_path" width="800" height="auto" alt="Lauren Marsano"/>
-          <iframe width="100%" height="300" scrolling="no" 
+          <iframe style="border-radius: 30px; border: 1.2px solid purple" width="100%" height="300" scrolling="no" 
           frameborder="no" allow="autoplay"
           v-if="data.links && data.links.soundcloud_adjusted" :src="data.links.soundcloud_adjusted"></iframe>
         
@@ -36,6 +37,7 @@
 <script setup>
 import moment from 'moment'
 import Favorite from './Subjects/Favorite.vue';
+import Draggable from './Subjects/Draggable.vue';
 //let subject = {};
 /*
 fetch("http://127.0.0.1:8000/chat/2", {

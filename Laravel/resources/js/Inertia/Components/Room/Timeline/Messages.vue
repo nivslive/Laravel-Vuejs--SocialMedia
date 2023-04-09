@@ -123,6 +123,30 @@ function followUser(el) {
     console.log(e)});
   }
 }
+
+const showSenderRef = ref(false);
+const showSenderRefId = ref(0);
+function showSender(id) {
+  if(showSenderRefId.value !== id) {
+    showSenderRef.value = false;
+    const senders = document.querySelectorAll('.show-sender')
+    senders.forEach((s) => {
+      s.style.opacity = '0';
+    })
+  } else {
+    showSenderRef.value = true;
+  }
+  showSenderRef.value = !showSenderRef.value;
+  console.log(showSenderRef.value)
+  console.log( document.querySelector('.show-sender-' + id), '.show-sender-' + id)
+  const sender = document.querySelector('.show-sender-' + id)
+  sender.style.opacity = sender.style.opacity === '0' ? '1' : '0'
+  //sender.style.height = sender.style.height === '83' ? '0' : '83'
+  console.log(sender.style.opacity === '0')
+  //sender.style.height = showSenderRef.value ? '87px' : '0'
+}
+
+
 </script>
 <template>
 
@@ -200,13 +224,15 @@ function followUser(el) {
 
         
         <div class="text-[16px]">{{ message.message }}
-
+          <div :class="'show-sender show-sender-' + message.id ">
+            <Sender />
+          </div>
           <div class="ml-auto flex my-auto justify-between">
             <Favorite class="pt-3" :id="message.id" /> 
 
 
-    <Sender class="sender-container"/>
-            <button class="btn"><i @click="() => showSender()" class="fas fa-reply" aria-hidden="true"></i> Responder</button>
+
+            <button @click="() => showSender(message.id)" class="btn"><i  class="fas fa-reply" aria-hidden="true"></i> Responder</button>
         </div>
          
           
@@ -240,8 +266,11 @@ function followUser(el) {
 
 
 <style  scoped>
-.sender-container {
-  display: none;
+.show-sender {
+  opacity: 0;
+  /*height: 0;*/
+  transition: .4s;
 }
+
 </style>
 
