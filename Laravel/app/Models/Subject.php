@@ -24,6 +24,13 @@ class Subject extends Model
     public function chat() {
         return $this->belongsTo(Chat::class, 'chat_id');
      }
+
+     public function photo()
+    {
+        return $this->belongsTo(Photo::class,'photo_id');
+    }
+
+
     public function messages() {
        return $this->hasMany(Message::class);
     }

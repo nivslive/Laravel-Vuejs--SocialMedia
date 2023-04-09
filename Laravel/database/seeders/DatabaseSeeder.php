@@ -60,9 +60,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\User::factory(9)->create();
-        \App\Models\Chat::factory(1)->create();
-        \App\Models\Subject::factory(5)->create();
-        \App\Models\Message::factory(2)->create();
+        \App\Models\Chat::factory(10)->create();
+        \App\Models\Subject::factory(50)->create();
+        \App\Models\Message::factory(200)->create();
         //ReactionType::factory(ReactionTypeFactory::class)->create();
         //\App\Models\Reaction::factory(1)->create();
 

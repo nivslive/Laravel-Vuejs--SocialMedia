@@ -179,12 +179,12 @@ class DashboardController extends Controller
            $data = $this->topOfSubject();
         }*/
 
-        return view('social.dashboard', ['data' => $data]);
+        return view('social.dashboard', ['data' => $data, 'categories' => $this->categories()]);
     }
 
-    
+
     public function categories() {
-        return Chat::all();
+        return Chat::select(['slug', 'title'])->limit(5)->get()->toArray();
     }
 
     public function room($chat, $subject) {

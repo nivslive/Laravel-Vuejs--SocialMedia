@@ -3,7 +3,7 @@
         <div class="flex items-center justify-center py-3 bg-black w-4/5 m-auto">
         <input class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" v-on:keyup.enter="send()" v-model="state.subject" type="text" placeholder="Tem algum assunto em mente?"/>
         
-        <input type="file" @input="form.avatar = $event.target.files[0]" />
+        <input type="file" @input="form.photo = $event.target.files[0]" />
         <progress v-if="form.progress" :value="form.progress.percentage" max="100">
           {{ form.progress.percentage }}%
         </progress>
@@ -37,7 +37,7 @@
     });
 
     const form = useForm({
-  avatar: null,
+  photo: null,
   title: state.subject,
   user_id: props.user.id,
   chat_id: props.chat,

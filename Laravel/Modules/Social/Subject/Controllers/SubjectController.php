@@ -59,29 +59,32 @@ class SubjectController extends Controller
     }
 
     public function store(Request $request) {
-        dd($request->all());
         $request->merge(['slug' =>Str::slug($request->title)]);
-        $request = $request->validate([
+        //dd($request->all());
+        /*$request = $request->validate([
             'title' => 'required|string|max:255',
             'slug' => 'required|string|max:300',
             'user_id' => 'required|numeric',
             'chat_id' => 'required|numeric',
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);*/
+        //dd($request);
          // Obtenha o arquivo enviado via post
-         $avatar = $request->file('avatar');
-
+         $avatar = $request->file('photo');
          // Defina um nome para o arquivo
-         $filename = time() . '.' . $avatar->getClientOriginalExtension();
-        dd($filename);
-         // Salve o arquivo no diretório desejado
-         $avatar->move(public_path('avatars'), $filename);
- 
-         // Salve o nome do arquivo no banco de dados para referência futura
-         // $filename
+         $user_id =  Auth()->user() !== null ? Auth()->user()->id  : '';
+         if(Auth()->user() !== null) {
 
-        Subject::create($request);
+            $pathname = 'pictures/social/subjects';
+            $filename = time() . '_' . 'subject_pic_user'. $user_id . '.' . $avatar->getClientOriginalExtension();
+
+            $avatar->move(public_path($pathname), $filename);         
+
+           Subject::create($request->all())->photo(['user_id' => Auth()->user()->id, 'src' => $pathname . $filename]);
+         }
+
+ 
+
         return redirect()->back();
     }
 }

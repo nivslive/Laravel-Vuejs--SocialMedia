@@ -20,6 +20,11 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->timestamps();
 
+            #foreign photos
+            $table->biginteger('photo_id')->nullable();
+            //$table->foreign('photo_id')->references('id')->on('photos');
+
+
             #foreign chat
             $table->biginteger('chat_id')->unsigned();
             $table->foreign('chat_id')->references('id')->on('chats');

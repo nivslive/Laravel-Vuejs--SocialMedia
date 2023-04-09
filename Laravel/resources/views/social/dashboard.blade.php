@@ -11,7 +11,11 @@
     <!-- Google Web Fonts -->
 
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
+    <style>
+        * {
+            transition: .2s
+        }
+    </style>
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
     @vite(['resources/lib/owlcarousel/assets/owl.carousel.min.css'])
@@ -85,21 +89,20 @@
                 <div class="navbar-nav mr-auto py-0">
                     <a href="index.html" class="nav-item nav-link active">Home</a>
                     <a href="category.html" class="nav-item nav-link">Categories</a>
-                    <a href="single.html" class="nav-item nav-link">Single News</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Temas</a>
                         <div class="dropdown-menu rounded-0 m-0">
-                            <a href="#" class="dropdown-item">Menu item 1</a>
-                            <a href="#" class="dropdown-item">Menu item 2</a>
-                            <a href="#" class="dropdown-item">Menu item 3</a>
+                            @foreach($categories as $category_nav)
+                            <a href="#" class="dropdown-item">{{ $category_nav['title']}}</a>
+                            @endforeach
                         </div>
                     </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <a href="contact.html" class="nav-item nav-link"><b>Criar assunto</b></a>
                 </div>
                 <div class="input-group ml-auto" style="width: 100%; max-width: 300px;">
-                    <input type="text" class="form-control" placeholder="Keyword">
+                    <input type="text" class="form-control b-radius" placeholder="Pesquisar tema, assunto, tag...">
                     <div class="input-group-append">
-                        <button class="input-group-text text-secondary"><i
+                        <button class="input-group-text text-secondary b-radius ml-2"><i
                                 class="fa fa-search"></i></button>
                     </div>
                 </div>
@@ -142,8 +145,17 @@
                                 <div class="mb-1">
                                     <a class="text-white" href="/room/{{$data_toplefts['chat']['slug']}}">{{$data_toplefts['chat']['title']}}</a>
                                     <span class="px-2 text-white">/</span>
-                                    <a class="text-white" href="">{{$data_toplefts['created_at']}}</a>
-                                </div>
+                                    <a class="text-white" href="">{{$data_toplefts['created_at']}}</a> 
+                                    <span class="px-2 text-white">/</span>
+                                    <b class="b-radius px-2">{{$data_toplefts['messages_count']}} 
+                                    @if($data_toplefts['messages_count'] === 1) mensagem @else mensagens @endif                                    
+                                    </b>
+                                    <span class="px-2 text-white">/</span>
+                                    {{$data_toplefts['reactions_count']}} 
+                                    @if($data_toplefts['reactions_count'] === 1) reação @else reações @endif
+
+
+                                </div> 
                                 <a class="h2 m-0 text-white font-weight-bold"  href="/room/{{$data_toplefts['chat']['slug']}}/{{$data_toplefts['slug']}}">{{$data_toplefts['title']}}</a>
                                 <a class="mt-3 h3 text-white" href="">{{$data_toplefts['description']}}</a>
                             </div>
@@ -153,33 +165,17 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3 b-radius">
-                        <h3 class="m-0">Categories</h3>
+                        <h3 class="m-0">Temas</h3>
                         <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
                     </div>
+                    @foreach($categories as $category)
                     <div class="position-relative overflow-hidden mb-3 b-radius" style="height: 80px;">
                         <img class="img-fluid w-100 h-100" src="img/cat-500x80-1.jpg" style="object-fit: cover;">
-                        <a href="" class=" overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
-                            Business
+                        <a href="/room/{{$category['slug']}}" class=" overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
+                            {{$category['title']}}
                         </a>
                     </div>
-                    <div class="position-relative overflow-hidden mb-3 b-radius" style="height: 80px;">
-                        <img class="img-fluid w-100 h-100" src="img/cat-500x80-2.jpg" style="object-fit: cover;">
-                        <a href="" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
-                            Technology
-                        </a>
-                    </div>
-                    <div class="position-relative overflow-hidden mb-3 b-radius" style="height: 80px;">
-                        <img class="img-fluid w-100 h-100" src="img/cat-500x80-3.jpg" style="object-fit: cover;">
-                        <a href="" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
-                            Entertainment
-                        </a>
-                    </div>
-                    <div class="position-relative overflow-hidden b-radius" style="height: 80px;">
-                        <!--<img class="img-fluid w-100 h-100" src="img/cat-500x80-4.jpg" style="object-fit: cover;">-->
-                        <a href="" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
-                            Sports
-                        </a>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -191,7 +187,7 @@
     <div class="container-fluid py-3">
         <div class="container">
             <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
-                <h3 class="m-0">Featured</h3>
+                <h3 class="m-0">Últimas do dia</h3>
                 <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
             </div>
             <div class="owl-carousel owl-carousel-2 carousel-item-4 position-relative">
@@ -203,7 +199,7 @@
                         <div class="mb-1" style="font-size: 13px;">
                             <a class="text-white" href="">{{$data_random['chat']['title']}}</a>
                             <span class="px-1 text-white">/</span>
-                            <a class="text-white" href="">{{$data_random['created_at']}}</a>
+                            <a class="text-white created_at" href="">{{$data_random['created_at']}}</a>
                         </div>
                         <a class="h4 m-0 text-white" href="">{{$data_random['title']}}</a>
                     </div>
@@ -830,8 +826,7 @@
     <!-- Template Javascript -->
 
     @vite(['resources/js/social/main.js'])
-
-    <script>
+    <script type="module">
 
 $(document).ready(function () {
     $('#loading').css("opacity", "0");
