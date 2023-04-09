@@ -15,10 +15,14 @@
   </div>
     <div class="flex flex-col items-unset">
         <span class="text-lg whitespace-wrap break-words ml-2 flex justify-center">  {{  data.title }}  </span>
-        <span class="text-sm whitespace-wrap ml-2 break-words flex justify-center">  {{  data.description }} 
-
+        <span class="text-sm whitespace-wrap ml-2 break-words flex flex-col items-center justify-center">  {{  data.description }} 
           <img id="file-input" class="rounded-full" v-if="data.photo" :src="data.photo.full_image_path" width="800" height="auto" alt="Lauren Marsano"/>
-          
+          <iframe width="100%" height="300" scrolling="no" 
+          frameborder="no" allow="autoplay"
+          v-if="data.links && data.links.soundcloud_adjusted" :src="data.links.soundcloud_adjusted"></iframe>
+        
+          <iframe class="my-3" style="border-radius:12px" src="https://open.spotify.com/embed/track/0dpz1f81FVaCZ0Q45oNlGo?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <iframe style="border-radius: 30px; border: 1.2px solid purple" width="560" height="315" class="my-10" v-if="data.links && data.links.youtube_adjusted" :src="data.links.youtube_adjusted" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
         </span>
         <p class="text-sm whitespace-nowrap ml-2">            {{ moment(data.created_at).format("HH:mm DD/MM") }}  </p>
     </div>

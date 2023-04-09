@@ -42,7 +42,8 @@ class ChatRepository
             $query->withCount('reactions');
             $query->orderBy('reactions_count', 'desc');
         }, 'messages.user'])->first();
-        dd($room);
+        #dd($room->toArray());
+        return $room;
     }
 
 
