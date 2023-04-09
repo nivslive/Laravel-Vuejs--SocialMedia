@@ -23,7 +23,7 @@ class Photo extends Model
     public function getFullImagePathAttribute()
     {
     
-        return public_path() .  '/' . $this->src;
+        return env('APP_URL') .  '/' . $this->src;
     
     }
 }

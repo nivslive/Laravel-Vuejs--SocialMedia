@@ -1,9 +1,10 @@
 <template>
     <div class="bg-black w-5/5">
-        <div class="flex items-center justify-center py-3 bg-black w-4/5 m-auto">
+        <div class="flex items-center justify-center py-3 bg-black w-4/5 m-auto text-white">
         <input class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" v-on:keyup.enter="send()" v-model="state.subject" type="text" placeholder="Tem algum assunto em mente?"/>
         
-        <input type="file" @input="form.photo = $event.target.files[0]" />
+        <input type="file" @input="handleFileSelect"/>
+        <img width="40" class="image-bar" v-if="form.photo" :src="form.photoUrl" />
         <progress v-if="form.progress" :value="form.progress.percentage" max="100">
           {{ form.progress.percentage }}%
         </progress>
@@ -35,7 +36,12 @@
         chat: Number,
         visible: Boolean,
     });
-
+    watch(() => form.photo, (newValue, oldValue) => {
+        if (newValue !== oldValue) {
+            console.log(newValue)
+            form.title = newValue // aqui você pode adicionar ação que deseja executar quando a prop "visible" mudar de valor
+        }
+    });
     watch(() => state.subject, (newValue, oldValue) => {
         if (newValue !== oldValue) {
             console.log(newValue)
@@ -55,25 +61,18 @@
     function send() {
         console.log()
         form.post('/api/subject')
-        /*fetch(window.location.origin + "/api/subject", {
-            method: "POST"});*/
-        /*
-        fetch(window.location.origin + "/api/subject/", {
-            method: "POST",
-            body: new URLSearchParams({
-              'title': state.subject,
-              'user_id': props.user.id,
-              'chat_id': props.chat,
-            }),
-          }).then((e) => {
-            state.message = "";
-            let heightPage = document.body.scrollHeight;
-            setTimeout(() => {
-              window.scrollTo(0, heightPage);
-            }, 1000);
-           emit("messageSended", e.json());
-          });*/
+    }
+
+    function handleFileSelect(event) {
+    form.photo = event.target.files[0];
+    form.photoUrl = URL.createObjectURL(event.target.files[0]);
     }
 
 
 </script>
+
+<style>
+.image-bar {
+  border-radius: 10px;
+}
+</style>

@@ -5,7 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\{Message, Chat, User};
+use App\Models\{Message, Chat, User, SubjectExternalLink};
 class Subject extends Model
 {
     use CrudTrait, HasFactory;
@@ -31,6 +31,9 @@ class Subject extends Model
         return $this->hasOne(Photo::class, 'id', 'photo_id');
     }
 
+    public function links() {
+        return $this->hasOne(SubjectExternalLink::class, 'id', 'subject_external_link_id');
+    }
 
     public function messages() {
        return $this->hasMany(Message::class);

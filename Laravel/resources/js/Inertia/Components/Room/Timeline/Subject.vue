@@ -5,7 +5,7 @@
   <div class="flex items-center" v-if="data.user">
     <a class="inline-flex items-start mr-3" href="#0">
         <img class="rounded-full" :src="data.user.profile_photo_url" width="48" height="48" alt="Lauren Marsano"/>
-        <img class="rounded-full" :src="data.photo.src" width="48" height="48" alt="Lauren Marsano"/>
+       
       </a>
      <a class="inline-flex text-gray-800 hover:text-indigo-900 pr-3" href="#0">
       <h2 class="text-xl leading-snug font-bold text-white">{{ data.user.name }} </h2></a>
@@ -14,10 +14,10 @@
 
   </div>
     <div class="flex flex-col items-unset">
-        <span class="text-lg whitespace-wrap break-words ml-2">  {{  data.title }}  </span>
-        <span class="text-sm whitespace-wrap ml-2 break-words">  {{  data.description }} 
+        <span class="text-lg whitespace-wrap break-words ml-2 flex justify-center">  {{  data.title }}  </span>
+        <span class="text-sm whitespace-wrap ml-2 break-words flex justify-center">  {{  data.description }} 
 
-        
+          <img id="file-input" class="rounded-full" v-if="data.photo" :src="data.photo.full_image_path" width="800" height="auto" alt="Lauren Marsano"/>
           
         </span>
         <p class="text-sm whitespace-nowrap ml-2">            {{ moment(data.created_at).format("HH:mm DD/MM") }}  </p>
@@ -45,4 +45,3 @@ import { defineProps } from 'vue';
 defineProps({ data: Object });
 </script>
 
-<style lang="sass" scoped></style>

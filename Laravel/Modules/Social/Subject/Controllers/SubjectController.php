@@ -80,7 +80,7 @@ class SubjectController extends Controller
             $filename = time() . '_' . 'subject_pic_user'. $user_id . '.' . $avatar->getClientOriginalExtension();
 
             $avatar->move(public_path($pathname), $filename); 
-            $src = $pathname . $filename;
+            $src = $pathname . '/' . $filename;
             $photo = Photo::create(['src' => $src, 'user_id' => $user_id]);
             $request->merge(['photo_id' => $photo->id]);      
             //dd($request->all());

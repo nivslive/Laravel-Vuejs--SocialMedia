@@ -38,11 +38,11 @@ class ChatRepository
 
     #private route
     public function room($chat, $subject) {
-        $room = Subject::where('slug', $subject)->with(['photo', 'user', 'messages' => function($query) {
+        $room = Subject::where('slug', $subject)->with(['photo', 'user', 'links', 'messages' => function($query) {
             $query->withCount('reactions');
             $query->orderBy('reactions_count', 'desc');
         }, 'messages.user'])->first();
-        return $room;
+        dd($room);
     }
 
 

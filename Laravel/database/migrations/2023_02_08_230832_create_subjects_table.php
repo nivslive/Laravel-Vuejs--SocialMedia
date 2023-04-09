@@ -23,7 +23,10 @@ return new class extends Migration
             #foreign photos
             $table->biginteger('photo_id')->nullable();
             //$table->foreign('photo_id')->references('id')->on('photos');
-
+            
+            
+            $table->biginteger('subject_external_link_id')->nullable();
+            //$table->foreign('subject_external_link_id')->references('id')->on('subject_external_links');
 
             #foreign chat
             $table->biginteger('chat_id')->unsigned();
