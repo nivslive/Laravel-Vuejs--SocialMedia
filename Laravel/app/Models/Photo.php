@@ -17,4 +17,13 @@ class Photo extends Model
         'description',
         'alt',
     ];
+
+    protected $appends = ['full_image_path'];
+
+    public function getFullImagePathAttribute()
+    {
+    
+        return public_path() .  '/' . $this->src;
+    
+    }
 }
