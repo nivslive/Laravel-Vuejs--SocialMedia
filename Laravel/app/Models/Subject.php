@@ -12,6 +12,7 @@ class Subject extends Model
     protected $fillable = [
         'title',
         'slug',
+        'photo_id',
         'description',
         'chat_id',
         'user_id'
@@ -27,7 +28,7 @@ class Subject extends Model
 
      public function photo()
     {
-        return $this->belongsTo(Photo::class,'photo_id');
+        return $this->hasOne(Photo::class, 'id', 'photo_id');
     }
 
 

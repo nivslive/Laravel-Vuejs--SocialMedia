@@ -3,7 +3,7 @@
 namespace Modules\Social\Subject\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{User, Reaction, Message, Subject, Dashboard};
+use App\Models\{User, Reaction, Message, Subject, Dashboard, Photo};
 use App\Http\Services\SubjectService;
 use Inertia\Inertia;
 use Illuminate\Support\Str;
@@ -73,15 +73,19 @@ class SubjectController extends Controller
          $avatar = $request->file('photo');
          // Defina um nome para o arquivo
 
-         $user_id =  Auth()->user() !== null ? Auth()->user()->id  : '';
          if(Auth()->user() !== null) {
-
+             
+            $user_id = Auth()->user()->id;
             $pathname = 'pictures/social/subjects';
             $filename = time() . '_' . 'subject_pic_user'. $user_id . '.' . $avatar->getClientOriginalExtension();
 
-            $avatar->move(public_path($pathname), $filename);       
-            $data = Subject::create($request->all())->photo(['user_id' => Auth()->user()->id, 'src' => $pathname . $filename]);
-          return response()->json(['message' => 'sucesso', 'data' => $data, 'status' => 200]); 
+            $avatar->move(public_path($pathname), $filename); 
+            $src = $pathname . $filename;
+            $photo = Photo::create(['src' => $src, 'user_id' => $user_id]);
+            $request->merge(['photo_id' => $photo->id]);      
+            //dd($request->all());
+            $data = Subject::create($request->all());
+            return response()->json(['message' => 'sucesso', 'data' => $data, 'status' => 200]); 
          }
          return response()->json(['message' => 'erro', 'status' => 400]); 
     }

@@ -11,6 +11,7 @@ class Photo extends Model
 
     protected $fillable = [
         'title',
+        'user_id',
         'src',
         'mime_type',
         'description',

@@ -11,6 +11,7 @@ defineProps({
 <template>
   <Menu />
   <div class="w-6/6 bg-custom-internal text-white">
+    {{ room }}
     <div id="room" class="w-5/6 m-auto h-full bg-black bg-custom-internal">
         <Timeline :data="room" />
     </div>
