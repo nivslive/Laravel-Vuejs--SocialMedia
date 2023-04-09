@@ -22,6 +22,13 @@
         
     });
 
+    const form = useForm({
+    photo: null,
+    title: state.subject,
+    user_id: props.user.id,
+    chat_id: props.chat,
+  });
+
     const props = defineProps({
         subject: String,
         user: Object,
@@ -29,19 +36,19 @@
         visible: Boolean,
     });
 
-        watch(() => props.visible, (newValue, oldValue) => {
+    watch(() => state.subject, (newValue, oldValue) => {
+        if (newValue !== oldValue) {
+            console.log(newValue)
+            form.title = newValue // aqui você pode adicionar ação que deseja executar quando a prop "visible" mudar de valor
+        }
+    });
+
+    watch(() => props.visible, (newValue, oldValue) => {
         if (newValue !== oldValue) {
             console.log('A prop "visible" foi alterada!');
             // aqui você pode adicionar ação que deseja executar quando a prop "visible" mudar de valor
         }
     });
-
-    const form = useForm({
-  photo: null,
-  title: state.subject,
-  user_id: props.user.id,
-  chat_id: props.chat,
-});
 
     console.log(props.visible, 'visible');
     const emit = defineEmits(['messageSended']);

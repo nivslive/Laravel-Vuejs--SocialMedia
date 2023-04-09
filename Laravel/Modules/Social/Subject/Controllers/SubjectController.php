@@ -72,19 +72,17 @@ class SubjectController extends Controller
          // Obtenha o arquivo enviado via post
          $avatar = $request->file('photo');
          // Defina um nome para o arquivo
+
          $user_id =  Auth()->user() !== null ? Auth()->user()->id  : '';
          if(Auth()->user() !== null) {
 
             $pathname = 'pictures/social/subjects';
             $filename = time() . '_' . 'subject_pic_user'. $user_id . '.' . $avatar->getClientOriginalExtension();
 
-            $avatar->move(public_path($pathname), $filename);         
-
-           Subject::create($request->all())->photo(['user_id' => Auth()->user()->id, 'src' => $pathname . $filename]);
+            $avatar->move(public_path($pathname), $filename);       
+            $data = Subject::create($request->all())->photo(['user_id' => Auth()->user()->id, 'src' => $pathname . $filename]);
+          return response()->json(['message' => 'sucesso', 'data' => $data, 'status' => 200]); 
          }
-
- 
-
-        return redirect()->back();
+         return response()->json(['message' => 'erro', 'status' => 400]); 
     }
 }
