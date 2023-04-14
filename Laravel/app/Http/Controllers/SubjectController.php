@@ -9,16 +9,16 @@ class SubjectController extends Controller
 
     public function post() {
         $title = "oi amigos da rede globo";
-        $chat =  new Subject(['user_id' => 2, 'chat_id' => 2, 'title' => $title, 'slug' => Str::of($title)->slug('-'), 'description' => 'fodase']);
-        $chat->save();
+        $theme =  new Subject(['user_id' => 2, 'theme_id' => 2, 'title' => $title, 'slug' => Str::of($title)->slug('-'), 'description' => 'fodase']);
+        $theme->save();
     } 
 
     public function show($id) {
         $subject = Subject::find($id)->first();
-        $chat = Subject::find($id)->chat()->first();
+        $theme = Subject::find($id)->theme()->first();
         $messages = Subject::find($id)->messages()->get();
         $data = [
-            'chat' => $chat,
+            'theme' => $theme,
             'subject' => $subject,
             'messages' => $messages
         ];
@@ -29,7 +29,7 @@ class SubjectController extends Controller
             return $subject;
         },$subjects);
         $data = [
-            'chat' => Chat::find($id)->first(),
+            'theme' => Theme::find($id)->first(),
             'subjects' => $subjects,
         ];
         return $data;*/

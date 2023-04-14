@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('chats', function (Blueprint $table) {
+        Schema::create('themes', function (Blueprint $table) {
             $table->id();
             $table->string('slug')->nullable();
             $table->string('background')->nullable();
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chats');
+        Schema::dropIfExists('themes');
     }
 };

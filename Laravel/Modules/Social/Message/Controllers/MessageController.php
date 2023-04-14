@@ -28,7 +28,7 @@ class MessageController extends Controller
             'name' => 'required'
         ]);*/
         dd($request->all());
-        $chat = Message::create($request->all());
+        $theme = Message::create($request->all());
         return redirect()->back();
     }
     /**

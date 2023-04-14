@@ -1,13 +1,13 @@
  SELECT 
-                chats.*,
+                themes.*,
                 subjects.*,
                 messages.*,
                 COALESCE(messages_counts.messages_count, 0) AS messages_count,
                 COALESCE(reactions_counts.reactions_count, 0) AS reactions_count,
                 COALESCE(messages_counts.messages_count, 0) + COALESCE(reactions_counts.reactions_count, 0) AS messages_and_reactions_count
             FROM 
-                chats
-                LEFT JOIN subjects ON chats.id = subjects.chat_id
+                themes
+                LEFT JOIN subjects ON themes.id = subjects.theme_id
                 LEFT JOIN messages ON subjects.id = messages.subject_id
                 LEFT JOIN message_user ON users.id = messages.user_id
                 LEFT JOIN subject_user ON users.id = subject.user_id
@@ -30,6 +30,6 @@
                         message_id
                 ) AS reactions_counts ON messages.id = reactions_counts.message_id
             ORDER BY 
-                chats.id, 
+                themes.id, 
                 subjects.id, 
                 messages.id

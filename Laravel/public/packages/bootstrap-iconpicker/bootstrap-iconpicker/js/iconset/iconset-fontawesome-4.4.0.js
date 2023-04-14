@@ -668,7 +668,7 @@
             'volume-off',
             'volume-up',
             'warning',
-            'wechat',
+            'wetheme',
             'weibo',
             'weixin',
             'whatsapp',

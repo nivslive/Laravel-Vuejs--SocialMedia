@@ -27,13 +27,13 @@
     photo: null,
     title: state.subject,
     user_id: props.user.id,
-    chat_id: props.chat,
+    theme_id: props.theme,
   });
 
     const props = defineProps({
         subject: String,
         user: Object,
-        chat: Number,
+        theme: Number,
         visible: Boolean,
     });
     watch(() => form.photo, (newValue, oldValue) => {

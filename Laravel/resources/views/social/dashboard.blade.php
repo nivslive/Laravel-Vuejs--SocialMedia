@@ -52,7 +52,7 @@
                     <div class="text-white text-center py-2" style="width: 200px; font-size: 12px"><b>AGORA</b></div>
                     <div class="owl-carousel owl-carousel-1 tranding-carousel position-relative d-inline-flex align-items-center ml-3" style="width: calc(100% - 140px); padding-left: 100px;">
                     @foreach($data['top3'] as $data_trends)
-                        <div class="text-truncate"><a class="text-secondary" href="/room/{{$data_trends['chat']['slug']}}/{{$data_trends['slug']}}"><b> {{strtoupper($data_trends['chat']['title'])}}  </b>{{ $data_trends['title'] }}</a></div>
+                        <div class="text-truncate"><a class="text-secondary" href="/room/{{$data_trends['theme']['slug']}}/{{$data_trends['slug']}}"><b> {{strtoupper($data_trends['theme']['title'])}}  </b>{{ $data_trends['title'] }}</a></div>
                     @endforeach
                        
                     </div>
@@ -143,7 +143,7 @@
                             <!--<img class="img-fluid h-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">-->
                             <div class="overlay b-radius">
                                 <div class="mb-1">
-                                    <a class="text-white" href="/room/{{$data_toplefts['chat']['slug']}}">{{$data_toplefts['chat']['title']}}</a>
+                                    <a class="text-white" href="/room/{{$data_toplefts['theme']['slug']}}">{{$data_toplefts['theme']['title']}}</a>
                                     <span class="px-2 text-white">/</span>
                                     <a class="text-white" href="">{{$data_toplefts['created_at']}}</a> 
                                     <span class="px-2 text-white">/</span>
@@ -156,7 +156,7 @@
 
 
                                 </div> 
-                                <a class="h2 m-0 text-white font-weight-bold"  href="/room/{{$data_toplefts['chat']['slug']}}/{{$data_toplefts['slug']}}">{{$data_toplefts['title']}}</a>
+                                <a class="h2 m-0 text-white font-weight-bold"  href="/room/{{$data_toplefts['theme']['slug']}}/{{$data_toplefts['slug']}}">{{$data_toplefts['title']}}</a>
                                 <a class="mt-3 h3 text-white" href="">{{$data_toplefts['description']}}</a>
                             </div>
                         </div>
@@ -197,7 +197,7 @@
                     <img class="img-fluid w-100 h-100" src="img/news-300x300-1.jpg" style="object-fit: cover;">
                     <div class="overlay">
                         <div class="mb-1" style="font-size: 13px;">
-                            <a class="text-white" href="">{{$data_random['chat']['title']}}</a>
+                            <a class="text-white" href="">{{$data_random['theme']['title']}}</a>
                             <span class="px-1 text-white">/</span>
                             <a class="text-white created_at" href="">{{$data_random['created_at']}}</a>
                         </div>

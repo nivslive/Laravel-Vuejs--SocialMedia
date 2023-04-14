@@ -13,7 +13,7 @@
       <a class="block text-sm font-medium hover:text-cyan-500" href="#0">@{{  data.user.slug  }}</a>
 
   </div>
-  <Draggable />
+
     <div class="flex flex-col items-unset">
         <span class="text-lg whitespace-wrap break-words ml-2 flex justify-center">  {{  data.title }}  </span>
         <span class="text-sm whitespace-wrap ml-2 break-words flex flex-col items-center justify-center">  {{  data.description }} 
@@ -37,10 +37,10 @@
 <script setup>
 import moment from 'moment'
 import Favorite from './Subjects/Favorite.vue';
-import Draggable from './Subjects/Draggable.vue';
+
 //let subject = {};
 /*
-fetch("http://127.0.0.1:8000/chat/2", {
+fetch("http://127.0.0.1:8000/theme/2", {
     })
       .then((message) => message.json())
       .then((json) => {

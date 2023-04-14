@@ -47,7 +47,7 @@
     });
     defineProps({
         variations: Object,
-        chat: Object,
+        theme: Object,
         id: Object,
         canLogin: Boolean,
         canRegister: Boolean,
@@ -185,7 +185,7 @@
 
 <template>
     <Menu @showSender="showSender()" />
-    <Sender class="sender-container" :user="$page.props.auth.user ? $page.props.auth.user : {}" :chat="chat.id"
+    <Sender class="sender-container" :user="$page.props.auth.user ? $page.props.auth.user : {}" :theme="theme.id"
         :visible="showSenderRef.value" />
     <div>
         <section>
@@ -207,16 +207,16 @@
 
             <div class="bests w-4/5 mx-auto">
                 <h2 class="text-2xl font-bold leading-7 text-stone-50 sm:truncate sm:text-7xl sm:tracking-tight">
-                    {{ chat.title }}
+                    {{ theme.title }}
                 </h2>
                 <h2 class="text-2xl font-bold leading-7 text-stone-50 sm:truncate sm:text-2xl sm:tracking-tight">
-                    {{ chat.description }}
+                    {{ theme.description }}
                 </h2>
             </div>
 
             <div class="bests">
                 <a class="m-10" v-if="id[0].subjects[0]"
-                    :href="route('room', { chat: id[0].slug, subject: id[0].subjects[0].slug })">
+                    :href="route('room', { theme: id[0].slug, subject: id[0].subjects[0].slug })">
                     <div class="max-w-7xl mx-auto p-2 m-3 lg:p-8">
                         <div class="flex">
                             <div
@@ -292,7 +292,7 @@
 
             <div class="bg-white flex">
                 <a v-if="id[0].subjects[1]"
-                    :href="route('room', { chat: id[0].slug, subject: id[0].subjects[1].slug })">
+                    :href="route('room', { theme: id[0].slug, subject: id[0].subjects[1].slug })">
                     <div class="max-w-7xl mx-auto p-6 lg:p-8">
                         <div class="flex">
                             <div
@@ -322,7 +322,7 @@
                 </a>
 
                 <a v-if="id[0].subjects[2]"
-                    :href="route('room', { chat: id[0].slug, subject: id[0].subjects[2].slug })">
+                    :href="route('room', { theme: id[0].slug, subject: id[0].subjects[2].slug })">
                     <div class="max-w-7xl mx-auto p-6 lg:p-8">
                         <div class="flex">
                             <div
@@ -352,7 +352,7 @@
                 </a>
 
                 <a v-if="id[0].subjects[3]"
-                    :href="route('room', { chat: id[0].slug, subject: id[0].subjects[3].slug })">
+                    :href="route('room', { theme: id[0].slug, subject: id[0].subjects[3].slug })">
                     <div class="max-w-7xl mx-auto p-6 lg:p-8">
                         <div class="flex">
                             <div
@@ -385,7 +385,7 @@
                 class="relative overflow-x-auto sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
 
                 <div v-for="subject in id[0].subjects" :key="subject.id">
-                    <a :href="route('room', { chat: id[0].slug, subject: subject.slug })">
+                    <a :href="route('room', { theme: id[0].slug, subject: subject.slug })">
                         <div class="max-w-7xl mx-auto p-6 lg:p-8">
                             <div class="flex">
                                 <div

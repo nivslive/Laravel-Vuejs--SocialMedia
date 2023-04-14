@@ -7754,13 +7754,13 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     category: "symbols"
   },
   speech_balloon: {
-    keywords: [ "bubble", "words", "message", "talk", "chatting" ],
+    keywords: [ "bubble", "words", "message", "talk", "themeting" ],
     char: '<img data-emoticon="true" style="width:1em;height:1em;margin:0 .05em 0 .1em;vertical-align:-.1em" draggable="false" alt="\ud83d\udcac" src="1f4ac.png"/>',
     fitzpatrick_scale: false,
     category: "symbols"
   },
   left_speech_bubble: {
-    keywords: [ "words", "message", "talk", "chatting" ],
+    keywords: [ "words", "message", "talk", "themeting" ],
     char: '<img data-emoticon="true" style="width:1em;height:1em;margin:0 .05em 0 .1em;vertical-align:-.1em" draggable="false" alt="\ud83d\udde8" src="1f5e8.png"/>',
     fitzpatrick_scale: false,
     category: "symbols"

@@ -75,7 +75,7 @@ watch(state.attD, (newVal, oldVal) => {
 });
 
 function att() {
-    fetch( route  + "/chat/2")
+    fetch( route  + "/theme/2")
     .then((message) => message.json())
     .then((json) => {
         state.more = true;
@@ -152,7 +152,7 @@ function showSender(id) {
 
   <!-- Card body-->
   <h3 class="text-xs font-semibold uppercase text-gray-400 mb-1">MENSAGENS</h3>
-  <!-- Chat list-->
+  <!-- Theme list-->
   <div class="divide-y divide-gray-200"></div>
   <!-- User-->
   <ul class="">

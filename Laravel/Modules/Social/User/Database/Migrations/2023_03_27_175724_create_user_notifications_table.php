@@ -32,8 +32,8 @@ return new class extends Migration
             
             
             #foreign user
-            $table->biginteger('chat_id')->unsigned()->nullable();
-            $table->foreign('chat_id')->references('id')->on('chats');
+            $table->biginteger('theme_id')->unsigned()->nullable();
+            $table->foreign('theme_id')->references('id')->on('themes');
                         
 
             #foreign user

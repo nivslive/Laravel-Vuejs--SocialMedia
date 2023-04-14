@@ -3179,7 +3179,7 @@ readers do not read off random characters that represent icons */
 .la-rocket:before {
   content: "\f135"; }
 
-.la-rocketchat:before {
+.la-rockettheme:before {
   content: "\f3e8"; }
 
 .la-rockrms:before {
@@ -3437,13 +3437,13 @@ readers do not read off random characters that represent icons */
 .la-sms:before {
   content: "\f7cd"; }
 
-.la-snapchat:before {
+.la-snaptheme:before {
   content: "\f2ab"; }
 
-.la-snapchat-ghost:before {
+.la-snaptheme-ghost:before {
   content: "\f2ac"; }
 
-.la-snapchat-square:before {
+.la-snaptheme-square:before {
   content: "\f2ad"; }
 
 .la-snowboarding:before {
@@ -5701,11 +5701,11 @@ readers do not read off random characters that represent icons */
   font-family: 'Line Awesome Brands';
   font-weight: 400; }
 
-.la.la-wechat {
+.la.la-wetheme {
   font-family: 'Line Awesome Brands';
   font-weight: 400; }
 
-.la.la-wechat:before {
+.la.la-wetheme:before {
   content: "\f1d7"; }
 
 .la.la-send:before {
@@ -6344,15 +6344,15 @@ readers do not read off random characters that represent icons */
   font-family: 'Line Awesome Brands';
   font-weight: 400; }
 
-.la.la-snapchat {
+.la.la-snaptheme {
   font-family: 'Line Awesome Brands';
   font-weight: 400; }
 
-.la.la-snapchat-ghost {
+.la.la-snaptheme-ghost {
   font-family: 'Line Awesome Brands';
   font-weight: 400; }
 
-.la.la-snapchat-square {
+.la.la-snaptheme-square {
   font-family: 'Line Awesome Brands';
   font-weight: 400; }
 

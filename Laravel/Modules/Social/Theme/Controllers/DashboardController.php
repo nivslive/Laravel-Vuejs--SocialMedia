@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Modules\Social\Chat\Controllers;
+namespace Modules\Social\Theme\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{User, Reaction, Message, Chat, Subject, Dashboard};
-use App\Http\Services\ChatService;
+use App\Models\{User, Reaction, Message, Theme, Subject, Dashboard};
+use App\Http\Services\ThemeService;
 use Inertia\Inertia;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 class DashboardController extends Controller
 {
-    private ChatService $service;
+    private ThemeService $service;
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +24,7 @@ class DashboardController extends Controller
     private string $modelTopOf;
 
     public function __construct() {
-        $this->service = new ChatService;
+        $this->service = new ThemeService;
     }
 
     public function json($data, $status) {
@@ -61,9 +61,9 @@ class DashboardController extends Controller
         return $result->format("Y-m-d H:i:s");
     }
 
-    public function topOfChat() {
+    public function topOfTheme() {
         $date = $this->date($this->getModelTopOf());
-        $result = Chat::with(['subjects' => function($query) use ($date) {
+        $result = Theme::with(['subjects' => function($query) use ($date) {
             $query->withCount('messages');
             $query->where('created_at', '>=', $date);
             $query->limit(10);
@@ -74,20 +74,20 @@ class DashboardController extends Controller
             }, 'messages.user']);
         }, 'subjects.messages', 'subjects.user'])->withCount('subjects')->get();
         
-        $count = $result->reduce(function($carry, $chat) {
-            $carry['subjects_count'] += $chat->subjects_count;
-            $carry['messages_count'] += $chat->subjects->sum('messages_count');
-            $carry['reactions_count'] += $chat->subjects->flatMap(function($subject) {
+        $count = $result->reduce(function($carry, $theme) {
+            $carry['subjects_count'] += $theme->subjects_count;
+            $carry['messages_count'] += $theme->subjects->sum('messages_count');
+            $carry['reactions_count'] += $theme->subjects->flatMap(function($subject) {
                 return $subject->messages->pluck('reactions_count');
             })->sum();
         
-            // Adicione as informações de contagem em cada chat e assunto
-            $chat['messages_count'] = $chat->subjects->sum('messages_count');
-            $chat['reactions_count'] = $chat->subjects->flatMap(function($subject) {
+            // Adicione as informações de contagem em cada theme e assunto
+            $theme['messages_count'] = $theme->subjects->sum('messages_count');
+            $theme['reactions_count'] = $theme->subjects->flatMap(function($subject) {
                 return $subject->messages->pluck('reactions_count');
             })->sum();
         
-            $chat['subjects']->map(function($subject) {
+            $theme['subjects']->map(function($subject) {
                 $subject['messages_count'] = $subject->messages_count;
                 $subject['messages'] = $subject['messages']->map(function($message) {
                     $message['liked'] = isset($message['user']) && Auth()->user() !== null && Auth()->user()->id === $message['user']['id'] ? 1 : 0;
@@ -97,9 +97,9 @@ class DashboardController extends Controller
                 $subject['reactions_and_messages_count'] = $subject['messages_count'] + $subject['reactions_count'];
                 return $subject;
             });
-            $chat['subjects']->sortByDesc('reactions_and_messages_count');
-            $carry['top3'][] = $chat->toArray()->splice(0, 2)->flatten();
-            $carry['toplefts'][] = $chat->toArray()->splice(2, 18)->flatten();
+            $theme['subjects']->sortByDesc('reactions_and_messages_count');
+            $carry['top3'][] = $theme->toArray()->splice(0, 2)->flatten();
+            $carry['toplefts'][] = $theme->toArray()->splice(2, 18)->flatten();
             return $carry;
         }, ['subjects_count' => 0, 'messages_count' => 0, 'reactions_count' => 0, 'data' => []]);
 
@@ -114,7 +114,7 @@ class DashboardController extends Controller
             $query->withCount('reactions');
             $query->orderBy('reactions_count', 'desc');
             $query->limit(10); 
-        }, 'user', 'chat'])
+        }, 'user', 'theme'])
         ->where('created_at', '>=', $date)
         ->get();
         
@@ -171,8 +171,8 @@ class DashboardController extends Controller
             $data = $arr;
         }
 
-        /*if($model === 'chat') {
-            $data = $this->topOfChat();
+        /*if($model === 'theme') {
+            $data = $this->topOfTheme();
         }
 
         if($model === 'subject') {
@@ -184,21 +184,21 @@ class DashboardController extends Controller
 
 
     public function categories() {
-        return Chat::select(['slug', 'title'])->limit(5)->get()->toArray();
+        return Theme::select(['slug', 'title'])->limit(5)->get()->toArray();
     }
 
-    public function room($chat, $subject) {
+    public function room($theme, $subject) {
         return Inertia::render('Room',
             $this->isLogged([
-            'room' => $this->service->room($chat, $subject)
+            'room' => $this->service->room($theme, $subject)
         ]));
     }
 
     public function rooms($slug) {
         return Inertia::render('Welcome',
             $this->isLogged([
-                'variations' => $this->service->onlyChatVariations(),
-                'chat' => Chat::where('slug', '=', $slug)->first(),
+                'variations' => $this->service->onlyThemeVariations(),
+                'theme' => Theme::where('slug', '=', $slug)->first(),
                 'id' => $this->service->rooms($slug),
         ]));
     }

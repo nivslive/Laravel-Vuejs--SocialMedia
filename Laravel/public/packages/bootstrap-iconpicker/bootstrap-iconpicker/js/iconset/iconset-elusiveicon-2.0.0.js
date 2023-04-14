@@ -298,7 +298,7 @@
             'viadeo',
             'video',
             'video-alt',
-            'video-chat',
+            'video-theme',
             'view-mode',
             'vimeo',
             'vkontakte',

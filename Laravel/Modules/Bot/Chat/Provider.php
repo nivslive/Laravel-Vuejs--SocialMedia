@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Social\Chat;
+namespace Modules\Social\Theme;
 
 use Illuminate\Support\ServiceProvider;
 

@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-class ChatSeeder extends Seeder
+class ThemeSeeder extends Seeder
 {
     /**
      * Run the database seeds.

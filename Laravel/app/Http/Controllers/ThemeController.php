@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{User, Reaction, Message, Chat, Subject, Dashboard};
+use App\Models\{User, Reaction, Message, Theme, Subject, Dashboard};
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redis;
-use App\Http\Services\ChatService;
+use App\Http\Services\ThemeService;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
-class ChatController extends Controller
+class ThemeController extends Controller
 {
-    private ChatService $service;
+    private ThemeService $service;
 
     public function __construct() {
-        $this->service = new ChatService;
+        $this->service = new ThemeService;
     }
 
     public function user($id) {
@@ -30,18 +30,18 @@ class ChatController extends Controller
         return Subject::with('messages')->where('id', $id)->paginate();
     }
 
-    public function room($chat, $subject) {
+    public function room($theme, $subject) {
         return Inertia::render('Room',
             $this->isLogged([
-            'room' => $this->service->room($chat, $subject)
+            'room' => $this->service->room($theme, $subject)
         ]));
     }
 
     public function rooms($slug) {
         return Inertia::render('Welcome',
             $this->isLogged([
-                'variations' => $this->service->onlyChatVariations(),
-                'chat' => Chat::where('slug', '=', $slug)->first(),
+                'variations' => $this->service->onlyThemeVariations(),
+                'theme' => Theme::where('slug', '=', $slug)->first(),
                 'id' => $this->service->rooms($slug),
         ]));
     }

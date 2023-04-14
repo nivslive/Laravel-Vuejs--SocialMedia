@@ -28,9 +28,9 @@ return new class extends Migration
             $table->biginteger('subject_external_link_id')->nullable();
             //$table->foreign('subject_external_link_id')->references('id')->on('subject_external_links');
 
-            #foreign chat
-            $table->biginteger('chat_id')->unsigned();
-            $table->foreign('chat_id')->references('id')->on('chats');
+            #foreign theme
+            $table->biginteger('theme_id')->unsigned();
+            $table->foreign('theme_id')->references('id')->on('themes');
 
             #foreign user
             $table->biginteger('user_id')->unsigned();

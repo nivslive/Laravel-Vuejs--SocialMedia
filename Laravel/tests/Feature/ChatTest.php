@@ -4,9 +4,9 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use App\Models\{Chat, Message, Reaction, Subject, User};
+use App\Models\{Theme, Message, Reaction, Subject, User};
 
-class ChatTest extends TestCase
+class ThemeTest extends TestCase
 {
 
     use RefreshDatabase;
@@ -34,24 +34,24 @@ class ChatTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_should_be_save_chat_with_success()
+    public function test_should_be_save_theme_with_success()
     {
-        $chat = Chat::factory()->create();
-        $this->assertTrue($chat->exists);
+        $theme = Theme::factory()->create();
+        $this->assertTrue($theme->exists);
     }
 
-    public function test_should_be_save_chat_and_return_data_with_success()
+    public function test_should_be_save_theme_and_return_data_with_success()
     {
-        $chat = Chat::factory()->create(['title' => 'Testando!']);
-        $this->assertTrue($chat->title === 'Testando!');
+        $theme = Theme::factory()->create(['title' => 'Testando!']);
+        $this->assertTrue($theme->title === 'Testando!');
     }
 
     public function test_should_be_save_subject_with_success()
     {
         $user = User::factory()->create();
-        $chat = Chat::factory()->create();
+        $theme = Theme::factory()->create();
         $subject = Subject::factory()->create([
-            'chat_id' => $chat->id, 'user_id' => $user->id
+            'theme_id' => $theme->id, 'user_id' => $user->id
         ]);  
         $this->assertTrue($subject->exists);
     }
@@ -60,9 +60,9 @@ class ChatTest extends TestCase
     public function test_should_be_save_subject_and_return_data_with_success()
     {
         $user = User::factory()->create();
-        $chat = Chat::factory()->create();
+        $theme = Theme::factory()->create();
         $subject = Subject::factory()->create([
-            'chat_id' => $chat->id, 'user_id' => $user->id, 'title' => 'Test!', 'description' => 'Test!'
+            'theme_id' => $theme->id, 'user_id' => $user->id, 'title' => 'Test!', 'description' => 'Test!'
         ]);     
         $this->assertTrue($subject->title === 'Test!');
         $this->assertTrue($subject->description === 'Test!');
@@ -74,8 +74,8 @@ class ChatTest extends TestCase
     public function test_should_be_save_message_with_success()
     {
         $user = User::factory()->create();
-        $chat = Chat::factory()->create();
-        $subject = Subject::factory()->create(['chat_id' => $chat->id, 'user_id' => $user->id]);
+        $theme = Theme::factory()->create();
+        $subject = Subject::factory()->create(['theme_id' => $theme->id, 'user_id' => $user->id]);
         $message = Message::factory()->create(['subject_id' => $subject->id, 'user_id' => $user->id, ]);
         $this->assertTrue($message->exists);
     }
@@ -84,8 +84,8 @@ class ChatTest extends TestCase
     public function test_should_be_save_message_and_return_data_with_success()
     {
         $user = User::factory()->create();
-        $chat = Chat::factory()->create();
-        $subject = Subject::factory()->create(['chat_id' => $chat->id, 'user_id' => $user->id]);
+        $theme = Theme::factory()->create();
+        $subject = Subject::factory()->create(['theme_id' => $theme->id, 'user_id' => $user->id]);
         $message = Message::factory()->create([
             'subject_id' => $subject->id, 'user_id' => $user->id, 
             'message' => 'Testando o uso de salvamento de mensagens!'
@@ -96,9 +96,9 @@ class ChatTest extends TestCase
 
     public function test_should_be_save_reactions_with_success() {
         $user = User::factory()->create();
-        $chat = Chat::factory()->create();
+        $theme = Theme::factory()->create();
         $subject = Subject::factory()->create([
-            'chat_id' => $chat->id, 'user_id' => $user->id
+            'theme_id' => $theme->id, 'user_id' => $user->id
         ]);
         $message = Message::factory()->create(['subject_id' => $subject->id, 'user_id' => $user->id, ]);
         $reaction = Reaction::factory()->create(['type' => 'like', 'subject_id' => $subject->id, 'message_id' => $message->id, 'user_id' => $user->id]);
@@ -109,9 +109,9 @@ class ChatTest extends TestCase
 
     public function test_should_be_save_reactions_and_return_data_with_success() {
         $user = User::factory()->create();
-        $chat = Chat::factory()->create();
+        $theme = Theme::factory()->create();
         $subject = Subject::factory()->create([
-            'chat_id' => $chat->id, 'user_id' => $user->id
+            'theme_id' => $theme->id, 'user_id' => $user->id
         ]);
         $message = Message::factory()->create(['subject_id' => $subject->id, 'user_id' => $user->id, ]);
         $reaction = Reaction::factory()->create(['type' => 'like', 'subject_id' => $subject->id, 'message_id' => $message->id, 'user_id' => $user->id]);
@@ -122,9 +122,9 @@ class ChatTest extends TestCase
     /*
     public function test_should_be_save_10_messages_and_reactions_and_return_data_with_success() {
         $user = User::factory()->create();
-        $chat = Chat::factory()->create();
+        $theme = Theme::factory()->create();
         $subject = Subject::factory()->create([
-            'chat_id' => $chat->id, 'user_id' => $user->id
+            'theme_id' => $theme->id, 'user_id' => $user->id
         ]);
         $message = Message::factory()->count(10)->make();
         var_dump($message);

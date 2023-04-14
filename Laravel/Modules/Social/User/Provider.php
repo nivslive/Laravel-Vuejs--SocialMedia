@@ -24,7 +24,7 @@ class Provider extends ServiceProvider
     public function boot()
     {
         $this->loadMigrationsFrom(__DIR__.'/Database/Migrations');
-        $this->loadMigrationsFrom(__DIR__.'/Database/Migrations/UserChat');
+        $this->loadMigrationsFrom(__DIR__.'/Database/Migrations/UserTheme');
         #$this->loadFactories(__DIR__.'/database/factories');
         $this->loadRoutesFrom(__DIR__.'/routes.php');
         #$this->loadViewsFrom(__DIR__.'/views', 'service');

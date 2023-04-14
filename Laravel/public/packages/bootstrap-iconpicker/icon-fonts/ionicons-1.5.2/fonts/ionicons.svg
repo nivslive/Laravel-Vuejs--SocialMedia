@@ -63,7 +63,7 @@ s46 -64 40 -76c-8 -15 -25 -23 -56 -39c-11 -6 -32 -18 -28 -28c5 -13 28 -55 81 -10
 M304 358c57 -14 103 -61 117 -118h-44c-12 34 -39 61 -73 73v45z" />
     <glyph glyph-name="ion-android-camera" unicode="&#xf2d3;" horiz-adv-x="512" 
 d="M96 368l-80 -32v48h80v-16zM336 352h176v-352h-512v304l128 48h48v48h32h96h32v-48zM256 48c71 0 128 57 128 128s-57 128 -128 128s-128 -57 -128 -128s57 -128 128 -128zM156 176c0 67 33 100 100 100s100 -33 100 -100s-33 -100 -100 -100s-100 33 -100 100z" />
-    <glyph glyph-name="ion-android-chat" unicode="&#xf2d4;" horiz-adv-x="480" 
+    <glyph glyph-name="ion-android-theme" unicode="&#xf2d4;" horiz-adv-x="480" 
 d="M224 448c141 0 256 -115 256 -256s-115 -256 -256 -256v64c-124 0 -224 100 -224 224s100 224 224 224v0zM208 246v48c0 6 -4 10 -10 10h-92c-6 0 -10 -4 -10 -10v-108c0 -6 4 -10 10 -10h70v-16c0 -9 -7 -16 -16 -16v-32c26 0 48 22 48 48v26v60zM384 246v48
 c0 6 -4 10 -10 10h-92c-6 0 -10 -4 -10 -10v-108c0 -6 4 -10 10 -10h70v-16c0 -9 -7 -16 -16 -16v-32c26 0 48 22 48 48v26v60z" />
     <glyph glyph-name="ion-android-checkmark" unicode="&#xf2d5;" horiz-adv-x="512" 
@@ -326,20 +326,20 @@ c0 5 -2 9 -4 13s-5 8 -9 11s-9 5 -14 6c-2 1 -5 2 -7 2v9h-18v-9c-2 0 -4 -1 -6 -2c-
 c3 -5 6 -8 10 -11s9 -6 15 -7c3 -1 5 -2 8 -2v-9h18v9c3 0 6 1 9 2c5 1 10 2 14 5s7 7 10 11zM480 176v80c-35 0 -64 29 -64 64h-97c20 -23 33 -58 33 -96s-13 -73 -33 -96h113c0 27 22 48 48 48zM64 224c0 21 11 32 32 32s32 -11 32 -32s-11 -32 -32 -32s-32 11 -32 32z
 M384 224c0 21 11 32 32 32s32 -11 32 -32s-11 -32 -32 -32s-32 11 -32 32zM273 213c2 -1 4 -2 6 -4s3 -5 3 -9c0 -2 0 -4 -1 -6s-2 -4 -4 -5s-5 -3 -8 -4c-1 0 -2 -1 -4 -1v31c3 -1 6 -1 8 -2zM236 257c1 2 3 3 5 4s4 2 6 2v-26c-4 1 -7 3 -9 5s-4 4 -4 8c0 3 1 5 2 7zM0 64
 v16h512v-16h-512zM0 32v16h512v-16h-512z" />
-    <glyph glyph-name="ion-chatbox-working" unicode="&#xf11a;" horiz-adv-x="416" 
+    <glyph glyph-name="ion-themebox-working" unicode="&#xf11a;" horiz-adv-x="416" 
 d="M76 48c-42 0 -76 31 -76 71v209c0 40 34 72 76 72h264c42 0 76 -32 76 -72v-209c0 -40 -34 -71 -76 -71h-4v-64s-79 54 -86 59s-7 5 -21 5h-153zM304 256c-18 0 -32 -14 -32 -32s14 -32 32 -32s32 14 32 32s-14 32 -32 32zM208 256c-18 0 -32 -14 -32 -32s14 -32 32 -32
 s32 14 32 32s-14 32 -32 32zM112 256c-18 0 -32 -14 -32 -32s14 -32 32 -32s32 14 32 32s-14 32 -32 32z" />
-    <glyph glyph-name="ion-chatbox" unicode="&#xf11b;" horiz-adv-x="416" 
+    <glyph glyph-name="ion-themebox" unicode="&#xf11b;" horiz-adv-x="416" 
 d="M76 48c-42 0 -76 31 -76 71v209c0 40 34 72 76 72h264c42 0 76 -32 76 -72v-209c0 -40 -34 -71 -76 -71h-4v-64s-79 54 -86 59s-7 5 -21 5h-153z" />
-    <glyph glyph-name="ion-chatboxes" unicode="&#xf11c;" horiz-adv-x="416" 
+    <glyph glyph-name="ion-themeboxes" unicode="&#xf11c;" horiz-adv-x="416" 
 d="M246 82l26 -18c-4 -21 -29 -32 -52 -32h-90c-8 0 -11 -2 -13 -3l-53 -45v48h-16c-26 0 -48 16 -48 41v129c0 25 20 45 46 45h2v-101c0 -33 29 -59 64 -59h117c10 0 14 -3 17 -5zM353 400c35 0 63 -27 63 -60v-168c0 -33 -28 -60 -63 -60h-17v-64l-75 60c-2 2 -7 4 -17 4
 h-101c-35 0 -63 27 -63 60v98v70c0 33 21 60 56 60h217z" />
-    <glyph glyph-name="ion-chatbubble-working" unicode="&#xf11d;" horiz-adv-x="416" 
+    <glyph glyph-name="ion-themebubble-working" unicode="&#xf11d;" horiz-adv-x="416" 
 d="M208 -1c-115 0 -208 89 -208 200s93 201 208 201s208 -90 208 -201c0 -40 -12 -77 -33 -108c-1 -1 -2 -3 -3 -4v0c-2 -4 -4 -10 -4 -15l22 -88l-84 31c-4 2 -8 2 -12 2s-7 -1 -11 -2v0c-1 0 -1 -1 -2 -1c-25 -10 -52 -15 -81 -15zM304 224c-18 0 -32 -14 -32 -32
 s14 -32 32 -32s32 14 32 32s-14 32 -32 32zM208 224c-18 0 -32 -14 -32 -32s14 -32 32 -32s32 14 32 32s-14 32 -32 32zM112 224c-18 0 -32 -14 -32 -32s14 -32 32 -32s32 14 32 32s-14 32 -32 32z" />
-    <glyph glyph-name="ion-chatbubble" unicode="&#xf11e;" horiz-adv-x="416" 
+    <glyph glyph-name="ion-themebubble" unicode="&#xf11e;" horiz-adv-x="416" 
 d="M208 -1c-115 0 -208 89 -208 200s93 201 208 201s208 -90 208 -201c0 -40 -12 -77 -33 -108c-1 -1 -2 -3 -3 -4v0c-2 -4 -4 -10 -4 -15l22 -88l-84 31c-4 2 -8 2 -12 2s-7 -1 -11 -2v0c-1 0 -1 -1 -2 -1c-25 -10 -52 -15 -81 -15z" />
-    <glyph glyph-name="ion-chatbubbles" unicode="&#xf11f;" horiz-adv-x="416" 
+    <glyph glyph-name="ion-themebubbles" unicode="&#xf11f;" horiz-adv-x="416" 
 d="M25 57c-1 1 0 2 -1 3c-15 22 -24 49 -24 77c0 42 19 80 49 106c-2 -11 -4 -22 -4 -34c0 -92 78 -168 174 -168c15 0 30 2 44 6c-27 -32 -69 -53 -115 -53c-20 0 -40 5 -58 12h-1v0c-2 1 -5 2 -8 2s-6 -1 -9 -2l-56 -22l12 63c0 4 -1 7 -3 10v0zM242 400
 c96 0 174 -76 174 -168c0 -33 -11 -64 -28 -90c-1 -1 -1 -2 -2 -3v0c-2 -4 -3 -8 -3 -12l17 -74l-69 26c-3 1 -6 2 -10 2c-3 0 -6 -1 -9 -2v0l-2 -1c-8 -3 -16 -5 -24 -7c-14 -4 -29 -6 -44 -6c-96 0 -173 75 -173 167c0 12 1 24 3 35c16 76 86 133 170 133z" />
     <glyph glyph-name="ion-checkmark-circled" unicode="&#xf120;" 
@@ -713,15 +713,15 @@ M352 192l15 143h-297l44 -177c1 0 2 1 3 1z" />
     <glyph glyph-name="ion-ios7-cart" unicode="&#xf167;" horiz-adv-x="384" 
 d="M377 32c0 -14 -11 -25 -25 -25s-25 11 -25 25s11 25 25 25s25 -11 25 -25zM89 32c0 -14 -11 -25 -25 -25s-25 11 -25 25s11 25 25 25s25 -11 25 -25zM64 352h320l-15 -175s-209 -30 -244 -34s-69 -30 -74 -62h333v-17h-352s0 5 2 17c5 35 33 62 65 73l-57 213h-42v17h53z
 " />
-    <glyph glyph-name="ion-ios7-chatboxes-outline" unicode="&#xf168;" horiz-adv-x="416" 
+    <glyph glyph-name="ion-ios7-themeboxes-outline" unicode="&#xf168;" horiz-adv-x="416" 
 d="M16 384v-192h96v-16h-112v224h288v-112h-16v96h-256zM128 272h288v-224h-48v-64h-13l-64 64h-163v224zM400 64v192h-256v-192h153l55 -55v55h48z" />
-    <glyph glyph-name="ion-ios7-chatboxes" unicode="&#xf169;" horiz-adv-x="416" 
+    <glyph glyph-name="ion-ios7-themeboxes" unicode="&#xf169;" horiz-adv-x="416" 
 d="M288 400v-112h-176v-112h-112v224h288zM128 272h288v-224h-48v-64h-13l-64 64h-163v224z" />
-    <glyph glyph-name="ion-ios7-chatbubble-outline" unicode="&#xf16a;" horiz-adv-x="384" 
+    <glyph glyph-name="ion-ios7-themebubble-outline" unicode="&#xf16a;" horiz-adv-x="384" 
 d="M192 336c-97 0 -176 -62 -176 -138c0 -26 10 -51 27 -73c0 -1 0 -2 1 -3s2 -1 2 -2c4 -6 6 -13 6 -20c0 -3 1 -3 -13 -47l39 17v0c2 1 10 4 11 4h1v0c5 2 10 3 16 3c5 0 9 -1 14 -2l1 -1h2c19 -6 41 -10 70 -10c48 0 92 15 125 40c32 25 50 58 50 94
 c0 76 -79 138 -176 138zM192 352v0c106 0 192 -69 192 -154s-85 -150 -191 -150c-27 0 -52 3 -75 11h-2v0c-3 1 -6 2 -10 2s-9 -1 -12 -2h1h-1c-1 0 -9 -4 -10 -4l-50 -22l-2 -1h-3h-3c-6 1 -8 6 -7 10v0s17 57 17 58c0 4 -1 8 -3 11v0v0v0l1 -1l-4 4c-19 24 -30 53 -30 84
 c0 85 86 154 192 154z" />
-    <glyph glyph-name="ion-ios7-chatbubble" unicode="&#xf16b;" horiz-adv-x="384" 
+    <glyph glyph-name="ion-ios7-themebubble" unicode="&#xf16b;" horiz-adv-x="384" 
 d="M192 352v0c106 0 192 -69 192 -154s-85 -150 -191 -150c-27 0 -52 3 -75 11h-2v0c-3 1 -6 2 -10 2s-9 -1 -12 -2h1h-1c-1 0 -9 -4 -10 -4l-50 -22l-2 -1h-3h-3c-6 1 -8 6 -7 10v0s17 57 17 58c0 4 -1 8 -3 11v0v0v0l1 -1l-4 4c-19 24 -30 53 -30 84c0 85 86 154 192 154z
 " />
     <glyph glyph-name="ion-ios7-checkmark-empty" unicode="&#xf16c;" horiz-adv-x="207" 

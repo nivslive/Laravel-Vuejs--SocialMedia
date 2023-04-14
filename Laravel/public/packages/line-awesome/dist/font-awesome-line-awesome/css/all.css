@@ -3183,7 +3183,7 @@ readers do not read off random characters that represent icons */
 .fa-rocket:before {
   content: "\f135"; }
 
-.fa-rocketchat:before {
+.fa-rockettheme:before {
   content: "\f3e8"; }
 
 .fa-rockrms:before {
@@ -3441,13 +3441,13 @@ readers do not read off random characters that represent icons */
 .fa-sms:before {
   content: "\f7cd"; }
 
-.fa-snapchat:before {
+.fa-snaptheme:before {
   content: "\f2ab"; }
 
-.fa-snapchat-ghost:before {
+.fa-snaptheme-ghost:before {
   content: "\f2ac"; }
 
-.fa-snapchat-square:before {
+.fa-snaptheme-square:before {
   content: "\f2ad"; }
 
 .fa-snowboarding:before {

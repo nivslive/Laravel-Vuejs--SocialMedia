@@ -5,18 +5,18 @@ namespace App\Http\Services;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redis;
-use App\Http\Repositories\ChatRepository;
+use App\Http\Repositories\ThemeRepository;
 use App\Http\Services\DashboardService;
-class ChatService extends Service
+class ThemeService extends Service
 {
 
-    private ChatRepository $repository;
+    private ThemeRepository $repository;
     public function __construct() {
         #user
         #$this->user = Auth()->user();
 
         #repository
-        $this->repository = new ChatRepository;
+        $this->repository = new ThemeRepository;
 
         #services
         $this->dashboard = new DashboardService;
@@ -37,12 +37,12 @@ class ChatService extends Service
         return $this->repository->post($request);
     }
 
-    public function onlyChatVariations() {
+    public function onlyThemeVariations() {
         $data = $this->dashboard->all();
         return $this->redisCheck ? $this->redis($data, 'all', 'subject') : $data;
     }
-    public function room($chat, $subject) {
-        $data = $this->repository->room($chat, $subject);
+    public function room($theme, $subject) {
+        $data = $this->repository->room($theme, $subject);
         return $this->redisCheck ? $this->redis($data, $slug) : $data->toArray();
     }
     public function rooms($slug) {

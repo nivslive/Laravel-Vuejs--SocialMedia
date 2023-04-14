@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('chats', function (Blueprint $table) {
+        Schema::create('themes', function (Blueprint $table) {
             $table->id();
             $table->string('slug')->nullable();
             $table->string('title');
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('image_url')->nullable();
             $table->integer('subjects_all_messages_count');
             $table->timestamps();
-        });
+        }); 
     }
 
     /**
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chats');
+        Schema::dropIfExists('themes');
     }
 };

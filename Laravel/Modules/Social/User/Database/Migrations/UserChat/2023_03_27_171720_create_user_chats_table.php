@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_chat', function (Blueprint $table) {
+        Schema::create('user_theme', function (Blueprint $table) {
             $table->id();
             $table->biginteger('status');
             

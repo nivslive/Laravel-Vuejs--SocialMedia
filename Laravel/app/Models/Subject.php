@@ -5,7 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\{Message, Chat, User, SubjectExternalLink};
+use App\Models\{Message, Theme, User, SubjectExternalLink};
 class Subject extends Model
 {
     use CrudTrait, HasFactory;
@@ -14,7 +14,7 @@ class Subject extends Model
         'slug',
         'photo_id',
         'description',
-        'chat_id',
+        'theme_id',
         'user_id'
     ];
 
@@ -22,8 +22,8 @@ class Subject extends Model
         return $this->hasOne(User::class, 'id', 'user_id');
     }
 
-    public function chat() {
-        return $this->belongsTo(Chat::class, 'chat_id');
+    public function theme() {
+        return $this->belongsTo(Theme::class, 'theme_id');
      }
 
      public function photo()

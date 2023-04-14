@@ -2,11 +2,11 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\ChatController;
+use App\Http\Controllers\ThemeController;
 
-Route::get('/room/{slug}', [ChatController::class, 'rooms'])->name('rooms');
-Route::get('/room/{chat}/{subject}', [ChatController::class, 'room'])->name('room');
-Route::get('/subject/by-id/{subject}', [ChatController::class, 'subject'])->name('subject');
+Route::get('/room/{slug}', [ThemeController::class, 'rooms'])->name('rooms');
+Route::get('/room/{theme}/{subject}', [ThemeController::class, 'room'])->name('room');
+Route::get('/subject/by-id/{subject}', [ThemeController::class, 'subject'])->name('subject');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

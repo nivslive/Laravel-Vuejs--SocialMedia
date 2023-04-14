@@ -73,7 +73,7 @@ watch(state.attD, (newVal, oldVal) => {
 });
 
 function att() {
-    fetch( route  + "/chat/2")
+    fetch( route  + "/theme/2")
     .then((message) => message.json())
     .then((json) => {
         state.more = true;

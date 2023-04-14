@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\User;
-use App\Models\Chat;
+use App\Models\Theme;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Subject>
  */
@@ -24,7 +24,7 @@ class SubjectFactory extends Factory
             'title' => $title,
             'slug' =>  Str::of($title)->slug('-'),
             'description' => fake()->realText(200),
-            'chat_id' =>  Chat::pluck('id')->random(),
+            'theme_id' =>  Theme::pluck('id')->random(),
             'user_id' => User::pluck('id')->random(),
         ];
     }

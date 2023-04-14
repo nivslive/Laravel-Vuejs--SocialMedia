@@ -1533,7 +1533,7 @@
 .fa-qq:before {
   content: "\f1d6";
 }
-.fa-wechat:before,
+.fa-wetheme:before,
 .fa-weixin:before {
   content: "\f1d7";
 }
@@ -2148,13 +2148,13 @@
 .fa-viadeo-square:before {
   content: "\f2aa";
 }
-.fa-snapchat:before {
+.fa-snaptheme:before {
   content: "\f2ab";
 }
-.fa-snapchat-ghost:before {
+.fa-snaptheme-ghost:before {
   content: "\f2ac";
 }
-.fa-snapchat-square:before {
+.fa-snaptheme-square:before {
   content: "\f2ad";
 }
 .sr-only {

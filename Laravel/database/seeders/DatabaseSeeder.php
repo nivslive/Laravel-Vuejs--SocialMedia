@@ -5,7 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 #use Database\Factories\ReactionFactory;
-use Database\Seeders\ChatSeeder;
+use Database\Seeders\ThemeSeeder;
 use Illuminate\Database\Seeder;
 use Modules\Social\Reaction\Models\ReactionType;
 use Modules\Social\Reaction\Database\Factories\{ReactionFactory, ReactionTypeFactory};
@@ -60,7 +60,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\User::factory(9)->create();
-        \App\Models\Chat::factory(10)->create();
+        \App\Models\Theme::factory(10)->create();
         \App\Models\Subject::factory(50)->create();
         \App\Models\Message::factory(200)->create();
         //ReactionType::factory(ReactionTypeFactory::class)->create();

@@ -7753,13 +7753,13 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     category: "symbols"
   },
   speech_balloon: {
-    keywords: [ "bubble", "words", "message", "talk", "chatting" ],
+    keywords: [ "bubble", "words", "message", "talk", "themeting" ],
     char: "\ud83d\udcac",
     fitzpatrick_scale: false,
     category: "symbols"
   },
   left_speech_bubble: {
-    keywords: [ "words", "message", "talk", "chatting" ],
+    keywords: [ "words", "message", "talk", "themeting" ],
     char: "\ud83d\udde8",
     fitzpatrick_scale: false,
     category: "symbols"

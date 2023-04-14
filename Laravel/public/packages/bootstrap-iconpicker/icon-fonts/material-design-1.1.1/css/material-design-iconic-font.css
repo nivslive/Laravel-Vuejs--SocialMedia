@@ -808,7 +808,7 @@
 .md-call-split:before {
   content: "\f0db";
 }
-.md-chat:before {
+.md-theme:before {
   content: "\f0dc";
 }
 .md-clear-all:before {
@@ -2281,7 +2281,7 @@
 .md-vibration:before {
   content: "\f2c6";
 }
-.md-voice-chat:before {
+.md-voice-theme:before {
   content: "\f2c7";
 }
 .md-vpn-lock:before {

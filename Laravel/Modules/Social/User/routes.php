@@ -21,7 +21,7 @@ Route::controller(UserTrendsController::class)
         Route::get('/more-likes-in-my-messages', 'moreLikesInMyMessages');
 
         Route::get('/my-favorited-subjects', 'myFavoritesSubjects');
-        Route::get('/my-favorited-chats', 'myFavoritesSubjects');
+        Route::get('/my-favorited-themes', 'myFavoritesSubjects');
 });
 
 Route::apiResource('api/user-friends', UserTrendsController::class);
@@ -36,7 +36,7 @@ Route::controller(UserTrendsController::class)
         Route::get('/by-user/{id}/friend/{friend_id}', 'byUserHasFriend');
 });
 
-#Route::apiResource('api/user-chat', UserChatController::class);
+#Route::apiResource('api/user-theme', UserThemeController::class);
 #Route::apiResource('api/user-friend', UserFriendController::class);
-#Route::apiResource('api/user-chat-message', UserChatMessageController::class);
-#Route::apiResource('api/user-chat-friend', UserChatFriendController::class);
+#Route::apiResource('api/user-theme-message', UserThemeMessageController::class);
+#Route::apiResource('api/user-theme-friend', UserThemeFriendController::class);

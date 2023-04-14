@@ -65,7 +65,7 @@ class SubjectController extends Controller
             'title' => 'required|string|max:255',
             'slug' => 'required|string|max:300',
             'user_id' => 'required|numeric',
-            'chat_id' => 'required|numeric',
+            'theme_id' => 'required|numeric',
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);*/
         //dd($request);
