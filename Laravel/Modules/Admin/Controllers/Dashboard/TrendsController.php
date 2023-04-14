@@ -13,6 +13,7 @@ class TrendsController extends Controller {
             'subjectsWithMostMessagesTodayLIMIT10' => $this->subjectsWithMostMessagesTodayWithLimit(),
         ];
     }
+    
     public function subjectsWithMostMessagesTodayWithLimit($limit = 10) {
         $totalMessagesToday = Message::whereDate('created_at', Carbon::today())->count();
         $subjectsWithMostMessagesToday = Subject::withCount('messages')
