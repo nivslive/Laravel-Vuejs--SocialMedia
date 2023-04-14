@@ -15,7 +15,7 @@ use Modules\Social\Reaction\Provider as Reaction;
 use Modules\Social\User\Provider as User;
 
 //admin
-use Modules\Social\Admin\Provider as Admin;
+use Modules\Admin\Provider as Admin;
 
 class Provider extends ServiceProvider
 {

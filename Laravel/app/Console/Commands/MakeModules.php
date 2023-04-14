@@ -40,7 +40,7 @@ class MakeModules extends Command
         $fileContents = str_replace('{PATH1}', $module, $fileContents);
         file_put_contents($controllerPath, $fileContents);
     }
-    public function handle() {
+    public function test() {
         if($this->option('group')) {
             $group = $this->option('group');
         }
