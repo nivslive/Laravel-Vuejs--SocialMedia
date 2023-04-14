@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Chat;
+use App\Models\Theme;
 use App\Models\Message;
 use App\Models\Reaction;
 use App\Models\Subject;

@@ -41,7 +41,7 @@ class SubjectCrudController extends CrudController
     {
         CRUD::column('title');
         CRUD::column('description');
-        CRUD::column('chat_id');
+        CRUD::column('theme_id');
         CRUD::column('user_id');
 
         /**
@@ -63,7 +63,7 @@ class SubjectCrudController extends CrudController
 
         CRUD::field('title');
         CRUD::field('description');
-        CRUD::field('chat_id');
+        CRUD::field('theme_id');
         CRUD::field('user_id');
 
         /**

@@ -4,7 +4,7 @@ namespace App\Http\Repositories;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\{Message, Reaction, Subject, Chat};
+use App\Models\{Message, Reaction, Subject, Theme};
 
 class DashboardRepository
 {
@@ -17,7 +17,7 @@ class DashboardRepository
 
     public function sunMessages($id) {
         return Subject::withCount('messages')
-            ->where('chat_id', $id)
+            ->where('theme_id', $id)
             ->offset(0)
             ->limit(2)
             ->get()
@@ -26,16 +26,16 @@ class DashboardRepository
 
     public function all($limit = 5) {
 
-        $chat = Chat::with(['subjects' => function($query) {
+        $theme = Theme::with(['subjects' => function($query) {
             $query->withCount('messages')
             ->orderBy('messages_count', 'desc');
         }]);
 
-      $chat = array_values(collect($chat->get()->toArray())->map(function($_, $k) {
+      $theme = array_values(collect($theme->get()->toArray())->map(function($_, $k) {
             $_['allsums'] = collect($_['subjects'])->sum('messages_count');
             return $_;
         })->sortByDesc('allsums')->toArray());
-        //$chat = $chat->sort();
-        return $chat;
+        //$theme = $theme->sort();
+        return $theme;
     }
 }
