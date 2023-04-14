@@ -13,8 +13,3 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     require_once 'Web/Features/Posts.php';
     require_once 'Web/Private/Private.php';
 });
-
-
-Route::get('/testando', function() {
-    return  view('social.dashboard');
-});

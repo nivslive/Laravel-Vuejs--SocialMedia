@@ -26,6 +26,37 @@ class MakeModules extends Command
      * @return mixed
      */
 
+    public function createModel($group) {
+        $model = $this->ask('Qual é o nome do model?');
+        $this->mkdirIfNotExists("{$group}/Models");
+        $moduleWord = ucwords($module);
+        $controllerPath = "{$moduleDir}/Controllers/{$controllerModuleWord}Controller.php";
+        $fileContents = file_get_contents(__DIR__."/Templates/Controller.txt");
+        touch($controllerPath);
+        $fileContents = str_replace('{MODULEGROUP}', $namespace, $fileContents);
+        $fileContents = str_replace('{MODULE}', $controllerModuleWord, $fileContents);
+        $fileContents = str_replace('{ENTITY}', ucwords($module), $fileContents);
+        $fileContents = str_replace('{CONTROLLER}', ucwords($module) . 'Controller', $fileContents);
+        $fileContents = str_replace('{PATH1}', $module, $fileContents);
+        file_put_contents($controllerPath, $fileContents);
+    }
+    public function handle() {
+        if($this->option('group')) {
+            $group = $this->option('group');
+        }
+        else {
+            $group = $this->ask('Qual é o nome do grupo de modulos?');
+        }
+
+
+
+        if($this->option('option')) {
+            if($this->option('option') === '0') {
+
+            }
+        }
+    }
+
     public function mkdirIfNotExists($dir) {
         if(!file_exists($dir)) {
             return mkdir($dir);
