@@ -11,7 +11,8 @@ class PageController extends Controller {
     public function dashboard() {
         $count = new CountController;
         $trends = new TrendsController;
-        return ['count' => $count->all(), 'trends' => $trends->all()];
+        $data = ['count' => [$count->all()], 'trends' => $trends->all()];
+        return view('admin.dashboard', compact('data'));
     }
 
     public function themes() {

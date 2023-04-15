@@ -10,8 +10,17 @@ class TrendsController extends Controller {
     public function all() {
         return [
             'getLoadAvg' => $this->getLoadAvg(),
-            'mostPopularSubjects' => $this->mostPopularSubjects(),
-            'activityPeakHours' => $this->activityPeakHours(),
+            
+            'mostPopularSubjects' => [
+                                'headers' => ['title', 'description', 'created_at'],
+                                'title' => 'Assuntos mais populares',  
+                                'data' => $this->mostPopularSubjects()
+                                ],
+
+            'activityPeakHours' => [
+                                    'title' => 'Atividade nas últimas horas',  
+                                    'data' => $this->activityPeakHours()
+                                ],
             'mostActiveUsersSinceCreation' => $this->mostActiveUsersSinceCreation(),
             'subjectsWithMostMessagesToday' => $this->subjectsWithMostMessagesTodayWithLimit(),
             'mostActiveUsersInToday' => $this->mostActiveUsersInTimePeriod('today'),
