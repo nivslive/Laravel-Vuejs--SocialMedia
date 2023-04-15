@@ -61,4 +61,11 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function messages() {
+        return $this->hasOne(Message::class, 'user_id', 'id');
+    }
+    public function reactions() {
+        return $this->hasOne(Reaction::class, 'user_id', 'id');
+    }
 }
