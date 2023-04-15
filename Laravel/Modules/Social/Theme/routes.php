@@ -26,8 +26,8 @@ Route::prefix('api/theme')->group(function() {
 
 });
 
-Route::controller(Dashboard::class)->prefix('test/')->group(function()  {
-    Route::get('/topof/{date}', 'topOf');
+Route::controller(Dashboard::class)->prefix('/topof')->group(function()  {
+    Route::get('/{date}', 'topOf');
 });
 
 Route::middleware(['web'])->controller(Page::class)->prefix('theme/')->group(function() {

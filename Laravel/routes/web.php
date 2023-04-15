@@ -15,6 +15,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 });
 
 
-Route::get('/fodase', function() {
-    return view('admin.dashboard');
+Route::get('/', function() {
+    return redirect('/topof/all');
 });
