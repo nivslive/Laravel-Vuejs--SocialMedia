@@ -6,7 +6,7 @@ use App\Http\Controllers\ThemeController;
 
 Route::get('/room/{slug}', [ThemeController::class, 'rooms'])->name('rooms');
 Route::get('/room/{theme}/{subject}', [ThemeController::class, 'room'])->name('room');
-Route::get('/subject/by-id/{subject}', [ThemeController::class, 'subject'])->name('subject');
+//Route::get('/subject/by-id/{subject}', [ThemeController::class, 'subject'])->name('subject');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

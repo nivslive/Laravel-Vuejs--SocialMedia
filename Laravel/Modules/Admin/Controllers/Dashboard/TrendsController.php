@@ -9,6 +9,7 @@ class TrendsController extends Controller {
 
     public function all() {
         return [
+            'getLoadAvg' => $this->getLoadAvg(),
             'mostPopularSubjects' => $this->mostPopularSubjects(),
             'activityPeakHours' => $this->activityPeakHours(),
             'mostActiveUsersSinceCreation' => $this->mostActiveUsersSinceCreation(),
@@ -20,6 +21,11 @@ class TrendsController extends Controller {
     }
 
 
+    public function getLoadAvg() {
+        $load = sys_getloadavg();
+        $text = "Carga média nos últimos 1, 5 e 15 minutos: " . implode(', ', $load);
+        return $text;
+    }
     public function mostActiveUsersSinceCreation($limit = 10) {
         $mostActiveUsers = User::withCount(['messages', 'reactions'])
             ->whereHas('messages')

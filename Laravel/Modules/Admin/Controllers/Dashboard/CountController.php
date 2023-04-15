@@ -16,16 +16,16 @@ class CountController extends Controller {
             'admins' => $this->admins(),
             
             //lastday
-            'themes_lastday' => $this->themesLastDay(),
-            'users_lastday' => $this->usersLastDay(),
-            'subjects_lastday' => $this->subjectsLastDay(),
-            'messages_lastday' => $this->messagesLastDay(),
+            'themes_last_day' => $this->themesLastDay(),
+            'users_last_day' => $this->usersLastDay(),
+            'subjects_last_day' => $this->subjectsLastDay(),
+            'messages_last_day' => $this->messagesLastDay(),
             
             //lastweek
-            'themes_lastweek' => $this->themesLastWeek(),
-            'users_lastweek' => $this->usersLastWeek(),
-            'subjects_lastweek' => $this->subjectsLastWeek(),
-            'messages_lastweek' => $this->messagesLastWeek(),
+            'themes_last_week' => $this->themesLastWeek(),
+            'users_last_week' => $this->usersLastWeek(),
+            'subjects_last_week' => $this->subjectsLastWeek(),
+            'messages_last_week' => $this->messagesLastWeek(),
         ];
     }
 
