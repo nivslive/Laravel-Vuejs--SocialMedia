@@ -172,24 +172,37 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
                                 {{ $data['trends']['mostPopularSubjects']['title'] }}
                             </div>
                             <div class="card-body">
-                                <table id="myTable">
+                                <table id="myTableMostPopularSubjects">
                                     <thead>
                                         <tr>
                                             @foreach($data['trends']['mostPopularSubjects']['headers'] as $key => $mostPopularSubjectsHeaders)
                                                 <th>{{ $mostPopularSubjectsHeaders }}</th>
                                             @endforeach
+                                                <th> ações </th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                             @foreach($data['trends']['mostPopularSubjects']['headers'] as $key => $mostPopularSubjectsHeaders)
                                                 <th>{{ $mostPopularSubjectsHeaders }}</th>
                                             @endforeach
+                                            <th> ações </th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -198,12 +211,78 @@
                                             <td>{{ $mostPopularSubjects->title }}</td>
                                             <td>{{ $mostPopularSubjects->description }}</td>
                                             <td>{{ $mostPopularSubjects->created_at }}</td>
+                                            <td> <button class="btn btn-primary"> Editar </button> </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
+
                             </div>
                         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                {{ $data['trends']['mostActiveUsersSinceCreation']['title'] }}
+                            </div>
+                            <div class="card-body">
+                                <table id="myTableMostActiveUsersSinceCreation">
+                                    <thead>
+                                        <tr>
+                                            @foreach($data['trends']['mostActiveUsersSinceCreation']['headers'] as $mostActiveUsersSinceCreationHeaders)
+                                                <th>{{ $mostActiveUsersSinceCreationHeaders }}</th>
+                                            @endforeach
+                                                <th> ações </th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                            @foreach($data['trends']['mostActiveUsersSinceCreation']['headers'] as $mostActiveUsersSinceCreationHeaders)
+                                                <th>{{ $mostActiveUsersSinceCreationHeaders }}</th>
+                                            @endforeach
+                                            <th> ações </th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        @foreach($data['trends']['mostActiveUsersSinceCreation']['data'] as $mostActiveUsersSinceCreation)
+                                        <tr>
+                                            <td>{{ $mostActiveUsersSinceCreation->name }}</td>
+                                            <td>{{ $mostActiveUsersSinceCreation->slug }}</td>
+                                           <!-- <td> {{ $mostActiveUsersSinceCreation->messages_count}} <td/> -->
+                                           <!-- <td> {{ $mostActiveUsersSinceCreation->reactions_count}} <td/>
+                                            <td>{{ $mostActiveUsersSinceCreation->created_at }}</td>
+--><td> <button class="btn btn-primary"> Editar </button> </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">

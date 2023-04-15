@@ -21,7 +21,11 @@ class TrendsController extends Controller {
                                     'title' => 'Atividade nas últimas horas',  
                                     'data' => $this->activityPeakHours()
                                 ],
-            'mostActiveUsersSinceCreation' => $this->mostActiveUsersSinceCreation(),
+            'mostActiveUsersSinceCreation' => [ 
+                'headers' => ['name', 'slug'],
+                'title' => 'Usuários mais ativos desde a criação',
+                'data' => $this->mostActiveUsersSinceCreation()
+            ],
             'subjectsWithMostMessagesToday' => $this->subjectsWithMostMessagesTodayWithLimit(),
             'mostActiveUsersInToday' => $this->mostActiveUsersInTimePeriod('today'),
             'mostActiveUsersInWeek' => $this->mostActiveUsersInTimePeriod('week'),

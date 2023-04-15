@@ -1,6 +1,8 @@
 // Call the dataTables jQuery plugin
 const myTable = document.querySelector("#myTable");
-const dataTable = new simpleDatatables.DataTable("#myTable", {
+new simpleDatatables.DataTable("#myTableMostPopularSubjects", {
   searchable: true,
   fixedHeight: true,
 })
+
+new simpleDatatables.DataTable("#myTableMostActiveUsersSinceCreation")
