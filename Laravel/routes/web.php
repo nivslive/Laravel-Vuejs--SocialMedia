@@ -13,3 +13,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     require_once 'Web/Features/Posts.php';
     require_once 'Web/Private/Private.php';
 });
+
+
+Route::get('/fodase', function() {
+    return view('admin.dashboard');
+});
