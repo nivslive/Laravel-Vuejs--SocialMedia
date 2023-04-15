@@ -146,10 +146,6 @@
     }
 
 
-    .bg-custom-blue-gradient {
-        /*background: linear-gradient(180deg, rgb(10 8 38) 0%, rgb(15 38 80) 100%);*/
-    }
-
     .sender-container {
         opacity: 0;
         height: 0;
