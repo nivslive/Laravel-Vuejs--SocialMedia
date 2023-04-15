@@ -1,5 +1,5 @@
 <script setup>
-import NavLink from '@/components/NavLink.vue';
+import NavLink from '@/Inertia/Components/NavLink.vue';
 defineProps({
     data: Object,
 });

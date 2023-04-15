@@ -1,0 +1,1 @@
+import{o as e,c as t,w as a,g as o,u as r,j as c}from"./app-98bc4e29.js";const p={__name:"AuthenticationCardLogo",setup(s){return(n,_)=>(e(),t(r(c),{href:"/"},{default:a(()=>[o(" YORUS CLUB ")]),_:1}))}};export{p as _};
