@@ -42,7 +42,8 @@ COPY --from=build /app /var/www/html
 COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY .env.prod /var/www/html/.env
 
-RUN composer install && \
+RUN composer install
+#&& \
 #    npm install && \
 #    php artisan config:cache && \
 #    php artisan route:cache && \
