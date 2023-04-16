@@ -51,4 +51,4 @@ RUN composer install && \
     php artisan migrate && \
     a2enmod rewrite && \
     sudo chmod o+w ./storage/ -R && \
-    npm run dev
+    npm run build
