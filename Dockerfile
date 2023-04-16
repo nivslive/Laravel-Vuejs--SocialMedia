@@ -42,13 +42,13 @@ COPY --from=build /app /var/www/html
 COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY .env.prod /var/www/html/.env
 
-RUN composer install && \
-    npm install && \
-    php artisan config:cache && \
-    php artisan route:cache && \
-    chmod 777 -R /var/www/html/storage/ && \
-    chown -R www-data:www-data /var/www/ && \
-    php artisan migrate && \
-    a2enmod rewrite && \
-    sudo chmod o+w ./storage/ -R && \
-    npm run build
+#RUN composer install && \
+#    npm install && \
+#    php artisan config:cache && \
+#    php artisan route:cache && \
+#    chmod 777 -R /var/www/html/storage/ && \
+#    chown -R www-data:www-data /var/www/ && \
+#    php artisan migrate && \
+#    a2enmod rewrite && \
+#    sudo chmod o+w ./storage/ -R && \
+#    npm run dev
