@@ -11,15 +11,13 @@ const props = defineProps({
   data: Object,
 });
 
-console.log(props.id, 'oi')
-
 const reactiveAtt = ref(props.att);
 
 
 watch(() => props.att, (newVal, oldVal) => {
   // watch it
   reactiveAtt.value = newVal;
-  console.log("Prop changed: ", newVal, " | was: ", oldVal);
+  //console.log("Prop changed: ", newVal, " | was: ", oldVal);
   if (reactiveAtt.value) {
     att();
   }
@@ -36,12 +34,11 @@ function att() {
     fetch( route  + "/subject/by-id/" + props.id)
     .then((message) => message)
     .then((json) => {
-      console.log(json.text)
         state.more = true;
         state.messages = json.messages.data;
         state.next_page = json.messages.next_page_url;
         state.previous_page = json.messages.prev_page_url;
-        console.log(json);
+        //console.log(json);
     });
 }
 

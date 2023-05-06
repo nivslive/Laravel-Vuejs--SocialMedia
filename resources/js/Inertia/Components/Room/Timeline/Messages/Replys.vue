@@ -9,8 +9,6 @@ const props = defineProps({
   messages: Object,
 });
 
-console.log(props.id, 'oi')
-
 const reactiveAtt = ref(props.att);
 
 
@@ -129,7 +127,7 @@ function followUser(el) {
         <div class="flex border-t border-r border-b border-l-0 border-blue-600  border-opacity-20 pt-2 mb-10 rounded-2xl">
 
 
-          <div v-for="message in messages" :key="message.id"> 
+          <div v-for="message in messages" class="flex" :key="message.id"> 
 
             <div
                   class="flex items-center flex-col  p-4 m-4"
@@ -192,16 +190,6 @@ function followUser(el) {
           
           
                     <div>
-          
-          
-          
-          
-          
-          
-          
-          
-          
-                      
                     </div>
                   
                     
