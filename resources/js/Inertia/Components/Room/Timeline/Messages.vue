@@ -239,7 +239,6 @@ function showSender(id) {
       </div>
 
     </article>
-    {{ message.replies }}
     <Replys class="ml-[15%]" :messages="message.replies" />
     </li>
   </ul>
