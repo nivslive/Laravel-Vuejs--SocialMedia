@@ -9,7 +9,6 @@ const props = defineProps({
     data: Object,
 });
 
-console.log(app, 'oi??')
 function attTimeline(message) {
     console.log(message, 'messages');
     att.value = true;

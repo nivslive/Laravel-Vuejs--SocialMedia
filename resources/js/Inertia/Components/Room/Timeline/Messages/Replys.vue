@@ -6,7 +6,7 @@ const props = defineProps({
   id: Number,
   att: Boolean,
   data: Object,
-  message: Object,
+  messages: Object,
 });
 
 console.log(props.id, 'oi')
@@ -126,10 +126,10 @@ function followUser(el) {
 
 
           <!-- REPLY PARENT -->
-          <div class="flex border-t border-r border-b border-l-0 border-blue-600  border-opacity-20 pt-2 mb-10 rounded-2xl">
+        <div class="flex border-t border-r border-b border-l-0 border-blue-600  border-opacity-20 pt-2 mb-10 rounded-2xl">
 
 
-
+          <div v-for="message in messages" :key="message.id"> 
 
             <div
                   class="flex items-center flex-col  p-4 m-4"
@@ -214,10 +214,10 @@ function followUser(el) {
           
           
           
+          </div>
           
           
-          
-                    </div>
+        </div>
                   
 
 </template>

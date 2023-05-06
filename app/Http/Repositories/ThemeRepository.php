@@ -45,7 +45,7 @@ class ThemeRepository
             $query->with('user');
         }])->first();
         
-        dd($room->toArray());
+        //dd($room->toArray());
         return $room;
     }
 

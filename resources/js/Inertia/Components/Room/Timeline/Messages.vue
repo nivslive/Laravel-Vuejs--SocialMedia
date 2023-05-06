@@ -242,8 +242,8 @@ function showSender(id) {
       </div>
 
     </article>
-    
-    <Replys class="ml-[15%]" :message="message" />
+    {{ message.replies }}
+    <Replys class="ml-[15%]" :messages="message.replies" />
     </li>
   </ul>
   <!--<div class="flex items-center justify-center py-3">
