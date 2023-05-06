@@ -51,18 +51,25 @@ class RepliesTest extends TestCase
             'message_id' => $messageCreated->id,
         ]);
 
-        $this->assertTrue($replyCreated->message === 'test');
-
-
-
+        $this->assertEquals($replyCreated->message, 'test');
 
         $searchMessage = Message::find($replyCreated->message_id);
-        $this->assertTrue($searchMessage->message === 'test');
+        $this->assertEquals($searchMessage->message, 'test');
         
+        $searchSubject = Subject::find($messageCreated->subject_id);
+        $this->assertEquals($searchSubject->title, 'testing');
+
+        
+        $searchTheme = Theme::find($subjectCreated->theme_id);
+        $this->assertEquals($searchTheme->title, 'testing');
+
         
         $searchReply = Reply::find($replyCreated->id);
+
         $searchReply->delete();
         $searchMessage->delete();
+        $searchSubject->delete();
+        $searchTheme->delete();
         // success!!
     }
 
