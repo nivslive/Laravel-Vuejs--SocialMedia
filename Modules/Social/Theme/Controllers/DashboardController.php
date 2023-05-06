@@ -169,8 +169,12 @@ class DashboardController extends Controller
             $arr['year'] = $this->topOfSubject();
 
             $data = $arr;
-        }
 
+        return view('social.dashboard', ['data' => $data, 'categories' => $this->categories()]);
+        }
+        else {
+            return redirect('/');
+        }
         /*if($model === 'theme') {
             $data = $this->topOfTheme();
         }
@@ -178,8 +182,6 @@ class DashboardController extends Controller
         if($model === 'subject') {
            $data = $this->topOfSubject();
         }*/
-
-        return view('social.dashboard', ['data' => $data, 'categories' => $this->categories()]);
     }
 
 

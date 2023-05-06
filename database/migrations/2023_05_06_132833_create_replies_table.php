@@ -13,15 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('themes', function (Blueprint $table) {
+        Schema::create('replies', function (Blueprint $table) {
             $table->id();
-            $table->string('slug')->nullable();
-            $table->string('title');
-            $table->string('description');
-            $table->string('image_url')->nullable();
-            $table->integer('subjects_all_messages_count')->default(0);
+
+            $table->string('message');
+
+            #foreign reactions
+            $table->biginteger('message_id')->nullable();
+
+
+            #foreign subject
+            $table->biginteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+
             $table->timestamps();
-        }); 
+        });
     }
 
     /**
@@ -31,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('themes');
+        Schema::dropIfExists('replies');
     }
 };
