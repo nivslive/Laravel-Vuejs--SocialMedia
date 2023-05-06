@@ -52,6 +52,17 @@ class RepliesTest extends TestCase
         ]);
 
         $this->assertTrue($replyCreated->message === 'test');
+
+
+
+
+        $searchMessage = Message::find($replyCreated->message_id);
+        $this->assertTrue($searchMessage->message === 'test');
+        
+        
+        $searchReply = Reply::find($replyCreated->id);
+        $searchReply->delete();
+        $searchMessage->delete();
         // success!!
     }
 

@@ -41,8 +41,9 @@ class ThemeRepository
         $room = Subject::where('slug', $subject)->with(['photo', 'user', 'links', 'messages' => function($query) {
             $query->withCount('reactions');
             $query->orderBy('reactions_count', 'desc');
-        }, 'messages.user'])->first();
-        #dd($room->toArray());
+        }, 'messages.user', 'messages.replies'])->first();
+        
+        dd($room->toArray());
         return $room;
     }
 
@@ -73,6 +74,7 @@ class ThemeRepository
         $rooms = Theme::with(['subjects' => function($query) use ($startOfWeek, $endOfWeek) {
             $query->with(['user', 'messages' => function($query) {
                 $query->withCount('reactions');
+                $query->with('replies');
                 $query->orderBy('reactions_count', 'desc');
             }])
             ->withCount('messages')

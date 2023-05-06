@@ -63,6 +63,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Theme::factory(10)->create();
         \App\Models\Subject::factory(50)->create();
         \App\Models\Message::factory(200)->create();
+        \App\Models\Reply::factory(200)->create();
         //ReactionType::factory(ReactionTypeFactory::class)->create();
         //\App\Models\Reaction::factory(1)->create();
 

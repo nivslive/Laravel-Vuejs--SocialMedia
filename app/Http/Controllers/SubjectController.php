@@ -16,12 +16,15 @@ class SubjectController extends Controller
     public function show($id) {
         $subject = Subject::find($id)->first();
         $theme = Subject::find($id)->theme()->first();
-        $messages = Subject::find($id)->messages()->get();
+        $messages = Subject::find($id)->with(['messages' => function($query) {
+            $query->with('replies');
+        }])->get();
         $data = [
             'theme' => $theme,
             'subject' => $subject,
             'messages' => $messages
         ];
+        //dd($data);
         return $data;
      /*   $subjects = array_map(function($subject) {
             $messages = Message::all()->where('subject_id', $subject['id'])->toArray();

@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Message;
+use App\Models\Subject;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +20,9 @@ class ReplyFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'message' => fake()->realText(200),
+            'message_id' => Message::pluck('id')->random(),
+            'user_id' => User::pluck('id')->random(),
         ];
     }
 }
