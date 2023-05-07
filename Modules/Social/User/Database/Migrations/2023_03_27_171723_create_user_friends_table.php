@@ -16,6 +16,10 @@ return new class extends Migration
         Schema::create('user_friends', function (Blueprint $table) {
             $table->id();
             $table->biginteger('status');
+
+            $table->biginteger('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+
             $table->biginteger('friend_id')->unsigned()->nullable();
             $table->foreign('friend_id')->references('id')->on('users');
             $table->timestamps();

@@ -7,6 +7,11 @@
     <testsuites>
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
+            <directory suffix="Test.php">./Modules/Social/User/Tests</directory>
+            <directory suffix="Test.php">./Modules/Social/Theme/Tests</directory>
+            <directory suffix="Test.php">./Modules/Social/Subject/Tests</directory>
+            <directory suffix="Test.php">./Modules/Social/Reaction/Tests</directory>
+            <directory suffix="Test.php">./Modules/Social/Message/Tests</directory>
         </testsuite>
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>

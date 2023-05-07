@@ -124,7 +124,7 @@ function followUser(el) {
 
 
           <!-- REPLY PARENT -->
-        <div class="flex border-t border-r border-b border-l-0 border-blue-600  border-opacity-20 pt-2 mb-10 rounded-2xl">
+        <div class="border-t border-r border-b border-l-0 border-blue-600  border-opacity-20 pt-2 mb-10 rounded-2xl">
 
 
           <div v-for="message in messages" class="flex" :key="message.id"> 
